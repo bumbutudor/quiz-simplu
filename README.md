@@ -3,18 +3,9 @@
 [![Build Status](https://travis-ci.org/ElanMan/simple-quiz.png?branch=master)](https://travis-ci.org/ElanMan/simple-quiz)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/77dcca19-1dd0-4a47-86b7-1ac6142e1bbd/mini.png)](https://insight.sensiolabs.com/projects/77dcca19-1dd0-4a47-86b7-1ac6142e1bbd)
 
-Simple-Quiz is a simple framework for creating quizzes for the web, created and maintained by [Ben Hall](http://twitter.com/elanman).
+Quiz-simplu este un Framework simplu pentru crearea de chestionare pentru web, destinat pentru compania Logodava! 
+PHP versiune > 5.4
 
-PHP version > 5.4 is required
-
-
-## Quick start
-
-Three quick start options are available:
-
-* [Download the latest release (github)](https://github.com/elanman/simple-quiz/releases/latest).
-* [Download the latest release (sourceforge)](https://sourceforge.net/projects/simple-quiz/).
-* Clone the repo: `git clone https://github.com/elanman/simple-quiz.git`.
 
 
 ### What's included
@@ -127,19 +118,10 @@ your server configuration.
 * Default web admin user is example@gmail.com with password of 123456
 * Navigate to the web accessible folder in your browser.
 
-## Twitter Stuff
-+ <http://twitter.com/QuizSimple>
-
-## Authors
-
-**Ben Hall**
-
-+ <http://twitter.com/elanman>
-+ <http://github.com/elanman>
 
 
 
 
-## Copyright and license
 
-Copyright 2013 Ben Hall under [the Apache 2.0 license](LICENSE).
+
+Credentials to Ben Hall.
