@@ -3,6 +3,7 @@ $app->get('/', function () use ($app) {
     $simple = $app->simple;
     $quizzes = $simple->getQuizzes();
     $categories = $simple->getCategories();
+    $subcategories = $simple->getSubcategories();
 
     $session = $app->session;
 
@@ -206,16 +207,17 @@ $app->get('/categories/:id', function ($id) use ($app) {
     $category = $simple->getCategory($id);
     $quizzes = $simple->getCategoryQuizzes($id);
     $categories = $simple->getCategories();
+    $subcategories = $simple->getSubcategories($id);
 
     $session = $app->session;
     if( $category )
     {
-        $app->render('category.php', array('category' => $category, 'quizzes' => $quizzes, 'categories' => $categories, 'session' => $session));
+        $app->render('category.php', array('category' => $category, 'quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
     }
     else
     {
         $quizzes = $simple->getQuizzes(true);
-        $app->render('index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'session' => $session));
+        $app->render('index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
     }
 })->conditions(array('id' => '\d+'));
 

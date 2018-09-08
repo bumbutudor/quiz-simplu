@@ -13,6 +13,13 @@
                        
                     <?php endforeach; ?>
               </div> 
+              <h4>Submodule</h4>
+              <div class="list-group">
+                <?php foreach ($subcategories as $subcat): ?>
+                       <ul><li><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
+                       
+                    <?php endforeach; ?>
+              </div>
 
           </div><!--/.sidebar-nav -->
         </div><!--/span-->
