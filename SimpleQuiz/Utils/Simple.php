@@ -64,8 +64,7 @@ class Simple implements Base\ISimple {
         }
         return $categories;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
         public function getSubcategories($active = true) {
         if ($active) {
@@ -76,17 +75,12 @@ class Simple implements Base\ISimple {
         else {
             $subcategories = \ORM::for_table('categories')->find_many();
         }
-=======
-=======
->>>>>>> ea896a4766ca7144b0d83bdf1ba8748dd3dd4230
+
         
     public function getSubcategories($id) {
             $subcategories = \ORM::for_table('subcategories')->join('categories', array('categories.id', '=', 'subcategories.id_modul'))->select_many('subcategories.id','subcategories.name','subcategories.description')->where('categories.id', $id)->find_many();
 
-<<<<<<< HEAD
->>>>>>> ea896a4766ca7144b0d83bdf1ba8748dd3dd4230
-=======
->>>>>>> ea896a4766ca7144b0d83bdf1ba8748dd3dd4230
+
         return $subcategories;
     }
     
