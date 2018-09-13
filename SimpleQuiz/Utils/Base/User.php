@@ -11,6 +11,7 @@ class User {
     private $quizzes;
     private $password;
     private $id;
+    private $role;
 
     function __construct($email, $name)
     {
@@ -76,5 +77,15 @@ class User {
     public function getHash()
     {
         return $this->hash;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+    
+    public function getRole()
+    {
+        return $this->role;
     }
 }

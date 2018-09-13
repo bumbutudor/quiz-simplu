@@ -1,13 +1,26 @@
 <?php
 include'header.php';
 ?>
+
 <div id="container" class="quiz">
       <div class="row">
-          <div id="intro" class="col-md-8 col-md-offset-2">
+        <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="sidebar-nav">
+              <h4>Submodule</h4>
+              <div class="list-group">
+                <?php foreach ($subcategories as $subcat): ?>
+                       <ul><li><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
+                       
+                    <?php endforeach; ?>
+              </div>
+
+          </div><!--/.sidebar-nav -->
+        </div><!--/span-->
+          <div id="intro" class="col-md-8">
               <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
               <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
               <div id="ajaxupdater" class="alert"></div>
-          <h4>Bine ati venit, domnule Bumbu!</h4>
+          <h4>Bine ati venit, domnule Admin!</h4>
           <p>Ai grija, avand putere mare trebuie responsabilitati mari.</p>
           <h4>Exercitii</h4>
           <?php if (count($quizzes) > 0): ?>

@@ -50,11 +50,6 @@
                 </div>
             </div><!--/.sidebar-nav -->
           </div><!--/span-->
-          <div class="col-xs-12 col-sm-3">
-            <p>
-                <button id="addquiz" title="Adauga Un Exercitiu" type="button" class="btn btn-primary pull-right">Creeaza Un Exercitiu <span class="glyphicon glyphicon-plus-sign"></span></button>
-            </p>
-          </div>
           
         </div>
     </div><!--container-->

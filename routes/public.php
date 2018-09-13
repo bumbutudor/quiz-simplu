@@ -3,7 +3,6 @@ $app->get('/', function () use ($app) {
     $simple = $app->simple;
     $quizzes = $simple->getQuizzes();
     $categories = $simple->getCategories();
-    $subcategories = $simple->getSubcategories();
 
     $session = $app->session;
 
@@ -60,7 +59,7 @@ $app->post('/login/', function () use ($app) {
         else
         {
             //pull details for this registered email
-            if ($authsql = \ORM::for_table('users')->select_many('id','pass','name','level')->where('email',
+            if ($authsql = \ORM::for_table('users')->select_many('id','pass','name','level','role')->where('email',
                 $email)->find_one())
             {
                 //verify the password against hash
@@ -82,6 +81,7 @@ $app->post('/login/', function () use ($app) {
                     }
 
                     $user->setId($authsql->id);
+                    $user->setRole($authsql->role);
 
                     $session->set('user', $user);
                     $session->regenerate();
