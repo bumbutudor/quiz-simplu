@@ -53,7 +53,7 @@ class Simple implements Base\ISimple {
         return $quizzes;
     }
     
-    public function getCategories($active = true) {
+    public function getCategories($active = false) {
         if ($active) {
             $categories = \ORM::for_table('categories')->join('quizzes', array('quizzes.category', '=',
                 'categories.id'))->select_many('categories.id','categories.name','categories.description',
@@ -63,6 +63,31 @@ class Simple implements Base\ISimple {
             $categories = \ORM::for_table('categories')->find_many();
         }
         return $categories;
+    }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+        public function getSubcategories($active = true) {
+        if ($active) {
+            $subcategories = \ORM::for_table('subcategories')->join('quizzes', array('quizzes.id_subcategory', '=',
+                'subcategories.id'))->select_many('subcategories.id','subcategories.name','subcategories.description',
+                'quizzes.subcategory_id','quizzes.active')->where('quizzes.active', 1)->find_many();
+        }
+        else {
+            $subcategories = \ORM::for_table('categories')->find_many();
+        }
+=======
+=======
+>>>>>>> ea896a4766ca7144b0d83bdf1ba8748dd3dd4230
+        
+    public function getSubcategories($id) {
+            $subcategories = \ORM::for_table('subcategories')->join('categories', array('categories.id', '=', 'subcategories.id_modul'))->select_many('subcategories.id','subcategories.name','subcategories.description')->where('categories.id', $id)->find_many();
+
+<<<<<<< HEAD
+>>>>>>> ea896a4766ca7144b0d83bdf1ba8748dd3dd4230
+=======
+>>>>>>> ea896a4766ca7144b0d83bdf1ba8748dd3dd4230
+        return $subcategories;
     }
     
     public function getCategory($id) {
@@ -74,7 +99,9 @@ class Simple implements Base\ISimple {
     
     public function getCategoryQuizzes($id) {
         
-        $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active')->where('quizzes.category', $id)->find_many();
+        // $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active')->where('quizzes.category', $id)->find_many();
+
+        $quizzes = \ORM::for_table('quizzes')->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('id_subcategory' => 'subcategories.name'), 'quizzes.active')->where('quizzes.id_subcategory', $id)->find_many();
         
         return $quizzes;
     }
