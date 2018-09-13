@@ -14,6 +14,9 @@ interface ISimple {
     public function getCategories($active = false);
 
     public function getSubcategories($id);
+
+    public function getSubcategories($active = true);
+
     
     public function getCategory($id);
     
