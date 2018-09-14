@@ -65,18 +65,6 @@ class Simple implements Base\ISimple {
         return $categories;
     }
 
-
-        public function getSubcategories($active = true) {
-        if ($active) {
-            $subcategories = \ORM::for_table('subcategories')->join('quizzes', array('quizzes.id_subcategory', '=',
-                'subcategories.id'))->select_many('subcategories.id','subcategories.name','subcategories.description',
-                'quizzes.subcategory_id','quizzes.active')->where('quizzes.active', 1)->find_many();
-        }
-        else {
-            $subcategories = \ORM::for_table('categories')->find_many();
-        }
-
-        
     public function getSubcategories($id) {
             $subcategories = \ORM::for_table('subcategories')->join('categories', array('categories.id', '=', 'subcategories.id_modul'))->select_many('subcategories.id','subcategories.name','subcategories.description')->where('categories.id', $id)->find_many();
 

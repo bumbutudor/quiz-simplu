@@ -32,7 +32,7 @@ include'header.php';
                     <?php
                         foreach ($quizzes as $quiz) :
                             $activeSpan = $quiz->active == 1 ? 'glyphicon-ok-circle' : 'glyphicon-remove-circle';
-                            echo '<tr class="quiz"><td><strong><a href="'. $root .'/admin/quiz/'. $quiz->id .'">' . $quiz->name. '</a></strong></td><td>'.$quiz->description.'</td><td>'.$quiz->category.'</td><td>'.$quiz->subcategory.'</td><td>'.$quiz->tip_quiz.'</td><td><span class="glyphicon '.$activeSpan.'"></span></td><td><a href="'. $root .'/admin/quiz/'. $quiz->id .'" data-quiz-id="'.$quiz->id.'" title="Modifica Exercitiu" class="edit btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> <button data-quiz-id="'.$quiz->id.'" title="Sterge Exercitiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></td></tr>';
+                            echo '<tr class="quiz"><td><strong><a href="'. $root .'/admin/quiz/'. $quiz->id .'">' . $quiz->name. '</a></strong></td><td>'.$quiz->description.'</td><td>'.$quiz->category.'</td><td>'.$quiz->id_subcategory.'</td><td>'.$quiz->tip_quiz.'</td><td><span class="glyphicon '.$activeSpan.'"></span></td><td><a href="'. $root .'/admin/quiz/'. $quiz->id .'" data-quiz-id="'.$quiz->id.'" title="Modifica Exercitiu" class="edit btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> <button data-quiz-id="'.$quiz->id.'" title="Sterge Exercitiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></td></tr>';
                         endforeach;
                     ?>
                 </tbody>
@@ -73,14 +73,16 @@ include'header.php';
                        <?php endforeach; ?>
                    </select>
                 </p>
-				<p><label for="subcategory">Submodul Exercitiu:</label>
-                   <input name="subcategory" id="subcategory" type="text" placeholder="Submodul Exercitiu" class="form-control" />
-                </p>
-				<p><label for="category">Tip Exercitiu:</label>
+				       <p><label for="category">Submodul Exercitiu:</label>
                    <select name="category" id="category" class="form-control">
-                       <?php foreach ($categories as $category) : ?>
-                            <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                       <?php foreach ($subcategories as $subcategory) : ?>
+                            <option value="<?php echo $subcategory->id; ?>"><?php echo $category->name; ?></option>
                        <?php endforeach; ?>
+                   </select>
+                </p>
+				  <p><label for="category">Tip Exercitiu:</label>
+                   <select name="category" id="category" class="form-control">
+                   
                    </select>
                 </p>
 				
