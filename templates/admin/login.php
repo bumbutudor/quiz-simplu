@@ -26,7 +26,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="<?php echo $root; ?>/">Exercitii</a></li>
+            <li><a href="<?php echo $root; ?>/">Exerciții</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="<?php echo $root; ?>/admin/">Admin</a></li>
@@ -37,7 +37,7 @@
     <div class="container">
         <p><?php if (isset($flash['errors']['loginerror'])) { echo $flash['errors']['loginerror']; }?></p>
         <form class="form-signin" method="post" action="<?php echo $root; ?>/admin/login">
-        <h2 class="form-signin-heading">Va rog sa va logati</h2>
+        <h2 class="form-signin-heading">Vă rugăm să vă logați</h2>
         <input type="email" name="email" class="form-control" placeholder="Email" autofocus>
         <input type="password" name="password" class="form-control" placeholder="Password">
         

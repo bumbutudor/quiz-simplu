@@ -5,17 +5,17 @@ include'header.php';
         <div class="row">
           <div id="intro" class="col-md-8 col-md-offset-2">
               
-              <div><a class="btn btn-primary" href="<?php echo $root; ?>/admin/quiz/<?php echo $quizid; ?>/"><span class="glyphicon glyphicon-arrow-left"></span> Back to quiz details</a></div>
+              <div><a class="btn btn-primary" href="<?php echo $root; ?>/admin/quiz/<?php echo $quizid; ?>/"><span class="glyphicon glyphicon-arrow-left"></span> Înapoi la detaliile exercițiului</a></div>
                 <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
                 <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
-                <h3>Edit Answers: </h3>
+                <h3>Editează Răspunsuri: </h3>
                 <div class="row">
                     <div class="col-md-7">
                         <h4><?php echo $question->getText(); ?></h4>
                             <form id="answeredit" action="" method="post">
                             <table id="answers" class="table table-responsive table-hover table-bordered">
                                 <thead>
-                                    <tr><th style="text-align: center;">Correct Answer</th><th>Text</th></tr>
+                                    <tr><th style="text-align: center;">Răspuns Corect</th><th>Text</th></tr>
                                 </thead>
                                 <tbody>
                                     <?php
@@ -53,8 +53,8 @@ include'header.php';
                                 </tbody>
                             </table>
                             <p>
-                                <button type="submit" class="btn btn-success">Save <span class="glyphicon glyphicon-ok"></span></button>
-                                <button id="addanswer" type="button" class="btn btn-primary pull-right">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <button type="submit" class="btn btn-success">Salvează <span class="glyphicon glyphicon-ok"></span></button>
+                                <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă <span class="glyphicon glyphicon-plus-sign"></span></button>
                             </p>
                             <input type="hidden" name="_METHOD" value="PUT" />
                         </form> 

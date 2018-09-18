@@ -13,6 +13,7 @@ class Simple implements Base\ISimple {
         $quiz->name = $quizmeta['name'];
         $quiz->description = $quizmeta['description'];
         $quiz->category = $quizmeta['category'];
+        // $quiz->subcategory = $quizmeta['id_subcategory'];
         $quiz->active = $quizmeta['active']; 
         $quiz->set_expr('created', 'NOW()');
         $quiz->set_expr('updated', 'NOW()');
@@ -28,6 +29,7 @@ class Simple implements Base\ISimple {
             'name' => $quizmeta['name'],
             'description' => $quizmeta['description'],
             'category' => $quizmeta['category'],
+            // 'subcategory' => $quizmeta['id_subcategory'],
             'active' => $quizmeta['active']
         ));
         $quiz->set_expr('updated', 'NOW()');
@@ -66,17 +68,6 @@ class Simple implements Base\ISimple {
     }
 
 
-        public function getSubcategories($active = true) {
-        if ($active) {
-            $subcategories = \ORM::for_table('subcategories')->join('quizzes', array('quizzes.id_subcategory', '=',
-                'subcategories.id'))->select_many('subcategories.id','subcategories.name','subcategories.description',
-                'quizzes.subcategory_id','quizzes.active')->where('quizzes.active', 1)->find_many();
-        }
-        else {
-            $subcategories = \ORM::for_table('categories')->find_many();
-        }
-
-        
     public function getSubcategories($id) {
             $subcategories = \ORM::for_table('subcategories')->join('categories', array('categories.id', '=', 'subcategories.id_modul'))->select_many('subcategories.id','subcategories.name','subcategories.description')->where('categories.id', $id)->find_many();
 

@@ -5,6 +5,7 @@ $(function(){
     var addanswer = $('#addanswer');
     var addquestion = $('#addquestion');
     var addquiz = $('#addquiz');
+    var addsubcategory = $('#addsubcategory');
     var questionaddform = $('#questionadd');
     var aform = $('form#answeredit');
     var saveprompt = "<div class=\"alert alert-warning\">Click 'Save' to make the changes permanent.</div>";
@@ -160,10 +161,17 @@ $(function(){
         $('#q-add-modal').modal();
     });
     
-    //the button to add another question for this quiz
+
+    //the button to add anther subcategory for this category
     addquiz.on('click', function() {
         $('#quiz-add-modal').modal();
     });
+
+    //the button to add anther subcategory for this category
+    addsubcategory.on('click', function() {
+        $('#subcategory-add-modal').modal();
+    });
+
     
     // on answer form submission
     aform.on('submit', function(e) {

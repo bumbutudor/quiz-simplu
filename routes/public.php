@@ -54,7 +54,7 @@ $app->post('/login/', function () use ($app) {
     {
         if (! filter_var($email, FILTER_VALIDATE_EMAIL))
         {
-            $errors['loginerror'] = "The email address was invalid. Please try again.";
+            $errors['loginerror'] = "Adresa de email nu este validă. Vă rugăm să mai încercați.";
         }
         else
         {
@@ -65,7 +65,7 @@ $app->post('/login/', function () use ($app) {
                 //verify the password against hash
                 if (! password_verify($password, $authsql->pass))
                 {
-                    $errors['loginerror'] = "The email or password do not match those in our system. Please try again.";
+                    $errors['loginerror'] = "Email-ul sau parola au fost introduse greșit. Vă rugăm să mai încercați.";
                 }
                 else
                 {
@@ -89,13 +89,13 @@ $app->post('/login/', function () use ($app) {
             }
             else
             {
-                $errors['loginerror'] = "The email or password do not match those in our system. Please try again.";
+                $errors['loginerror'] = "Email-ul sau parola au fost introduse greșit. Vă rugăm să mai încercați.";
             }
         }
     }
     else
     {
-        $errors['loginerror'] = "Please check your email address and password and try again.";
+        $errors['loginerror'] = "Verificați dacă email-ul sau parola au fost introduse corect și mai încercați din nou.";
     }
 
     if (count($errors) > 0)
@@ -125,7 +125,7 @@ $app->post('/register/', function () use ($app) {
     {
         if (! filter_var($email, FILTER_VALIDATE_EMAIL))
         {
-            $errors['registererror'] = "The email address was invalid. Please try again.";
+            $errors['registererror'] = "Adresa de email nu este validă. Vă rugăm să mai încercați.";
         }
         else
         {
@@ -141,8 +141,7 @@ $app->post('/register/', function () use ($app) {
             }
             catch (\Swift_TransportException $e)
             {
-                $errors['registererror'] = 'There was an error trying to send a confirmation email. Please contact an
-                 Administrator';
+                $errors['registererror'] = 'A apărut o eroare la trimiterea confirmării pe email. Vă rugăm să contactați Administratorul';
             }
             catch (\SimpleQuiz\Utils\Exceptions\RegisterException $e)
             {
@@ -152,7 +151,7 @@ $app->post('/register/', function () use ($app) {
     }
     else
     {
-        $errors['registererror'] = "There was an error with your username or password. Please try again.";
+        $errors['registererror'] = "A apărut o eroare în legătură cu numele de cont și/sau parola. Vă rugăm să mai încercați.";
     }
 
     if (count($errors) > 0)
@@ -258,7 +257,7 @@ $app->get('/quiz/:id/', function ($id) use ($app) {
 
         $app->render('quiz/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'session' => $session, 'error' => $error));
     } else {
-        $app->flashnow('quizerror','There has been an error. Please return to the main quiz menu and try again');
+        $app->flashnow('quizerror','A apărut o eroare. Vă rugăm să vă întoarceți la exercițiu și să mai încercați');
         $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session));
     }
 })->conditions(array('id' => '\d+'));
@@ -279,7 +278,7 @@ $app->post('/quiz/process/', $authenticate($app), function () use ($app) {
     {
         if ($simple->quizUserExists($id, $session->get('user')->getId()))
         {
-            $app->flash('quizerror', "You've already taken this quiz");
+            $app->flash('quizerror', "Deja ați rezolvat acest exercițiu");
             $app->redirect($app->request->getRootUri() . '/quiz/' . $id);
         }
         $session->set('score', 0);
@@ -346,7 +345,7 @@ $app->post('/quiz/process/', $authenticate($app), function () use ($app) {
             $app->redirect($app->request->getRootUri() . '/quiz/' . $id . '/test');
         } else
         {
-            $app->flashnow('quizerror', 'There has been an error. Please return to the main quiz menu and try again');
+            $app->flashnow('quizerror', 'A apărut o eroare. Vă rugăm să vă întoarceți la exercițiu și să mai încercați.');
             $app->render('quiz/error.php', array('categories' => $categories, 'session' => $session));
         }
     }
@@ -360,7 +359,7 @@ $app->get('/quiz/:id/test/', $authenticate($app), function ($id) use ($app) {
     $categories = $simple->getCategories();
 
     if ( $session->get('quizid') !== $id) {
-        $app->flashnow('quizerror','There has been an error. Please return to the main quiz menu and try again');
+        $app->flashnow('quizerror','A apărut o eroare. Vă rugăm să vă întoarceți la exercițiu și să mai încercați.');
         $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session));
         $app->stop();
     }
@@ -409,7 +408,7 @@ $app->get('/quiz/:id/test/', $authenticate($app), function ($id) use ($app) {
                                             'timetaken' => $timetaken, 'categories' =>
         $categories, 'session' => $session));
     } else {
-        $app->flashnow('quizerror','The quiz you have selected does not exist. Return to the main menu to try again');
+        $app->flashnow('quizerror','Exercițiul pe care l-ați selectat nu există. Vă rugăm să vă întoarceți la meniul principal și să încercați din nou.');
         $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session));
         $app->stop();
     }
@@ -429,7 +428,7 @@ $app->get('/quiz/:id/results/', function ($id) use ($app) {
     }
 
     if ($session->get('quizid') !== $id) {
-        $app->flashnow('quizerror','There has been an error. Please return to the main quiz menu and try again');
+        $app->flashnow('quizerror','A apărut o eroare. Vă rugăm să vă întoarceți la meniul principal și să încercați din nou.');
         $app->render('quiz/error.php', array('quiz' => $quiz, 'categories' => $categories, 'session' => $session));
         $app->stop();
     }
@@ -441,7 +440,7 @@ $app->get('/quiz/:id/results/', function ($id) use ($app) {
 
         $app->render('quiz/results.php', array('quiz' => $quiz, 'categories' => $categories, 'session' => $session));
     } else {
-        $app->flashnow('quizerror','The quiz you have selected does not exist. Return to the main menu to try again');
+        $app->flashnow('quizerror','Exercițiul pe care l-ați selectat nu există. Mergeți în meniul principal pentru a încerca din nou.');
         $app->render('quiz/error.php', array('quiz' => $quiz, 'categories' => $categories, 'session' => $session));
         $app->stop();
     }

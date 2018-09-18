@@ -92,7 +92,7 @@ class Quiz implements Base\IQuiz {
             return $this->getQuestion($questionid)->getAnswers();
         }
         else {
-            throw new \InvalidArgumentException("You must supply a question id");
+            throw new \InvalidArgumentException("Trebuie să furnizați un ID pentru întrebare.");
         }
         
         return false;

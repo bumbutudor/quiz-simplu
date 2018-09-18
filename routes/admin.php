@@ -8,7 +8,7 @@ $authenticate = function ($app, $admin = false) {
         {
             if (! $app->session->get('user') instanceof \SimpleQuiz\Utils\User\AdminUser)
             {
-                $errors['loginerror'] = 'Nu aveti acces de Administrator.';
+                $errors['loginerror'] = 'Nu aveți acces drepturi de Administrator.';
                 $app->session->set('urlRedirect', $app->request()->getPathInfo());
                 $app->flash('errors', $errors);
                 $app->redirect($app->request->getRootUri() . '/login/');
@@ -19,7 +19,7 @@ $authenticate = function ($app, $admin = false) {
             //stops non-registered users and admin user from taking quizzes too
             if (! $app->session->get('user') instanceof \SimpleQuiz\Utils\User\EndUser)
             {
-                $errors['loginerror'] = 'Trebuie sa va logati pentru a incepe testul';
+                $errors['loginerror'] = 'Trebuie să vă logați pentru a începe testul!';
                 $app->session->set('urlRedirect', $app->request()->getPathInfo());
                 $app->flash('errors', $errors);
                 $app->redirect($app->request->getRootUri() . '/login/');
@@ -63,17 +63,17 @@ $app->post("/admin/quiz/", $authenticate($app, true), function() use ($app) {
         $simple = $app->simple;
     
         if ($simple->addQuiz($quizmeta)) {
-            $app->flash('success', 'Exercitiul a fost creat cu succes');
+            $app->flash('success', 'Exercițiul a fost creat cu succes!');
 
             $app->redirect($app->request->getRootUri().'/admin/');
         } else {
             //problem adding quiz
-            $app->flash('error', 'Problema la adaugarea exercitiului');
+            $app->flash('error', 'Problemă la adăugarea exercițiului');
             $app->redirect($app->request->getRootUri().'/admin/');
         }
     } else {
         //problem with post inputs
-        $app->flash('error', 'Problema la adaugarea exercitiului. Ceva nu e in regula cu ce ati inrodus');
+        $app->flash('error', 'Problemă la adaugarea exercițiului. Ceva nu e în regulă cu ce ați introdus');
         $app->redirect($app->request->getRootUri().'/admin/');
     }
         
@@ -100,17 +100,17 @@ $app->put("/admin/quiz/", $authenticate($app, true), function() use ($app) {
         $simple = $app->simple;
     
         if ($simple->updateQuiz($quizmeta)) {
-            $app->flash('success', 'Exercitiul a fost modificat');
+            $app->flash('success', 'Exercițiul a fost modificat!');
 
             $app->redirect($app->request->getRootUri().'/admin/');
         } else {
             //problem adding quiz
-            $app->flash('error', 'Problema la modificarea exercitiului');
+            $app->flash('error', 'Problemă la modificarea exercițiului!');
             $app->redirect($app->request->getRootUri().'/admin/');
         }
     } else {
         //problem with post inputs
-        $app->flash('error', 'Problema la modificarea exercitiului. Ceva nu e in regula cu ce ati introdus');
+        $app->flash('error', 'Problemă la modificarea exercițiului. Ceva nu e în regulă cu ce ați introdus!');
         $app->redirect($app->request->getRootUri().'/admin/');
     }
         
@@ -128,7 +128,7 @@ $app->delete("/admin/quiz/", $authenticate($app, true), function() use ($app) {
         } catch (Exception $e ) {
             echo json_encode(array('error' => $e->getMessage()));
         }
-        echo json_encode(array('success' => 'Exercitiul a fost sters cu succes'));
+        echo json_encode(array('success' => 'Exercițiul a fost șters cu succes!'));
         $app->stop();
         
     } else {
@@ -204,7 +204,7 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
         $i = 0;
         foreach ($answerarray as $answer) {
             if (trim($answer) == '') {
-                $app->flashnow('error', "Answers can't be empty");
+                $app->flashnow('error', "Trebuie să fie cel puțin un răspuns!");
                 $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories));
                 $app->stop();
             }
@@ -219,9 +219,9 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
         }
         try {
             $quiz->addQuestion($question, 'radio', $answers);
-            $app->flashnow('success', 'New Question saved successfully');
+            $app->flashnow('success', 'Întrebarea nouă a fost adăugată cu succes!');
         } catch (Exception $e ) {
-            $app->flashnow('error', 'A aparut o eroare la adaugarea unei intrebari');
+            $app->flashnow('error', 'A aparut o eroare la adaugarea întrebării');
             $app->flashnow('error', $e->getMessage());
         }
         $quiz->populateUsers();
@@ -250,7 +250,7 @@ $app->delete("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($
         } catch (Exception $e ) {
             echo json_encode(array('error' => $e->getMessage()));
         }
-        echo json_encode(array('success' => 'Intrebarea a fost stearsa cu succes'));
+        echo json_encode(array('success' => 'Intrebarea a fost ștearsă cu succes!'));
         $app->stop();
     }
         
@@ -290,7 +290,7 @@ $app->put("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
         $i = 0;
         foreach ($answerarray as $answer) {
             if (trim($answer) == '') {
-                $app->flashnow('error', 'Answers can\'t be empty');
+                $app->flashnow('error', 'Nu sunt răspusnuri adăugate!');
                 $answers = $quiz->getAnswers($questionid);
                 $app->render('admin/editanswers.php', array('quizid' => $quizid,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
                 $app->stop();
@@ -306,9 +306,9 @@ $app->put("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
         }
         try {
             $quiz->updateAnswers($answers, $questionid);
-            $app->flashnow('success', 'Raspunsurile au fost salvate cu succes');
+            $app->flashnow('success', 'Raspunsurile au fost modificate cu succes');
         } catch (Exception $e ) {
-            $app->flashnow('error', 'A aparut o eroare');
+            $app->flashnow('error', 'A aparut o eroare la modificarea răspunsului!');
         }
         $answers = $quiz->getAnswers($questionid);
         $app->render('admin/editanswers.php', array('quizid' => $quizid,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
