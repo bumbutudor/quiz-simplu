@@ -8,7 +8,6 @@ class LoginException extends \Exception {
 
         public function __construct()
         {
-            parent::__construct("There was an error trying to log you in to the application. If the proble persists,
-            please contact the site administrator.");
+            parent::__construct("A apărut o eroare în legătură cu încercarea dvoastră de a intra în aplicație. Dacă problema mai apare, vă rugăm să contactați Administratorul.");
         }
 }

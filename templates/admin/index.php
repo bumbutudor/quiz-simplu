@@ -20,13 +20,14 @@ include'header.php';
               <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
               <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
               <div id="ajaxupdater" class="alert"></div>
-          <h4>Bine ati venit, domnule Admin!</h4>
-          <p>Ai grija, avand putere mare trebuie responsabilitati mari.</p>
-          <h4>Exercitii</h4>
+          <h4>Bine ati venit, domnule Administrator!</h4>
+          <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br>
+          
+          <h4>Exerciții</h4>
           <?php if (count($quizzes) > 0): ?>
             <table id="quizzes" class="table table-striped">
                 <thead>
-                    <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Actiuni</th></tr>
+                    <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
                 </thead>
                 <tbody>
                     <?php
@@ -38,11 +39,11 @@ include'header.php';
                 </tbody>
             </table>
           <?php else: ?>
-          <p>Nu este nici un exercitiu la moment. Poate adaugati unul?</p>
-          <p>Doar dati click pe butonul 'Creati Un Exercitiu'</p>
+          <p>Nu este nici un exercițiu la moment. Poate adaugați unul?</p>
+          <p>Doar dati click pe butonul 'Creează Un Exercițiu'</p>
           <?php endif; ?>
             <p>
-                <button id="addquiz" title="Adauga Un Exercitiu" type="button" class="btn btn-primary pull-right">Creeaza Un Exercitiu <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button id="addquiz" title="Adauga Un Exercitiu" type="button" class="btn btn-primary pull-right">Creează Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
         </div>
       </div><!-- /.row -->
@@ -55,32 +56,32 @@ include'header.php';
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Adauga Un Exercitiu:</h4>
+            <h4 class="modal-title">Adaugă Un Exercițiu:</h4>
           </div>
             <form id="quizadd" method="post" action="<?php echo $root . '/admin/quiz/'; ?>">
             <div class="modal-body">
-                <p><label for="quizname">Nume Exercitiu:</label>
+                <p><label for="quizname">Nume Exercițiu:</label>
                    <input name="quizname" id="quizname" type="text" placeholder="Nume Exercitiu" class="form-control" />
-                   <span class="helper help-block">Va rog sa dati o denumire exercitiului</span>
+                   <span class="helper help-block">Va rog să dați o denumire exercițiului</span>
                 </p>
-                <p><label for="description">Descriere Exercitiu:</label>
+                <p><label for="description">Descriere Exercițiu:</label>
                    <input name="description" id="description" type="text" placeholder="Descriere Exercitiu" class="form-control" />
                 </p>
-                <p><label for="category">Modul Exercitiu:</label>
+                <p><label for="category">Modul Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
                        <?php foreach ($categories as $category) : ?>
                             <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
                        <?php endforeach; ?>
                    </select>
                 </p>
-				       <p><label for="category">Submodul Exercitiu:</label>
+				       <p><label for="category">Submodul Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
                        <?php foreach ($subcategories as $subcategory) : ?>
                             <option value="<?php echo $subcategory->id; ?>"><?php echo $category->name; ?></option>
                        <?php endforeach; ?>
                    </select>
                 </p>
-				  <p><label for="category">Tip Exercitiu:</label>
+				  <p><label for="category">Tip Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
                    
                    </select>
@@ -95,7 +96,7 @@ include'header.php';
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulare</button>
-              <button type="submit" class="btn btn-success">Creaza Exercitiu</button>
+              <button type="submit" class="btn btn-success">Creează Exercițiu</button>
             </div>
             </form>
         </div><!-- /.modal-content -->

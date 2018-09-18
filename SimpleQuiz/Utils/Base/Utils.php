@@ -30,8 +30,8 @@ class Utils {
         $formattedTime = date("i:s", $time); //formatted as minutes:seconds
         $timeportions = explode(':', $formattedTime);
 
-        $ret['mins'] = $timeportions[0] == '00' ? '' : ltrim($timeportions[0], '0') . ' mins ';
-        $ret['secs'] = $timeportions[1] . ' secs';
+        $ret['mins'] = $timeportions[0] == '00' ? '' : ltrim($timeportions[0], '0') . ' min ';
+        $ret['secs'] = $timeportions[1] . ' sec';
 
         return $ret;
     }

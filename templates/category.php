@@ -12,10 +12,6 @@
                        <ul><li><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li></ul>
                        
                     <?php endforeach; ?>
-                    <?php foreach ($subcategories as $subcat): ?>
-                       <ul><li><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
-                       
-                    <?php endforeach; ?>
               </div> 
               <h4>Submodule</h4>
               <div class="list-group">
@@ -42,7 +38,6 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6" style="margin-left: 250px;">
             <div>
-                <h4><?php echo $category->name; ?></h4>
                 <h4><?php echo $category->name; ?></h4>
                 <div class="list-group">
                 <?php foreach ($quizzes as $quiz) : 

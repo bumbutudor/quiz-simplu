@@ -6,10 +6,10 @@ class Installer
     public $requirements = array();
     public $version;
     public $versionimg;
-    public $versionmsg = 'PHP Version 5.3.7 or greater is required.';
+    public $versionmsg = 'Versiune PHP 5.3.7 sau mai nouă.';
     public $random = false;
     public $randomimg = 'ok';
-    public $randommsg = 'This is needed to generate random numbers for use with the PasswordLib library';
+    public $randommsg = 'Este nevoie pentru generarea numerelor aleatorii, luat din libraria PasswordLib';
 
     public function __construct() {
         $this->version = phpversion();

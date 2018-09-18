@@ -8,6 +8,6 @@ class RegisterException extends \Exception {
 
     public function __construct()
     {
-        parent::__construct("A user already exists with those credentials. Please try again.");
+        parent::__construct("Deja există un asemenea cont. Vă rugăm să mai încercați.");
     }
 }

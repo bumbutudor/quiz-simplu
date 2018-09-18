@@ -33,7 +33,7 @@ class Mailer {
     public function sendConfirmationEmail(User $user)
     {
         // Build the message
-        $this->message->setSubject('Welcome to Simple Quiz, please confirm your email address');
+        $this->message->setSubject('Bine ai venit la modulul de aministrare Logodava Quiz, vă rugăm să confirmați adresa de email');
 
         $replacements = array();
         $confirmHash = sha1($user->getEmail() .mt_rand() . $user->getId());

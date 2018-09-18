@@ -35,13 +35,11 @@
             $percentage = round(((int) $session->get('score') / (int) $quiz->countQuestions()) * 100);
             ?>
             <div id="finalscore">
-            <h2 id="score"><?php echo $user->getName(); ?> answered <?php echo $session->get('score'); ?> correct out
-                of a possible <?php echo $quiz->countQuestions(); ?></h2>
+            <h2 id="score"><?php echo $user->getName(); ?> a răspuns corect la <?php echo $session->get('score'); ?> din <?php echo $quiz->countQuestions(); ?></h2>
             <h2 class="userscore"><?php echo $percentage; ?>%</h2>
-            <h3 id="time">Time Taken: <?php echo $timetaken['mins'] . $timetaken['secs']; ?></h3>
+            <h3 id="time">Timp de: <?php echo $timetaken['mins'] . $timetaken['secs']; ?></h3>
 
-            <p id="compare"><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->getId(); ?>/results">See how you
-            compare!</a></p>
+            <p id="compare"><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->getId(); ?>/results"></a></p>
             </div>
         <?php endif; ?>
         </div>
