@@ -42,11 +42,11 @@ include'header.php';
           <?php if (count($quizzes) > 0): ?>
             <table id="quizzes" class="table table-striped">
                 <thead>
-<<<<<<< HEAD
                     <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip Exercitiu</th><th>Activ</th><th>Actiuni</th></tr>
-=======
                     <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
->>>>>>> 292dc6b1e8452f1b3c69c997ce6310e38342c99a
+
+                    <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
+
                 </thead>
                 <tbody>
                     <?php
@@ -133,18 +133,18 @@ include'header.php';
                        <?php endforeach; ?>
                    </select>
                 </p>
-<<<<<<< HEAD
+
 
                 <p><label for="subcategory">Subodul Exercitiu:</label>
                    <select name="subcategory" id="subcategory" class="form-control">
                        <?php foreach ($subcategories as $subcategory) : ?>
                             <option value="<?php echo $subcategory->id; ?>"><?php echo $subcategory->name; ?></option>
-=======
+
 				       <p><label for="category">Submodul Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
                        <?php foreach ($subcategories as $subcategory) : ?>
                             <option value="<?php echo $subcategory->id; ?>"><?php echo $category->name; ?></option>
->>>>>>> 292dc6b1e8452f1b3c69c997ce6310e38342c99a
+
                        <?php endforeach; ?>
                    </select>
                 </p>
@@ -159,6 +159,7 @@ include'header.php';
                        
                    </select>
                 </p>
+
 				
                 <h4>Activ?</h4>
                 <p><label for="quizactiveyes"> Da: </label>
