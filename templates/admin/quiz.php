@@ -185,14 +185,7 @@ include'header.php';
                    </select>
                 </p>
                 <!-- 19/09/2018 vizualizare submodul exercitiu-->
-                <p><label for="id_subcategory">Submodul Exercițiu:</label>
-                   <select name="id_subcategory" id="id_subcategory" class="form-control" />
-                     <?php foreach ($subcategories as $subcategory) : ?>
-                           <?php $selected = ($subcategory->name == $quiz->getSubcategory()) ? 'selected' : ''; ?>
-                           <option value="<?php echo $subcategory->id; ?>" <?php echo $selected; ?>><?php echo $subcategory->name; ?></option>
-                       <?php endforeach; ?>
-                   </select>
-                </p>
+               
                 
                 <h4>Active?</h4>
                 <p><label for="quizactiveyes" class="inline"> Da: </label>

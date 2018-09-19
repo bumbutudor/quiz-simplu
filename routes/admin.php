@@ -237,11 +237,7 @@ $app->delete("/admin/subcat/", $authenticate($app, true), function() use ($app) 
 });
 
 
-
-
-
-
-
+//19/09/2018 Sa fac si pentru subcategorie
 $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
 
     $quiz = $app->quiz;
@@ -250,6 +246,7 @@ $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
         $quiz->populateQuestions();
         $quiz->populateUsers();
         $categories = $app->simple->getCategories(false);
+        $subcategories = $app->simple->getSubcategories(false);
         
         $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories));
     }

@@ -54,6 +54,7 @@ class Simple implements Base\ISimple {
         $subcat->name = $subcatmeta['name'];
         $subcat->description = $subcatmeta['description'];
         $subcat->id_category = $subcatmeta['id_category'];
+        $subcat->save();
         return true;
     }
     
@@ -87,7 +88,7 @@ class Simple implements Base\ISimple {
         if ($active) {
             $quizzes = \ORM::for_table('quizzes')->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('id_subcategory' => 'subcategories.name'), 'quizzes.active')->where('active',1)->find_many();
         } else {
-            $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active')->find_many();
+            $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active', array('id_subcategory' => 'subcategories.name'))->find_many();
         }
         return $quizzes;
     }

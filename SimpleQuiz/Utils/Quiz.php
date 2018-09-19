@@ -33,13 +33,14 @@ class Quiz implements Base\IQuiz {
      */
     public function setId($id)
     {
-        $quizobj = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->select_many('quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active')->find_one($id);
+        $quizobj = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->select_many('quizzes.name', 'quizzes.description', array('category' => 'categories.name'), array('id_subcategory' => 'subcategories.name'), 'quizzes.active')->find_one($id);
        
         if ($quizobj) {
             $this->_id = $id;
             $this->_name = $quizobj->name;
             $this->_description = $quizobj->description;
             $this->_category = $quizobj->category;
+            $this->_id_subcategory = $quizobj->id_subcategory;
             $this->_active = $quizobj->active;
             
             return true;

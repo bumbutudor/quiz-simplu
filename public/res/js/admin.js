@@ -6,6 +6,7 @@ $(function(){
     var addquestion = $('#addquestion');
     var addquiz = $('#addquiz');
     var addsubcategory = $('#addsubcategory');
+    var editquiz = $('#editquiz');
     var questionaddform = $('#questionadd');
     var aform = $('form#answeredit');
     var saveprompt = "<div class=\"alert alert-warning\">Click 'Save' to make the changes permanent.</div>";
@@ -171,6 +172,10 @@ $(function(){
     addsubcategory.on('click', function() {
         $('#subcategory-add-modal').modal();
     });
+
+    editquiz.on('click', function() {
+        $('#quiz-edit-modal').modal();
+    })
 
     
     // on answer form submission

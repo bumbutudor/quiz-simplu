@@ -12,7 +12,7 @@ include'header.php';
 
               <div class="list-group">
                 <?php foreach ($subcategories as $subcat): ?>
-                       <ul><li><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
+                       <ul><li><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
                 <?php endforeach; ?>
               </div>
               
@@ -20,7 +20,7 @@ include'header.php';
              </div>
              <div class="col-sm-6">
                <p>
-                <button data-target="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary" data-toggle="modal">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary" data-toggle="modal">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
              </div>
            </div>
