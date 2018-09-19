@@ -205,8 +205,8 @@ $(function(){
     });
     
     
-    $('#editquiz').on('click', function() {
-        $('#quiz-edit-modal').modal();
+    $('#editsubcat').on('click', function() {
+        $('#subcat-edit-modal').modal();
     })
     
 });

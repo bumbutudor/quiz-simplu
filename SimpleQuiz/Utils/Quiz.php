@@ -10,7 +10,7 @@ class Quiz implements Base\IQuiz {
     protected $_name;
     protected $_description;
     protected $_category;
-    protected $_subcategory;
+    protected $_id_subcategory;
     protected $_active;
     protected $_answers = array();
     protected $_questions;
@@ -241,6 +241,11 @@ class Quiz implements Base\IQuiz {
     public function getCategory()
     {
         return $this->_category;
+    }
+
+    public function getSubcategory()
+    {
+        return $this->_id_subcategory;
     }
 
 

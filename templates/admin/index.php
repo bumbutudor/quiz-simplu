@@ -20,7 +20,7 @@ include'header.php';
              </div>
              <div class="col-sm-6">
                <p>
-                <button data-target="#subcategory-add-modal" title="Adauga Un Submodul" type="button" class="btn btn-primary" data-toggle="modal">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button data-target="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary" data-toggle="modal">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
              </div>
            </div>
@@ -73,19 +73,19 @@ include'header.php';
         <div class="modal-content">
           <div class="modal-header">
             
-            <h4 class="modal-title">Adauga Un Submodul:</h4>
+            <h4 class="modal-title">Adaugă Un Submodul:</h4>
           </div>
-            <form id="addsubcategory" method="post" action="<?php echo $root . '/admin/quiz/'; ?>">
+            <form id="subcatadd" method="post" action="<?php echo $root . '/admin/subcat/'; ?>">
             <div class="modal-body">
-                <p><label for="quizname">Nume Submodul</label>
+                <p><label for="subcatname">Nume Submodul</label>
                    <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" />
-                   <span class="helper help-block">Va rog sa dati o denumire exercitiului</span>
+                   <span class="helper help-block">Va rugăm să dați o denumire submodulului</span>
                 </p>
-                <p><label for="description">Descriere Submodul</label>
-                   <input name="description" id="description" type="text" placeholder="Descriere Submodul" class="form-control" />
+                <p><label for="subcatdescription">Descriere Submodul:</label>
+                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul" class="form-control" />
                 </p>
-                <p><label for="category">Modul</label>
-                   <select name="category" id="category" class="form-control">
+                <p><label for="id_category">Modul</label>
+                   <select name="id_category" id="id_category" class="form-control">
                        <?php foreach ($categories as $category) : ?>
                             <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
                        <?php endforeach; ?>
@@ -130,18 +130,16 @@ include'header.php';
                 </p>
 
 
-               <p><label for="category">Submodul Exercițiu:</label>
-                   <select name="category" id="category" class="form-control">
+               <p><label for="id_subcategory">Submodul Exercițiu:</label>
+                   <select name="id_subcategory" id="id_subcategory" class="form-control">
                        <?php foreach ($subcategories as $subcategory) : ?>
-                            <option value="<?php echo $subcategory->id; ?>"><?php echo $category->name; ?></option>
+                            <option value="<?php echo $subcategory->id; ?>"><?php echo $subcategory->name; ?></option>
                        <?php endforeach; ?>
                    </select>
                 </p>
 
-                <p><label for="category">Tip Exercițiu:</label>
-                   <select name="category" id="category" class="form-control">
+                <p><label for="">Tip Exercițiu:</label>
                    
-                   </select>
                 </p>
         
                 <h4>Activ?</h4>

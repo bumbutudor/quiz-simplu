@@ -52,12 +52,14 @@ $app->post("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     $quizname = trim($app->request->post('quizname'));
     $quizdescription = trim($app->request->post('description'));
     $quizcategory = trim($app->request->post('category'));
+    $quizsubcategory = trim($app->request->post('id_subcategory'));
     $active = (int) trim($app->request()->post('active'));
     
     if ( ($quizname !== '') && ($quizdescription !== '') ) {
         $quizmeta['name'] = ucwords($quizname);
         $quizmeta['description'] = $quizdescription;
         $quizmeta['category'] = $quizcategory;
+        $quizmeta['id_subcategory'] = $quizsubcategory;
         $quizmeta['active'] = $active;
         
         $simple = $app->simple;
@@ -87,6 +89,7 @@ $app->put("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     $quizname = trim($app->request->put('quizname'));
     $quizdescription = trim($app->request->put('description'));
     $quizcategory = trim($app->request->post('category'));
+    $quizsubcategory = trim($app->request->post('id_subcategory'));
     $active = (int) trim($app->request()->put('active'));
     
     if ( ($quizname !== '') && ($quizdescription !== '') && (ctype_digit($quizid)) ) {
@@ -95,6 +98,7 @@ $app->put("/admin/quiz/", $authenticate($app, true), function() use ($app) {
         $quizmeta['name'] = ucwords($quizname);
         $quizmeta['description'] = $quizdescription;
         $quizmeta['category'] = $quizcategory;
+        $quizmeta['id_subcategory'] = $quizsubcategory;
         $quizmeta['active'] = $active;
         
         $simple = $app->simple;
@@ -136,6 +140,107 @@ $app->delete("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     }
         
 });
+
+
+
+
+//19.09.2018 adaugare submodul
+$app->post("/admin/subcat/", $authenticate($app, true), function() use ($app) {
+    
+    $subcatmeta = array();
+    
+    $subcatname = trim($app->request->post('subcatname'));
+    $subcatdescription = trim($app->request->post('subcatdescription'));
+    $subcatcategory = trim($app->request->post('id_category'));
+    
+    if ( ($subcatname !== '') && ($subcatdescription !== '') ) {
+        $subcatmeta['name'] = ucwords($subcatname);
+        $subcatmeta['description'] = $subcatdescription;
+        $subcatmeta['id_category'] = $subcatcategory;
+     
+        
+        $simple = $app->simple;
+    
+        if ($simple->addSubcat($subcatmeta)) {
+            $app->flash('success', 'Submodulul a fost creat cu succes!');
+
+            $app->redirect($app->request->getRootUri().'/admin/');
+        } else {
+            //problem adding quiz
+            $app->flash('error', 'Problemă la adăugarea submodulului');
+            $app->redirect($app->request->getRootUri().'/admin/');
+        }
+    } else {
+        //problem with post inputs
+        $app->flash('error', 'Problemă la adaugarea submodulului. Ceva nu e în regulă cu ce ați introdus');
+        $app->redirect($app->request->getRootUri().'/admin/');
+    }
+        
+});
+//19.09.2018 modificare submodul
+$app->put("/admin/subcat/", $authenticate($app, true), function() use ($app) {
+    
+    $subcatmeta = array();
+    
+    $subcatid = trim($app->request->put('subcatid'));
+    $subcatname = trim($app->request->put('subcatname'));
+    $subcatdescription = trim($app->request->put('subcatdescription'));
+    $subcatcategory = trim($app->request->post('id_category'));
+  
+    
+    if ( ($subcatname !== '') && ($subcatdescription !== '') && (ctype_digit($subcatid)) ) {
+        
+        $subcatmeta['id'] = $subcatid;
+        $subcatmeta['name'] = ucwords($subcatname);
+        $subcatmeta['description'] = $subcatdescription;
+        $subcatmeta['id_category'] = $subcatcategory;
+        
+        $simple = $app->simple;
+    
+        if ($simple->updateSubcat($quizmeta)) {
+            $app->flash('success', 'Submodulul a fost modificat!');
+
+            $app->redirect($app->request->getRootUri().'/admin/');
+        } else {
+            //problem adding submouul
+            $app->flash('error', 'Problemă la modificarea submodulului!');
+            $app->redirect($app->request->getRootUri().'/admin/');
+        }
+    } else {
+        //problem with post inputs
+        $app->flash('error', 'Problemă la modificarea submodulului. Ceva nu e în regulă cu ce ați introdus!');
+        $app->redirect($app->request->getRootUri().'/admin/');
+    }
+        
+});
+
+//19.09.2018 sterge submodul
+$app->delete("/admin/subcat/", $authenticate($app, true), function() use ($app) {
+    
+    $subcatid = trim($app->request->post('subcatid'));
+    
+    if (ctype_digit($subcatid) ) {
+        
+        $simple = $app->simple;
+        try {
+            $simple->deleteSubcat($subcatid);
+        } catch (Exception $e ) {
+            echo json_encode(array('error' => $e->getMessage()));
+        }
+        echo json_encode(array('success' => 'Submodulul a fost șters cu succes!'));
+        $app->stop();
+        
+    } else {
+        echo json_encode(array('error' => 'non-int submodul'));
+    }
+        
+});
+
+
+
+
+
+
 
 $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
 

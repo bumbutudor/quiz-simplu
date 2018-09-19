@@ -36,6 +36,8 @@ interface IQuiz {
     public function countQuestions();
     
     public function getCategory();
+
+    public function getSubcategory();
     
     public function populateQuestions();
     

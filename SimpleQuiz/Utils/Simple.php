@@ -13,7 +13,7 @@ class Simple implements Base\ISimple {
         $quiz->name = $quizmeta['name'];
         $quiz->description = $quizmeta['description'];
         $quiz->category = $quizmeta['category'];
-        // $quiz->subcategory = $quizmeta['id_subcategory'];
+        $quiz->id_subcategory = $quizmeta['id_subcategory'];
         $quiz->active = $quizmeta['active']; 
         $quiz->set_expr('created', 'NOW()');
         $quiz->set_expr('updated', 'NOW()');
@@ -29,7 +29,7 @@ class Simple implements Base\ISimple {
             'name' => $quizmeta['name'],
             'description' => $quizmeta['description'],
             'category' => $quizmeta['category'],
-            // 'subcategory' => $quizmeta['id_subcategory'],
+            'id_subcategory' => $quizmeta['id_subcategory'],
             'active' => $quizmeta['active']
         ));
         $quiz->set_expr('updated', 'NOW()');
@@ -44,6 +44,43 @@ class Simple implements Base\ISimple {
         $quiz->delete();
         return true;
     }
+
+
+
+    //19/9/2018 Adaugare submodul
+     public function addSubcat(Array $subcatmeta)
+    {
+        $subcat = \ORM::for_table('subcategories')->create();
+        $subcat->name = $subcatmeta['name'];
+        $subcat->description = $subcatmeta['description'];
+        $subcat->id_category = $subcatmeta['id_category'];
+        return true;
+    }
+    
+    //19/9/2018 Modificare submodul
+    public function updateSubcat(Array $subcatmeta)
+    {
+        $subcat = \ORM::for_table('subcategories')->find_one($subcatmeta['id']);
+        
+        $subcat->set(array(
+            'name' => $subcatmeta['name'],
+            'description' => $subcatmeta['description'],
+            'id_category' => $subcatmeta['id_category'],
+
+        ));
+   
+        return true;
+    }
+    
+    //19/9/2018 Stergere submodul
+     public function deleteSubcat($subcatid)
+    {
+        $subcat = \ORM::for_table('subcategories')->find_one($subcatid);
+        $subcat->delete();
+        return true;
+    }
+    
+
     
     public function getQuizzes($active = true) {
         
@@ -69,7 +106,7 @@ class Simple implements Base\ISimple {
 
 
     public function getSubcategories($id) {
-            $subcategories = \ORM::for_table('subcategories')->join('categories', array('categories.id', '=', 'subcategories.id_modul'))->select_many('subcategories.id','subcategories.name','subcategories.description')->where('categories.id', $id)->find_many();
+            $subcategories = \ORM::for_table('subcategories')->join('categories', array('categories.id', '=', 'subcategories.id_category'))->select_many('subcategories.id','subcategories.name','subcategories.description')->where('categories.id', $id)->find_many();
 
 
         return $subcategories;
@@ -80,6 +117,13 @@ class Simple implements Base\ISimple {
         $category = \ORM::for_table('categories')->select_many('name','description')->find_one($id);
         
         return $category;
+    }
+
+    public function getSubcategory($id) {
+        
+        $id_subcategory = \ORM::for_table('subcategories')->select_many('name','description')->find_one($id);
+        
+        return $id_subcategory;
     }
     
     public function getCategoryQuizzes($id) {

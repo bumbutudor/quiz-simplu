@@ -16,7 +16,8 @@ include'header.php';
                       <ul style="width:50%;" class="list-group">
                           <li class="list-group-item"><strong>Nume</strong>: <?php echo $quiz->getName(); ?></li>
                           <li class="list-group-item"><strong>Descriere</strong>: <?php echo $quiz->getDescription(); ?></li>
-                          <li class="list-group-item"><strong>Categorie</strong>: <?php echo $quiz->getCategory(); ?></li>
+                          <li class="list-group-item"><strong>Modul</strong>: <?php echo $quiz->getCategory(); ?></li>
+                          <li class="list-group-item"><strong>Submodul</strong>: <?php echo $quiz->getSubcategory(); ?></li>
                           <li class="list-group-item"><strong>Activ? </strong><?php echo $quiz->isActive() ? '<span class="glyphicon glyphicon-ok">' : '<span class="glyphicon glyphicon-remove-circle">' ?></li>
                           <li class="list-group-item"><strong>Număr de întrebări</strong>: <span class="badge"><?php
                                   echo $quiz->countQuestions(); ?></span></li>
@@ -174,7 +175,8 @@ include'header.php';
                 <p><label for="description">Descriere Exercițiu:</label>
                    <input name="description" id="description" type="text" placeholder="Quiz Description" value="<?php echo $quiz->getDescription(); ?>" class="form-control" />
                 </p>
-                <p><label for="category">Categorie Exercițiu:</label>
+
+                <p><label for="category">Modul Exercițiu:</label>
                    <select name="category" id="category" class="form-control" />
                      <?php foreach ($categories as $category) : ?>
                            <?php $selected = ($category->name == $quiz->getCategory()) ? 'selected' : ''; ?>
@@ -182,6 +184,16 @@ include'header.php';
                        <?php endforeach; ?>
                    </select>
                 </p>
+                <!-- 19/09/2018 vizualizare submodul exercitiu-->
+                <p><label for="id_subcategory">Submodul Exercițiu:</label>
+                   <select name="id_subcategory" id="id_subcategory" class="form-control" />
+                     <?php foreach ($subcategories as $subcategory) : ?>
+                           <?php $selected = ($subcategory->name == $quiz->getSubcategory()) ? 'selected' : ''; ?>
+                           <option value="<?php echo $subcategory->id; ?>" <?php echo $selected; ?>><?php echo $subcategory->name; ?></option>
+                       <?php endforeach; ?>
+                   </select>
+                </p>
+                
                 <h4>Active?</h4>
                 <p><label for="quizactiveyes" class="inline"> Da: </label>
                    <input name="active" id="quizactiveyes" value="1" <?php if ($quiz->isActive()) { echo 'checked';} ?> type="radio" class="" /><br />

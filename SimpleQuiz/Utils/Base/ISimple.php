@@ -9,6 +9,12 @@ interface ISimple {
     
     public function deleteQuiz($quizid);
 
+    public function addSubcat(Array $subcatmeta);
+    
+    public function updateSubcat(Array $subcatmeta);
+    
+    public function deleteSubcat($subcatid);
+
     public function getQuizzes($active = true);
     
     public function getCategories($active = false);
@@ -16,6 +22,8 @@ interface ISimple {
     public function getSubcategories($id);
 
     public function getCategory($id);
+
+    public function getSubcategory($id);
     
     public function getCategoryQuizzes($id);
     
