@@ -13,17 +13,14 @@ include'header.php';
               <div class="list-group">
                 <?php foreach ($subcategories as $subcat): ?>
                        <ul><li><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
-                       
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
               </div>
               
-              <p>
-                <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adauga Un Submodul <span class="glyphicon glyphicon-plus-sign"></span></button>
-            </p>
+              
              </div>
              <div class="col-sm-6">
                <p>
-                <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button data-target="#subcategory-add-modal" title="Adauga Un Submodul" type="button" class="btn btn-primary" data-toggle="modal">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
              </div>
            </div>
@@ -42,11 +39,8 @@ include'header.php';
           <?php if (count($quizzes) > 0): ?>
             <table id="quizzes" class="table table-striped">
                 <thead>
-                    <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip Exercitiu</th><th>Activ</th><th>Actiuni</th></tr>
-                    <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
 
-                    <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
-
+                   <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
                 </thead>
                 <tbody>
                     <?php
@@ -61,6 +55,7 @@ include'header.php';
           <p>Nu este nici un exercițiu la moment. Poate adaugați unul?</p>
           <p>Doar dati click pe butonul 'Creează Un Exercițiu'</p>
           <?php endif; ?>
+            
             <p>
                 <button id="addquiz" title="Adauga Un Exercitiu" type="button" class="btn btn-primary pull-right">Creează Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
@@ -83,11 +78,11 @@ include'header.php';
             <form id="addsubcategory" method="post" action="<?php echo $root . '/admin/quiz/'; ?>">
             <div class="modal-body">
                 <p><label for="quizname">Nume Submodul</label>
-                   <input name="quizname" id="quizname" type="text" placeholder="Nume Exercitiu" class="form-control" />
+                   <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" />
                    <span class="helper help-block">Va rog sa dati o denumire exercitiului</span>
                 </p>
                 <p><label for="description">Descriere Submodul</label>
-                   <input name="description" id="description" type="text" placeholder="Descriere Exercitiu" class="form-control" />
+                   <input name="description" id="description" type="text" placeholder="Descriere Submodul" class="form-control" />
                 </p>
                 <p><label for="category">Modul</label>
                    <select name="category" id="category" class="form-control">
@@ -101,7 +96,7 @@ include'header.php';
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulare</button>
-              <button type="submit" class="btn btn-success">Creeaza Exercitiu</button>
+              <button type="submit" class="btn btn-success">Creeaza Submodul</button>
             </div>
             </form>
         </div><!-- /.modal-content -->
@@ -129,38 +124,26 @@ include'header.php';
                 <p><label for="category">Modul Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
                        <?php foreach ($categories as $category) : ?>
-                            <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                            <option value="<?php echo $category->id; ?>"> <?php echo $category->name; ?></option>
                        <?php endforeach; ?>
                    </select>
                 </p>
 
 
-                <p><label for="subcategory">Subodul Exercitiu:</label>
-                   <select name="subcategory" id="subcategory" class="form-control">
-                       <?php foreach ($subcategories as $subcategory) : ?>
-                            <option value="<?php echo $subcategory->id; ?>"><?php echo $subcategory->name; ?></option>
-
-				       <p><label for="category">Submodul Exercițiu:</label>
+               <p><label for="category">Submodul Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
                        <?php foreach ($subcategories as $subcategory) : ?>
                             <option value="<?php echo $subcategory->id; ?>"><?php echo $category->name; ?></option>
-
                        <?php endforeach; ?>
                    </select>
                 </p>
-				  <p><label for="category">Tip Exercițiu:</label>
+
+                <p><label for="category">Tip Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
                    
                    </select>
                 </p>
-				
-				        <p><label for="quiz_type">Tip Exercitiu:</label>
-                   <select name="quiz_type" id="quiz_type" class="form-control">
-                       
-                   </select>
-                </p>
-
-				
+        
                 <h4>Activ?</h4>
                 <p><label for="quizactiveyes"> Da: </label>
                    <input name="active" id="quizactiveyes" value="1" type="radio" class="radio-inline" />
@@ -172,13 +155,10 @@ include'header.php';
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulare</button>
               <button type="submit" class="btn btn-success">Creează Exercițiu</button>
             </div>
-            </form>
+          </form>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-
-
-  
-
-    <?php include 'footer.php'; ?>
+<?php 
+include 'footer.php'; 
+?>
