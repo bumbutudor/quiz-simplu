@@ -3,27 +3,50 @@ include'header.php';
 ?>
 
 <div id="container" class="quiz">
+      
       <div class="row">
+        <div class="col-sm-2">
+                  
+        </div>
+        <div class="col-sm-4">
+         <h4>Bine ati venit, domnule Administrator!</h4>
+          <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br>
+              
+        </div>
+        <div class="col-sm-6">
+          <h4>Module:</h4>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        
+
         <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
            <div class="row">
              <div class="col-sm-6">
-               <h4>Submodule</h4>
-
-              <div class="list-group">
-                <?php foreach ($subcategories as $subcat): ?>
-                       <ul><li><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
-                <?php endforeach; ?>
-              </div>
-              
+               <h4>Submodule</h4>                        
               
              </div>
              <div class="col-sm-6">
                <p>
                 <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary" data-toggle="modal">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
-            </p>
+               </p>
              </div>
-           </div>
+          </div>
+             
+
+             <div class="row">
+               <div class="col-sm-12">
+                 <div class="list-group">
+                <?php foreach ($subcategories as $subcat): ?>
+                       <ul><li><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
+                <?php endforeach; ?>
+              </div>
+               </div>
+             </div>
+          
               
 
           </div><!--/.sidebar-nav -->
@@ -32,8 +55,7 @@ include'header.php';
               <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
               <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
               <div id="ajaxupdater" class="alert"></div>
-          <h4>Bine ati venit, domnule Administrator!</h4>
-          <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br>
+          
           
           <h4>Exerciții</h4>
           <?php if (count($quizzes) > 0): ?>

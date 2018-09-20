@@ -3,7 +3,7 @@
 ?>
     <div id="container" class="quiz">
         <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-6 col-sm-2s sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
               <h3>Module</h3>
               <div class="list-group">
@@ -12,8 +12,6 @@
                        <ul><li><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li></ul>
 
                     <?php endforeach; ?>
-                
-              Aici intra modulele
               </div>
           </div><!--/.sidebar-nav -->
         </div><!--/span-->

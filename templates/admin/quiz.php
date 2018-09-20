@@ -23,7 +23,7 @@ include'header.php';
                                   echo $quiz->countQuestions(); ?></span></li>
                           <li class="list-group-item"><strong>De câte ori a fost rezolvat</strong>: <span class="badge"><?php echo count($quiz->getUsers()); ?></span></li>
                       </ul>
-                        <button id="editquiz" title="Edit Quiz Details" type="button" class="btn btn-primary">Editează Detalii Exercițiu <span class="glyphicon glyphicon-pencil"></span></button>
+                        <button id="editquiz" title="Modifică Detaliile Exercițiului" type="button" class="btn btn-primary">Editează Detalii Exercițiu <span class="glyphicon glyphicon-pencil"></span></button>
                     </div>
                   <div class="panel-heading"><h3>Întrebări:</h3></div>
                     <!-- Table -->
@@ -39,20 +39,19 @@ include'header.php';
                               <tr class="question">
                                   <td class="question"><?php echo $question->getText(); ?></td>
                                   <td style="text-align:center;">
-                                      <button data-question-id="<?php echo $question->getNum(); ?>" title="Edit
-                                      Question" class="edit btn btn-default btn-primary" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                                      <button data-question-id="<?php echo $question->getNum(); ?>" title="Editează Întrebarea" class="edit btn btn-default btn-primary" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
                                       <a href="<?php echo $root; ?>/admin/quiz/<?php echo $quiz->getId();
-                                      ?>/question/<?php echo $question->getNum(); ?>/edit/" title="Edit Answers"
+                                      ?>/question/<?php echo $question->getNum(); ?>/edit/" title="Editează Răspunsuri"
                                          class="answerlink btn btn-default btn-primary"><span class="glyphicon glyphicon-list"></span></a>
                                       <button data-question-id="<?php echo $question->getNum(); ?>" data-quiz-id="<?php
-                                      echo $quiz->getId(); ?>" title="Delete Question" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                                      echo $quiz->getId(); ?>" title="Șterge Întrebarea" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                   </td>
                               </tr>
                               <?php endforeach; ?>  
                           </tbody>
                       </table>
                       <div class="panel-body">
-                          <button id="addquestion" title="Add New Question" type="button" class="btn btn-primary pull-right">Adaugă o întrebare <span class="glyphicon glyphicon-plus-sign"></span></button>
+                          <button id="addquestion" title="Adaugă o întrebare nouă" type="button" class="btn btn-primary pull-right">Adaugă o întrebare <span class="glyphicon glyphicon-plus-sign"></span></button>
                       </div>
                 </div>
             </div>
@@ -97,7 +96,7 @@ include'header.php';
             <form id="questionadd" method="post" action="">
             <div class="modal-body">
                 <p><label for="newquestioninput">Întrebare:</label>
-                   <input name="questiontext" id="newquestioninput" type="text" placeholder="Your question here" class="form-control" />
+                   <input name="questiontext" id="newquestioninput" type="text" placeholder="Întrebarea aici" class="form-control" />
                    <span class="helper help-block">Nu este întrebare!</span>
                 </p>
                 <h5><strong>Răspunsuri:</strong></h5>
@@ -112,7 +111,7 @@ include'header.php';
                             </td>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" name="answer[]" placeholder="Answer" class="form-control">
+                                    <input type="text" name="answer[]" placeholder="Răspuns" class="form-control">
                                     <span class="input-group-btn">
                                         <button class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                     </span>
@@ -125,7 +124,7 @@ include'header.php';
                             </td>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" name="answer[]" placeholder="Answer" class="form-control">
+                                    <input type="text" name="answer[]" placeholder="Răspuns" class="form-control">
                                     <span class="input-group-btn">
                                         <button class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                     </span>

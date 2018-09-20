@@ -9,12 +9,12 @@ $(function(){
     var editquiz = $('#editquiz');
     var questionaddform = $('#questionadd');
     var aform = $('form#answeredit');
-    var saveprompt = "<div class=\"alert alert-warning\">Click 'Save' to make the changes permanent.</div>";
+    var saveprompt = "<div class=\"alert alert-warning\">Apasă 'Salvează' pentru a fi făcute modificările.</div>";
     
     $('table#newanswers').on('click', '.remove', function() {
            var parenttr = $(this).parents('tr');
            if (parenttr.find('input.correct').is(':checked')) {
-               context2.html('<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>You can\'t delete an answer if it is marked as correct.</div>');
+               context2.html('<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Nu poți șterge răspunsul corect.</div>');
                context2.show().delay( 2000 ).fadeOut( 400 );
            } else {
                 parenttr.fadeOut(800).remove();
@@ -31,7 +31,7 @@ $(function(){
     $('table#answers').on('click', '.remove', function() {
            var parenttr = $(this).parents('tr');
            if (parenttr.find('input.correct').is(':checked')) {
-               context2.html('<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>You can\'t delete an answer if it is marked as correct.</div>');
+               context2.html('<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Nu poți șterge răspunsul corect.</div>');
                context2.show().delay( 2000 ).fadeOut( 400 );
            } else {
                 parenttr.fadeOut(800).remove();
@@ -50,7 +50,7 @@ $(function(){
         var questionid = $(this).attr("data-question-id");
         var quizid = $(this).attr("data-quiz-id");
         
-        if (window.confirm("This can't be undone. OK?") ) {
+        if (window.confirm("Ești 100% sigur că vrei să șteri întrebarea?") ) {
             
             var parenttr = $(this).parents('tr.question');
            
@@ -104,7 +104,7 @@ $(function(){
         //console.log(location.pathname);
         var quizid = $(this).attr("data-quiz-id");
         
-        if (window.confirm("This can't be undone. OK?") ) {
+        if (window.confirm("Ești 100% sigur că vrei să șteri întrebarea?") ) {
             
             var parenttr = $(this).parents('tr.quiz');
            
@@ -185,7 +185,7 @@ $(function(){
             if ( $(this).find("input[type='text']").val() === '' ) {
                 console.log("empty input");
                 e.preventDefault();
-                context2.html('<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Answers can\'t be empty.</div>');
+                context2.html('<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Răspunsurile nu pot fi goale.</div>');
                 context2.show().delay( 2000 ).fadeOut( 400 );
             }
             
