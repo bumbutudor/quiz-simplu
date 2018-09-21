@@ -53,6 +53,7 @@ $app->post("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     $quizdescription = trim($app->request->post('description'));
     $quizcategory = trim($app->request->post('category'));
     $quizsubcategory = trim($app->request->post('id_subcategory'));
+    $quiz_type = trim($app->request->post('quiz_type'));
     $active = (int) trim($app->request()->post('active'));
     
     if ( ($quizname !== '') && ($quizdescription !== '') ) {
@@ -60,6 +61,7 @@ $app->post("/admin/quiz/", $authenticate($app, true), function() use ($app) {
         $quizmeta['description'] = $quizdescription;
         $quizmeta['category'] = $quizcategory;
         $quizmeta['id_subcategory'] = $quizsubcategory;
+        $quizmeta['quiz_type'] = $quiz_type;
         $quizmeta['active'] = $active;
         
         $simple = $app->simple;
@@ -90,6 +92,7 @@ $app->put("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     $quizdescription = trim($app->request->put('description'));
     $quizcategory = trim($app->request->post('category'));
     $quizsubcategory = trim($app->request->post('id_subcategory'));
+    $quiz_type = trim($app->request->post('quiz_type'));
     $active = (int) trim($app->request()->put('active'));
     
     if ( ($quizname !== '') && ($quizdescription !== '') && (ctype_digit($quizid)) ) {
@@ -99,6 +102,7 @@ $app->put("/admin/quiz/", $authenticate($app, true), function() use ($app) {
         $quizmeta['description'] = $quizdescription;
         $quizmeta['category'] = $quizcategory;
         $quizmeta['id_subcategory'] = $quizsubcategory;
+        $quizmeta['quiz_type'] = $quiz_type;
         $quizmeta['active'] = $active;
         
         $simple = $app->simple;

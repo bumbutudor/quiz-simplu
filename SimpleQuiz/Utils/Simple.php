@@ -14,6 +14,7 @@ class Simple implements Base\ISimple {
         $quiz->description = $quizmeta['description'];
         $quiz->category = $quizmeta['category'];
         $quiz->id_subcategory = $quizmeta['id_subcategory'];
+        $quiz->quiz_type = $quizmeta['quiz_type'];
         $quiz->active = $quizmeta['active']; 
         $quiz->set_expr('created', 'NOW()');
         $quiz->set_expr('updated', 'NOW()');
@@ -30,6 +31,7 @@ class Simple implements Base\ISimple {
             'description' => $quizmeta['description'],
             'category' => $quizmeta['category'],
             'id_subcategory' => $quizmeta['id_subcategory'],
+            'quiz_type' => $quizmeta['quiz_type'],
             'active' => $quizmeta['active']
         ));
         $quiz->set_expr('updated', 'NOW()');
@@ -88,7 +90,7 @@ class Simple implements Base\ISimple {
         if ($active) {
             $quizzes = \ORM::for_table('quizzes')->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('id_subcategory' => 'subcategories.name'), 'quizzes.active')->where('active',1)->find_many();
         } else {
-            $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active', array('id_subcategory' => 'subcategories.name'))->find_many();
+            $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->join('quiz_types', array('quizzes.quiz_type', '=', 'quiz_types.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), array('id_subcategory' => 'subcategories.name'), array('quiz_type' => 'quiz_types.name'), 'quizzes.active')->find_many();
         }
         return $quizzes;
     }
@@ -125,6 +127,13 @@ class Simple implements Base\ISimple {
         $id_subcategory = \ORM::for_table('subcategories')->select_many('name','description')->find_one($id);
         
         return $id_subcategory;
+    }
+
+    public function getQuizType($id) {
+        
+        $quiz_type = \ORM::for_table('quiz_types')->select_many('name','description')->find_one($id);
+        
+        return $quiz_type;
     }
     
     public function getCategoryQuizzes($id) {

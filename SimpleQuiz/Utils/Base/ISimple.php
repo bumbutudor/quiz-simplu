@@ -24,6 +24,8 @@ interface ISimple {
     public function getCategory($id);
 
     public function getSubcategory($id);
+
+    public function getQuizType($id);
     
     public function getCategoryQuizzes($id);
     

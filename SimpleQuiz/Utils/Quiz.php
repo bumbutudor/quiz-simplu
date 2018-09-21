@@ -11,6 +11,7 @@ class Quiz implements Base\IQuiz {
     protected $_description;
     protected $_category;
     protected $_id_subcategory;
+    protected $_quiz_type;
     protected $_active;
     protected $_answers = array();
     protected $_questions;
@@ -33,7 +34,7 @@ class Quiz implements Base\IQuiz {
      */
     public function setId($id)
     {
-        $quizobj = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->select_many('quizzes.name', 'quizzes.description', array('category' => 'categories.name'), array('id_subcategory' => 'subcategories.name'), 'quizzes.active')->find_one($id);
+        $quizobj = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->join('quiz_types', array('quizzes.quiz_type', '=', 'quiz_types.id'))->select_many('quizzes.name', 'quizzes.description', array('category' => 'categories.name'), array('id_subcategory' => 'subcategories.name'), array('quiz_type' => 'quiz_types.name'), 'quizzes.active')->find_one($id);
        
         if ($quizobj) {
             $this->_id = $id;
@@ -41,6 +42,7 @@ class Quiz implements Base\IQuiz {
             $this->_description = $quizobj->description;
             $this->_category = $quizobj->category;
             $this->_id_subcategory = $quizobj->id_subcategory;
+            $this->_quiz_type = $quizobj->quiz_type;
             $this->_active = $quizobj->active;
             
             return true;
@@ -247,6 +249,11 @@ class Quiz implements Base\IQuiz {
     public function getSubcategory()
     {
         return $this->_id_subcategory;
+    }
+
+    public function getQuizType()
+    {
+        return $this->_quiz_type;
     }
 
 
