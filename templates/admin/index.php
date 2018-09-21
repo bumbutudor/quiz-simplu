@@ -31,7 +31,7 @@ include'header.php';
              </div>
              <div class="col-sm-6">
                <p>
-                <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary" data-toggle="modal">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
                </p>
              </div>
           </div>

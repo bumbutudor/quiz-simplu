@@ -163,9 +163,15 @@ $(function(){
     });
     
 
-    //the button to add anther subcategory for this category
+    //the button to add another quiz for this subcategory
     addquiz.on('click', function() {
         $('#quiz-add-modal').modal();
+    });
+
+    
+
+    editquiz.on('click', function() {
+        $('#quiz-edit-modal').modal();
     });
 
     //the button to add anther subcategory for this category
@@ -173,9 +179,9 @@ $(function(){
         $('#subcategory-add-modal').modal();
     });
 
-    editquiz.on('click', function() {
-        $('#quiz-edit-modal').modal();
-    })
+    $('#editsubcat').on('click', function() {
+        $('#subcat-edit-modal').modal();
+    });
 
     
     // on answer form submission
@@ -210,8 +216,5 @@ $(function(){
     });
     
     
-    $('#editsubcat').on('click', function() {
-        $('#subcat-edit-modal').modal();
-    })
-    
+       
 });
