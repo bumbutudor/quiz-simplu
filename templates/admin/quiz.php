@@ -18,6 +18,7 @@ include'header.php';
                           <li class="list-group-item"><strong>Descriere</strong>: <?php echo $quiz->getDescription(); ?></li>
                           <li class="list-group-item"><strong>Modul</strong>: <?php echo $quiz->getCategory(); ?></li>
                           <li class="list-group-item"><strong>Submodul</strong>: <?php echo $quiz->getSubcategory(); ?></li>
+                          <li class="list-group-item"><strong>Tip Exercițiu</strong>: <?php echo $quiz->getQuizType(); ?></li>
                           <li class="list-group-item"><strong>Activ? </strong><?php echo $quiz->isActive() ? '<span class="glyphicon glyphicon-ok">' : '<span class="glyphicon glyphicon-remove-circle">' ?></li>
                           <li class="list-group-item"><strong>Număr de întrebări</strong>: <span class="badge"><?php
                                   echo $quiz->countQuestions(); ?></span></li>
@@ -86,7 +87,7 @@ include'header.php';
     </div><!-- /.modal -->
     
 <!-- Add Question Modal -->
-    <div class="modal fade" id="q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="1q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -156,6 +157,35 @@ include'header.php';
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+  <!-- START TEST QUIZ -->
+
+    <div class="modal fade" id="q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Adaugă o nouă întrebare:</h4>
+          </div>
+            <form id="questionTypeInput" method="post" action="">
+            <div class="modal-body">
+                <p><label for="newquestiontypeinput">Întrebare:</label>
+                   <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Întrebarea aici" class="form-control" />
+                   <span class="helper help-block">Nu este întrebare!</span>
+                </p>
+                <a href="#" id="createInput">Creaza input</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
+              <button type="submit" class="btn btn-success">Salvează Întrebare</button>
+            </div>
+            </form>
+            <button id="transpormText">Butt</button>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+  <!-- END TEST QUIZ -->
     
     <!-- Update Quiz Modal -->
     <div class="modal fade" id="quiz-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -183,7 +213,13 @@ include'header.php';
                        <?php endforeach; ?>
                    </select>
                 </p>
+
                 <!-- 19/09/2018 vizualizare submodul exercitiu-->
+                <p><label for="id_subcategory">Submodul Exercițiu:</label>
+                   <select name="id_subcategory" id="id_subcategory" class="form-control" />
+                     
+                   </select>
+                </p>
                
                 
                 <h4>Active?</h4>

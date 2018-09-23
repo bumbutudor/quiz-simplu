@@ -135,6 +135,13 @@ class Simple implements Base\ISimple {
         
         return $quiz_type;
     }
+
+    public function getQuizTypes($active = true) {
+        
+        $quiz_types = \ORM::for_table('quiz_types')->where('is_visible', 1)->find_many();
+        
+        return $quiz_types;
+    }
     
     public function getCategoryQuizzes($id) {
         

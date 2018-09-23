@@ -163,7 +163,7 @@ include'header.php';
                 <p><label for="quiz_type">Tip Exercițiu:</label>
 
                   <select name="quiz_type" id="quiz_type" class="form-control">
-                       <?php foreach ($quiz_type as $quiz_type) : ?>
+                       <?php foreach ($quiz_types as $quiz_type) : ?>
                             <option value="<?php echo $quiz_type->id; ?>"><?php echo $quiz_type->name; ?></option>
                        <?php endforeach; ?>
                    </select>

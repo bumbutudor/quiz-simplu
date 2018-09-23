@@ -41,8 +41,9 @@ $app->get('/admin/', $authenticate($app, true), function () use ($app) {
     $categories = $simple->getCategories(false);
     $moduleId = $app->session->get('user')->getRole();
     $subcategories = $simple->getSubcategories($moduleId);
+    $quiz_types = $simple->getQuizTypes(true);
 
-    $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories));
+    $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types));
 });
 
 $app->post("/admin/quiz/", $authenticate($app, true), function() use ($app) {

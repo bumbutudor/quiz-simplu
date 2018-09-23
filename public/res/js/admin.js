@@ -215,6 +215,38 @@ $(function(){
         });
     });
     
+    function highlightedText() {
+    try {
+        if (window.ActiveXObject) {
+            var c = document.selection.createRange();
+            return c.htmlText;
+        }
     
-       
+        var nNd = document.createElement("span");
+        nNd.setAttribute("id", "answer");
+        var w = getSelection().getRangeAt(0);
+        w.surroundContents(nNd);
+        return nNd.innerHTML;
+    } catch (e) {
+        if (window.ActiveXObject) {
+            return document.selection.createRange();
+        } else {
+            return getSelection();
+        }
+    }
+}
+    
+    $('#createInput').on('click', function() {
+        var selectedElement = highlightedText();
+        $('#answer').replaceWith( "<input id='param1'/>" );
+    });
+
+    $('#transpormText').on('click', function() {
+       var inputText = $('#newquestiontypeinput');
+       inputText.replaceWith("<span>" + inputText.val() + "</span>");
+
+       inputText.hide();
+    });
+
+    
 });
