@@ -1,7 +1,7 @@
 <?php
 include'header.php';
 ?>
-<div id="container" class="quiz">
+<div id="container" class="">
       <div class="row">
             <div id="intro" class="col-md-8 col-md-offset-2">
                  <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
@@ -14,9 +14,9 @@ include'header.php';
                     <div class="panel-heading"><h3>Detalii Submodul:</h3></div>
                     <div class="panel-body">
                       <ul style="width:50%;" class="list-group">
-                          <li class="list-group-item"><strong>Nume</strong>: <?php echo $subcat->getName(); ?></li>
-                          <li class="list-group-item"><strong>Descriere</strong>: <?php echo $subcat->getDescription(); ?></li>
-                          <li class="list-group-item"><strong>Categorie</strong>: <?php echo $subcat->getCategory(); ?></li>
+                          <li class="list-group-item"><strong>Nume</strong>: <?php echo $subcat->getNameSubcat(); ?></li>
+                          <li class="list-group-item"><strong>Descriere</strong>: <?php echo $subcat->getDescriptionSubcat(); ?></li>
+                          <li class="list-group-item"><strong>Categorie</strong>: <?php echo $subcat->getCategorySubcat(); ?></li>
                           
                       </ul>
                         <button id="editsubcat" title="Edit Quiz Details" type="button" class="btn btn-primary">Editează Detalii Submodul <span class="glyphicon glyphicon-pencil"></span></button>
@@ -31,7 +31,7 @@ include'header.php';
 <!-- Modals -->
 
     <!-- Update Quiz Modal -->
-    <div class="modal fade" id="quiz-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="subcat-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">

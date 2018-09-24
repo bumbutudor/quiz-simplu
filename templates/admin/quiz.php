@@ -87,7 +87,7 @@ include'header.php';
     </div><!-- /.modal -->
     
 <!-- Add Question Modal -->
-    <div class="modal fade" id="1q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -148,6 +148,9 @@ include'header.php';
                     </tbody>
                 </table>
                 <p><button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button></p>
+                <p style="margin-top: 50px"><label for="">Comentariu:</label>
+                   <input name="" id="" type="text" placeholder="Comentariul aici" class="form-control" />
+                </p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
@@ -160,7 +163,7 @@ include'header.php';
 
   <!-- START TEST QUIZ -->
 
-    <div class="modal fade" id="q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="1q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -217,7 +220,21 @@ include'header.php';
                 <!-- 19/09/2018 vizualizare submodul exercitiu-->
                 <p><label for="id_subcategory">Submodul Exercițiu:</label>
                    <select name="id_subcategory" id="id_subcategory" class="form-control" />
+                    <?php foreach ($subcategories as $subcategory) : ?>
+                             <?php $selected = ($subcategory->name == $quiz->getSubcategory()) ? 'selected' : ''; ?>
+                            <option value="<?php echo $subcategory->id; ?>"><?php echo $subcategory->name; ?></option>
+                       <?php endforeach; ?>
                      
+                   </select>
+                </p>
+
+                <!-- 24/09/2018 vizualizare tip exercitiu-->
+                <p><label for="quiz_type">Tip Exercițiu:</label>
+                   <select name="quiz_type" id="quiz_type" class="form-control" />
+                     <?php foreach ($quiz_types as $quiz_type) : ?>
+                             <?php $selected = ($quiz_type->name == $quiz->getQuizType()) ? 'selected' : ''; ?>
+                            <option value="<?php echo $quiz_type->id; ?>"><?php echo $quiz_type->name; ?></option>
+                       <?php endforeach; ?>
                    </select>
                 </p>
                

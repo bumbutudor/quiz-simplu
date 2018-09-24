@@ -13,7 +13,7 @@
           <p>După ce ați început testul, trebuie să răspundeți la toate întrebările. Dacă încercați să reveniți la întrebarea anterioară, scorul dvs. va fi resetat și veți fi trimis înapoi la început.</p>
           <p>Pentru fiecare întrebare  dati click pe <strong>'Trimite Raspuns'</strong>. Vei primi o intrebare noua.</p>
           <p>Acest test are <strong><?php echo $numquestions; ?></strong> întrebări.</p>
-          <p>Rezultatul îl vei vede la sfîrșitul testului.</p>
+          <p>Rezultatul îl vei vedea la sfîrșitul testului.</p>
           <div id="leaders-score">
                 <h4>Scoruri de Top <?php echo $leadersToShow; ?></h4>
                 <div class="row">

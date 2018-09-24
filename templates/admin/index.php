@@ -8,14 +8,10 @@ include'header.php';
         <div class="col-sm-2">
                   
         </div>
-        <div class="col-sm-4">
-         <h4>Bine ati venit, domnule Administrator!</h4>
+        <div class="col-sm-10">
+         <h1>Bine ati venit, domnule Administrator! Vă aflați în modulul <span style="color: #428bca;"><?php echo $category->name; ?></span></h1>
           <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br>
               
-        </div>
-        <div class="col-sm-6">
-          <h4>Module:</h4>
-          
         </div>
       </div>
 
