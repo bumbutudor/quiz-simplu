@@ -7,7 +7,7 @@
                 $question = $quiz->getQuestion($num);
                 $answers = $quiz->getAnswers($num);
             ?>
-            <h4>Current tester: <strong><?php echo $user->getName(); ?></strong></h4>
+            <h4>Cine ia testul: <strong><?php echo $user->getName(); ?></strong></h4>
             <h2>Question <?php echo $num; ?>:</h2>
             <p><?php echo $question->getText(); ?></p>
             <form id="questionBox" method="post" action="<?php echo $root; ?>/quiz/process">
@@ -28,7 +28,7 @@
                 <input type="hidden" name="nonce" value="<?php echo $nonce; ?>" />
                 <input type="hidden" name="num" value="<?php echo $num; ?>" />
                 <input type="hidden" name="quizid" value="<?php echo $quiz->getId(); ?>" />
-                <input type="submit" id="submit" class="btn btn-primary" name="submit" value="Submit Answer" />
+                <input type="submit" id="submit" class="btn btn-primary" name="submit" value="Răspuns" />
             </p>
         </form>
         <?php else:

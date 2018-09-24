@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo $root; ?>/">Logodava</a>
+          <a class="navbar-brand" href="<?php echo $root; ?>/">Logodava Quiz</a>
         </div>
         <div class="navbar-collapse collapse">
             

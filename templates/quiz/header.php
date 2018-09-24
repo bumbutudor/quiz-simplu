@@ -1,5 +1,5 @@
 <?php
-$title = isset($quiz) ? 'Simple Quiz :: ' . $quiz->getName() : 'Simple Quiz';
+$title = isset($quiz) ? 'Logodava Quiz :: ' . $quiz->getName() : 'Logodava Quiz';
 header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
@@ -28,10 +28,12 @@ header('Content-Type: text/html; charset=utf-8');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo $root; ?>/">Logodava Quiz</a>
+          <a class="navbar-brand" href="<?php echo $root; ?>/">
+          <img src="images/logodava.png" height="20px">
+          Logodava Quiz</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+         <?php /*<ul class="nav navbar-nav">
               <li class="dropdown active">
                 <a href="<?php echo $root; ?>/categories/" class="dropdown-toggle" data-toggle="dropdown">Categorii <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -40,7 +42,7 @@ header('Content-Type: text/html; charset=utf-8');
                     <?php endforeach; ?>
                 </ul>
             </li>
-          </ul>
+          </ul> */?>
           <ul class="nav navbar-nav navbar-right">
               <?php if ($user): ?>
                   <li><a href="<?php echo $root; ?>/logout/">Iesire</a></li>
