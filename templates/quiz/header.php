@@ -28,9 +28,7 @@ header('Content-Type: text/html; charset=utf-8');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo $root; ?>/">
-          <img src="images/logodava.png" height="20px">
-          Logodava Quiz</a>
+          <a class="navbar-brand" href="<?php echo $root; ?>/">Logodava Quiz</a>
         </div>
         <div class="navbar-collapse collapse">
          <?php /*<ul class="nav navbar-nav">
