@@ -275,6 +275,7 @@ $app->get("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($a
 })->conditions(array('id' => '\d+'));
 
 
+
 $app->put("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
     
     $questionid = $app->request->put('questionid');

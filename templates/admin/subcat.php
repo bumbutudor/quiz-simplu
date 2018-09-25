@@ -7,7 +7,7 @@ include'header.php';
                  <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
                  <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
                 <div id="ajaxupdater" class="alert"></div>
-                <div><a class="btn btn-primary" href="<?php echo $root; ?>/admin/"><span class="glyphicon glyphicon-arrow-left"></span> Înapoi la toate exercițiile</a></div>
+                <div><a class="btn btn-primary" href="<?php echo $root; ?>/admin/"><span class="glyphicon glyphicon-arrow-left"></span> Înapoi la pagina principală de administrare</a></div>
                 <br />
                 <div class="panel panel-default">
                     <!-- Default panel contents -->

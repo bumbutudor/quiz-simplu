@@ -32,7 +32,7 @@ include'header.php';
 
           <div class="col-sm-10" style="background-color:#eeeeee " id="intro">
            <h2>Bine ați venit, domnule <span><?php echo $user->getName(); ?></span> </h2>
-           <h2>Vă aflați în modulul <strong style="color: #428bca;"><?php echo $category->name; ?></strong></h2>
+           <h2>Vă aflați în modulul <strong><?php echo $category->name; ?></strong></h2>
             <!-- <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br> -->     
           </div>
  
