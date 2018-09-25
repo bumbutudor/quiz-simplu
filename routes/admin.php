@@ -16,8 +16,8 @@ $authenticate = function ($app, $admin = false) {
         }
         else
         {
-            //stops non-registered users and admin user from taking quizzes too
-            if (! $app->session->get('user') instanceof \SimpleQuiz\Utils\User\EndUser)
+            //doar administratorul poate sa inceapa testul
+            if (! $app->session->get('user') instanceof \SimpleQuiz\Utils\User\AdminUser)
             {
                 $errors['loginerror'] = 'Trebuie să vă logați pentru a începe testul!';
                 $app->session->set('urlRedirect', $app->request()->getPathInfo());
@@ -42,7 +42,7 @@ $app->get('/admin/', $authenticate($app, true), function () use ($app) {
     $moduleId = $app->session->get('user')->getRole();
     $subcategories = $simple->getSubcategories($moduleId);
     $quiz_types = $simple->getQuizTypes(true);
-    $category = $simple->getCategory($moduleId);
+    $category = $simple->getCategory($moduleId);//pentru a scoate categoria in dependenta de user
 
     $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category));
 });

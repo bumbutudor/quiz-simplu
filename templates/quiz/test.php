@@ -8,7 +8,7 @@
                 $answers = $quiz->getAnswers($num);
             ?>
             <h4>Cine ia testul: <strong><?php echo $user->getName(); ?></strong></h4>
-            <h2>Question <?php echo $num; ?>:</h2>
+            <h2><?php echo $quiz->getName(); ?></h2>
             <p><?php echo $question->getText(); ?></p>
             <form id="questionBox" method="post" action="<?php echo $root; ?>/quiz/process">
                 <ul>

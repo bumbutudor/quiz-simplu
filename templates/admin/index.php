@@ -4,26 +4,12 @@ include'header.php';
 
 <div id="container" class="quiz">
       
-      <div class="row">
-        <div class="col-sm-2">
-                  
-        </div>
-        <div class="col-sm-10">
-         <h1>Bine ati venit, domnule Administrator! Vă aflați în modulul <span style="color: #428bca;"><?php echo $category->name; ?></span></h1>
-          <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br>
-              
-        </div>
-      </div>
-
-      <div class="row">
-        
-
-        <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+      <div class="row" >
+         <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
            <div class="row">
              <div class="col-sm-6">
-               <h4>Submodule</h4>                        
-              
+               <h4>Submodule</h4>                       
              </div>
              <div class="col-sm-6">
                <p>
@@ -31,8 +17,6 @@ include'header.php';
                </p>
              </div>
           </div>
-             
-
              <div class="row">
                <div class="col-sm-12">
                  <div class="list-group">
@@ -43,11 +27,16 @@ include'header.php';
                </div>
              </div>
           
-              
-
           </div><!--/.sidebar-nav -->
         </div><!--/span-->
-          <div id="intro" class="col-md-8">
+
+          <div class="col-sm-10" style="background-color:#eeeeee " id="intro">
+           <h2>Bine ați venit, domnule <span><?php echo $user->getName(); ?></span> </h2>
+           <h2>Vă aflați în modulul <strong style="color: #428bca;"><?php echo $category->name; ?></strong></h2>
+            <!-- <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br> -->     
+          </div>
+ 
+          <div id="intro" class="col-md-8" style="padding-top: 10px">
               <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
               <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
               <div id="ajaxupdater" class="alert"></div>
@@ -79,7 +68,10 @@ include'header.php';
             </p>
 
         </div>
-      </div><!-- /.row -->
+
+      </div>
+
+
         
     </div><!--container-->
 

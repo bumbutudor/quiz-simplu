@@ -274,13 +274,13 @@ $app->post('/quiz/process/', $authenticate($app), function () use ($app) {
 
     $session = $app->session;
 
-    if (isset($starter)) //beginning of the quiz
+    if (isset($starter)) //inceputul testului
     {
-        if ($simple->quizUserExists($id, $session->get('user')->getId()))
-        {
-            $app->flash('quizerror', "Deja ați rezolvat acest exercițiu");
-            $app->redirect($app->request->getRootUri() . '/quiz/' . $id);
-        }
+        // if ($simple->quizUserExists($id, $session->get('user')->getId()))
+        // {
+        //     $app->flash('quizerror', "Deja ați rezolvat acest exercițiu");
+        //     $app->redirect($app->request->getRootUri() . '/quiz/' . $id);
+        // }
         $session->set('score', 0);
         $session->set('correct', array());
         $session->set('wrong', array());
