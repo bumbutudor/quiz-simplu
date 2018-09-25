@@ -267,7 +267,7 @@ $app->get("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($a
     $subcat = $app->subcat;
     
     if ($subcat->setIdSubcat($id)) {
-        $subcat = $app->simple->getCategories(false);
+        $categories = $app->simple->getCategories(false);
         $moduleId = $app->session->get('user')->getRole();       
         $app->render('admin/subcat.php', array('subcat' => $subcat, 'categories' => $categories));
     }
