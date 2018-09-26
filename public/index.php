@@ -39,6 +39,10 @@ $app->installer = function () {
     return new \SimpleQuiz\Utils\Base\Installer();
 };
 
+$app->subcat = function () {
+    return new \SimpleQuiz\Utils\Subcat();
+};
+
 $app->hook('slim.before.dispatch', function() use ($app) { 
 
     $user = null;

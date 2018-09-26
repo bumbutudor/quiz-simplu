@@ -12,6 +12,4 @@ interface ISubcat {
     public function getDescriptionSubcat();
        
     public function getCategorySubcat();
-
-    public function getQuizNum();
 }

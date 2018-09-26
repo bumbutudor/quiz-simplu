@@ -360,11 +360,12 @@ $app->get('/quiz/:id/test/', $authenticate($app), function ($id) use ($app) {
 
     if ( $session->get('quizid') !== $id) {
         $app->flashnow('quizerror','A apărut o eroare. Vă rugăm să vă întoarceți la exercițiu și să mai încercați.');
-        $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session));
+        $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session, 'questions' => $questions));
         $app->stop();
     }
 
     $quiz = $app->quiz;
+    $questions = $quiz->getQuestions();
 
     /**
      * @todo implement serialize() on quiz object and store in session
@@ -406,10 +407,10 @@ $app->get('/quiz/:id/test/', $authenticate($app), function ($id) use ($app) {
 
         $app->render('quiz/test.php', array('quiz' => $quiz, 'num' => $num, 'nonce' => $nonce,
                                             'timetaken' => $timetaken, 'categories' =>
-        $categories, 'session' => $session));
+        $categories, 'questions' => $questions, 'session' => $session));
     } else {
         $app->flashnow('quizerror','Exercițiul pe care l-ați selectat nu există. Vă rugăm să vă întoarceți la meniul principal și să încercați din nou.');
-        $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session));
+        $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session, 'questions' => $questions));
         $app->stop();
     }
 })->conditions(array('id' => '\d+'));

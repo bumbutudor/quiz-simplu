@@ -94,6 +94,12 @@ class Simple implements Base\ISimple {
         }
         return $quizzes;
     }
+
+    public function getQuiz($id) {
+        $quiz = \ORM::for_table('quizzes')->select_many('name', 'description')->find_one($id);
+
+        return $quiz;
+    }
     
     public function getCategories($active = false) {
         if ($active) {

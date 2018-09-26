@@ -21,7 +21,7 @@ class Subcat implements Base\ISubcat {
      */
     public function setIdSubcat($id)
     {
-        $subcatobj = \ORM::for_table('subcategories')->join('categories', array('subcategories.id_category', '=', 'categories.id'))->select_many('subcategories.name', 'subcategories.description', array('id_category' => 'categories.name')->find_one($id);
+        $subcatobj = \ORM::for_table('subcategories')->join('categories', array('subcategories.id_category', '=', 'categories.id'))->select_many('subcategories.name', 'subcategories.description', array('id_category' => 'categories.name'))->find_one($id);
        
         if ($subcatobj) {
             $this->_id = $id;

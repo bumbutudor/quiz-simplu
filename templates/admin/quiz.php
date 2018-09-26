@@ -222,7 +222,7 @@ include'header.php';
                    <select name="id_subcategory" id="id_subcategory" class="form-control" />
                     <?php foreach ($subcategories as $subcategory) : ?>
                              <?php $selected = ($subcategory->name == $quiz->getSubcategory()) ? 'selected' : ''; ?>
-                            <option value="<?php echo $subcategory->id; ?>"><?php echo $subcategory->name; ?></option>
+                            <option value="<?php echo $subcategory->id; ?>" <?php echo $selected; ?>><?php echo $subcategory->name; ?></option>
                        <?php endforeach; ?>
                      
                    </select>
@@ -233,7 +233,7 @@ include'header.php';
                    <select name="quiz_type" id="quiz_type" class="form-control" />
                      <?php foreach ($quiz_types as $quiz_type) : ?>
                              <?php $selected = ($quiz_type->name == $quiz->getQuizType()) ? 'selected' : ''; ?>
-                            <option value="<?php echo $quiz_type->id; ?>"><?php echo $quiz_type->name; ?></option>
+                            <option value="<?php echo $quiz_type->id; ?>" <?php echo $selected; ?>><?php echo $quiz_type->name; ?></option>
                        <?php endforeach; ?>
                    </select>
                 </p>

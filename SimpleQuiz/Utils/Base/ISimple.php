@@ -25,6 +25,8 @@ interface ISimple {
 
     public function getSubcategory($id);
 
+    public function getQuiz($id);
+
     public function getQuizType($id);
 
     public function getQuizTypes($active = true);
@@ -32,6 +34,6 @@ interface ISimple {
     public function getCategoryQuizzes($id);
     
     public function getUsers($quizid = false);
-    
+
 }
 ?>
