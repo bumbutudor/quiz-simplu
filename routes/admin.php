@@ -275,6 +275,51 @@ $app->get("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($a
 })->conditions(array('id' => '\d+'));
 
 
+//27/09/2018 Pagina adugata pentru subcategorie
+$app->put("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($app) {
+    
+    
+    if (! ctype_digit($id)) {
+        $app->redirect($app->request->getRootUri().'/admin/');
+    }
+    
+    $subcat = $app->subcat;
+    
+    if ($subcat->setIdSubcat($id)) {
+        $categories = $app->simple->getCategories(false);
+        $moduleId = $app->session->get('user')->getRole();
+        
+        
+        $app->render('admin/subcat.php', array('subcat' => $subcat, 'categories' => $categories));
+        
+    }
+        
+});
+
+//27/09/2018 Pagina adugata pentru subcategorie
+$app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
+    
+    if  (! ctype_digit($id)) {
+        $app->redirect($app->request->getRootUri().'/admin/');
+    }
+    
+    $subcat = $app->subcat;
+    
+    
+    if ($subcat->setIdSubcat($id)) {
+        $categories = $app->simple->getCategories(false);
+        $moduleId = $app->session->get('user')->getRole();
+        
+
+   
+        $app->render('admin/subcat.php', array('subcat' => $subcat, 'categories' => $categories));
+    } else {
+        echo 'oops';
+    }
+        
+});
+
+//27/09/2018 Pagina adugata pentru subcategorie
 
 $app->put("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
     

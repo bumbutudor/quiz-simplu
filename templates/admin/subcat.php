@@ -20,6 +20,9 @@ include'header.php';
                           
                       </ul>
                         <button id="editsubcat" title="Edit Quiz Details" type="button" class="btn btn-primary">Editează Detalii Submodul <span class="glyphicon glyphicon-pencil"></span></button>
+                        <?php
+                         echo '<button data-quiz-id="'.$subcat->id.'" title="Sterge Exercitiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>'
+                         ?>
                     </div>
                   
                    
@@ -38,7 +41,7 @@ include'header.php';
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Editează Submodul:</h4>
           </div>
-            <form id="quizedit" method="post" action="<?php echo $root . '/admin/subcat/'; ?>">
+            <form id="subcatedit" method="post" action="<?php echo $root . '/admin/subcat/'; ?>">
             <div class="modal-body">
                 <p><label for="subcatname">Nume Submodul:</label>
                    <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" value="<?php echo $subcat->getName(); ?>" />
@@ -47,6 +50,7 @@ include'header.php';
                 <p><label for="subcatdescription">Descriere Submodul:</label>
                    <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul" value="<?php echo $subcat->getDescription(); ?>" class="form-control" />
                 </p>
+
                 <p><label for="id_category">Categorie Submodul:</label>
                    <select name="id_category" id="id_category" class="form-control" />
                      <?php foreach ($categories as $category) : ?>
