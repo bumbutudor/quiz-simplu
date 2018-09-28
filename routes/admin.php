@@ -40,7 +40,7 @@ $app->get('/admin/', $authenticate($app, true), function () use ($app) {
     $quizzes = $simple->getQuizzes(false);
     $categories = $simple->getCategories(false);
     $moduleId = $app->session->get('user')->getRole();
-    $subcategories = $simple->getSubcategories($moduleId);
+    $subcategories = $simple->getCategorySubcategories($moduleId);
     $quiz_types = $simple->getQuizTypes(true);
     $category = $simple->getCategory($moduleId);//pentru a scoate categoria in dependenta de user
 
@@ -253,7 +253,7 @@ $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
         $quiz->populateUsers();
         $categories = $app->simple->getCategories(false);
         $moduleId = $app->session->get('user')->getRole();
-        $subcategories = $app->simple->getSubcategories($moduleId);
+        $subcategories = $app->simple->getCategorySubcategories($moduleId);
         $quiz_types = $app->simple->getQuizTypes(true);
         
         $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types));
@@ -374,7 +374,7 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
         $quiz->populateQuestions();
         $categories = $app->simple->getCategories(false);
         $moduleId = $app->session->get('user')->getRole();
-        $subcategories = $app->simple->getSubcategories($moduleId);
+        $subcategories = $app->simple->getCategorySubcategories($moduleId);
         $quiz_types = $app->simple->getQuizTypes(true);
         $i = 0;
         foreach ($answerarray as $answer) {

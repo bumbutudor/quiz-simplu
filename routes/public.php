@@ -3,7 +3,7 @@ $app->get('/', function () use ($app) {
     $simple = $app->simple;
     $quizzes = $simple->getQuizzes();
     $categories = $simple->getCategories();
-
+    // $subcategories = $simple->getSubCategories();
     $session = $app->session;
 
     $app->render('index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'session' => $session));
@@ -15,8 +15,9 @@ $app->get('/requirements/', function () use ($app) {
     $requirements = $installer->getRequirements();
     $simple = $app->simple;
     $categories = $simple->getCategories();
+    // $subcategories = $simple->getSubCategories();
 
-    $app->render('requirements.php', array( 'categories' => $categories,'requirements' => $requirements));
+    $app->render('requirements.php', array( 'categories' => $categories, 'requirements' => $requirements));
 
 });
 
@@ -29,6 +30,7 @@ $app->get('/:route/', function () use ($app) {
     $simple = $app->simple;
     $quizzes = $simple->getQuizzes();
     $categories = $simple->getCategories();
+    // $subcategories = $simple->getSubcategories();
 
     $session = $app->session;
     if ($session->get('user'))
@@ -113,6 +115,7 @@ $app->post('/register/', function () use ($app) {
     $simple = $app->simple;
     $quizzes = $simple->getQuizzes(true);
     $categories = $simple->getCategories();
+    // $subcategories = $simple->getSubcategories();
     $session = $app->session;
     $errors = array();
 
@@ -161,7 +164,7 @@ $app->post('/register/', function () use ($app) {
         $app->redirect($app->request->getRootUri() . '/login/');
     }
 
-    $app->render('emailsent.php', array('quizzes' => $quizzes, 'categories' => $categories,
+    $app->render('emailsent.php', array('quizzes' => $quizzes, 'categories' => $categories, 
                                              'session' => $session));
 });
 
@@ -170,6 +173,7 @@ $app->get('/confirm-registration/:hash', function($hash) use ($app) {
     $simple = $app->simple;
     $quizzes = $simple->getQuizzes(true);
     $categories = $simple->getCategories();
+    // $subcategories = $simple->getSubcategories();
     $session = $app->session;
 
     $user = \ORM::for_table('users')->select_many('id', 'hashstamp')->where('confirmhash', $hash)->where_raw('TIMESTAMPDIFF(HOUR, hashstamp, NOW()) < 24')->find_one();
@@ -198,7 +202,7 @@ $app->get('/categories/', function () use ($app) {
 
     $session = $app->session;
 
-    $app->render('index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'session' => $session));
+    $app->render('index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
 });
 
 $app->get('/categories/:id', function ($id) use ($app) {
@@ -206,7 +210,7 @@ $app->get('/categories/:id', function ($id) use ($app) {
     $category = $simple->getCategory($id);
     $quizzes = $simple->getCategoryQuizzes($id);
     $categories = $simple->getCategories();
-    $subcategories = $simple->getSubcategories($id);
+    $subcategories = $simple->getCategorySubcategories($id);
 
     $session = $app->session;
     if( $category )
@@ -219,6 +223,37 @@ $app->get('/categories/:id', function ($id) use ($app) {
         $app->render('index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
     }
 })->conditions(array('id' => '\d+'));
+
+//28/09 pagina de subcategorii
+$app->get('/subcategories/', function () use ($app) {
+    $simple = $app->simple;
+    $quizzes = $simple->getQuizzes(true);
+    $categories = $simple->getCategories();
+    $subcategories = $simple->getCategorySubcategories($id);
+    $session = $app->session;
+
+    $app->render('index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
+});
+
+$app->get('/subcategories/:id', function ($id) use ($app) {
+    $simple = $app->simple;
+    $category = $simple->getCategory($id);
+    $subcategory = $simple->getSubcategory($id);
+    $quizzes = $simple->getSubcategoryQuizzes($id);
+    $categories = $simple->getCategories();
+    $subcategories = $simple->getCategorySubcategories($id);
+    $session = $app->session;
+    if( $subcategory )
+    {
+        $app->render('subcategory.php', array('category' => $category, 'subcategory' => $subcategory, 'quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
+    }
+    else
+    {
+        $quizzes = $simple->getQuizzes(true);
+        $app->render('index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
+    }
+})->conditions(array('id' => '\d+'));
+
 
 $app->get('/quiz/:id/', function ($id) use ($app) {
 
@@ -357,10 +392,11 @@ $app->get('/quiz/:id/test/', $authenticate($app), function ($id) use ($app) {
 
     $simple = $app->simple;
     $categories = $simple->getCategories();
+    $subcategories = $simple->getSubcategories();
 
     if ( $session->get('quizid') !== $id) {
         $app->flashnow('quizerror','A apărut o eroare. Vă rugăm să vă întoarceți la exercițiu și să mai încercați.');
-        $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session, 'questions' => $questions));
+        $app->render('quiz/error.php', array( 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session, 'questions' => $questions));
         $app->stop();
     }
 
@@ -407,10 +443,10 @@ $app->get('/quiz/:id/test/', $authenticate($app), function ($id) use ($app) {
 
         $app->render('quiz/test.php', array('quiz' => $quiz, 'num' => $num, 'nonce' => $nonce,
                                             'timetaken' => $timetaken, 'categories' =>
-        $categories, 'questions' => $questions, 'session' => $session));
+        $categories, 'subcategories' => $subcategories, 'questions' => $questions, 'session' => $session));
     } else {
         $app->flashnow('quizerror','Exercițiul pe care l-ați selectat nu există. Vă rugăm să vă întoarceți la meniul principal și să încercați din nou.');
-        $app->render('quiz/error.php', array( 'categories' => $categories,'session' => $session, 'questions' => $questions));
+        $app->render('quiz/error.php', array( 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session, 'questions' => $questions));
         $app->stop();
     }
 })->conditions(array('id' => '\d+'));
@@ -423,6 +459,7 @@ $app->get('/quiz/:id/results/', function ($id) use ($app) {
 
     $simple = $app->simple;
     $categories = $simple->getCategories();
+    $subcategories = $simple->getSubcategories();
 
     if ($session->get('finished') != 'yes') {
         $app->redirect($app->request->getRootUri().'/');
@@ -430,7 +467,7 @@ $app->get('/quiz/:id/results/', function ($id) use ($app) {
 
     if ($session->get('quizid') !== $id) {
         $app->flashnow('quizerror','A apărut o eroare. Vă rugăm să vă întoarceți la meniul principal și să încercați din nou.');
-        $app->render('quiz/error.php', array('quiz' => $quiz, 'categories' => $categories, 'session' => $session));
+        $app->render('quiz/error.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
         $app->stop();
     }
 
@@ -439,10 +476,10 @@ $app->get('/quiz/:id/results/', function ($id) use ($app) {
         $quiz->populateUsers();
         $session->set('last', null);
 
-        $app->render('quiz/results.php', array('quiz' => $quiz, 'categories' => $categories, 'session' => $session));
+        $app->render('quiz/results.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
     } else {
         $app->flashnow('quizerror','Exercițiul pe care l-ați selectat nu există. Mergeți în meniul principal pentru a încerca din nou.');
-        $app->render('quiz/error.php', array('quiz' => $quiz, 'categories' => $categories, 'session' => $session));
+        $app->render('quiz/error.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
         $app->stop();
     }
 })->conditions(array('id' => '\d+'));
