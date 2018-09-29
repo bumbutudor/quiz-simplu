@@ -169,7 +169,6 @@ $(function(){
     });
 
     
-
     editquiz.on('click', function() {
         $('#quiz-edit-modal').modal();
     });
