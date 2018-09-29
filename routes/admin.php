@@ -242,25 +242,6 @@ $app->delete("/admin/subcat/", $authenticate($app, true), function() use ($app) 
         
 });
 
-
-//19/09/2018 Sa fac si pentru subcategorie
-$app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
-
-    $quiz = $app->quiz;
-    
-    if ($quiz->setId($id)) {
-        $quiz->populateQuestions();
-        $quiz->populateUsers();
-        $categories = $app->simple->getCategories(false);
-        $moduleId = $app->session->get('user')->getRole();
-        $subcategories = $app->simple->getCategorySubcategories($moduleId);
-        $quiz_types = $app->simple->getQuizTypes(false);
-        
-        $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types));
-    }
-        
-})->conditions(array('id' => '\d+'));
-
  //24/09/2018 Pagina adugata pentru subcategorie
 $app->get("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($app) {
 
@@ -318,6 +299,25 @@ $app->post("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($
     }
         
 });
+
+
+//29/09/2018 Schimbat cu locul
+$app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
+
+    $quiz = $app->quiz;
+    
+    if ($quiz->setId($id)) {
+        $quiz->populateQuestions();
+        $quiz->populateUsers();
+        $categories = $app->simple->getCategories(false);
+        $moduleId = $app->session->get('user')->getRole();
+        $subcategories = $app->simple->getCategorySubcategories($moduleId);
+        $quiz_types = $app->simple->getQuizTypes(false);
+        
+        $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types));
+    }
+        
+})->conditions(array('id' => '\d+'));
 
 $app->put("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
     
