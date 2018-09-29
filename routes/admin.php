@@ -254,7 +254,7 @@ $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
         $categories = $app->simple->getCategories(false);
         $moduleId = $app->session->get('user')->getRole();
         $subcategories = $app->simple->getCategorySubcategories($moduleId);
-        $quiz_types = $app->simple->getQuizTypes(true);
+        $quiz_types = $app->simple->getQuizTypes(false);
         
         $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types));
     }
@@ -369,7 +369,7 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
     if ($quiz->setId($id)) {
         $quiz->populateQuestions();
         $categories = $app->simple->getCategories(false);
-        $quiz_types = $app->simple->getQuizTypes(true);
+        $quiz_types = $app->simple->getQuizTypes(false);
         $i = 0;
         foreach ($answerarray as $answer) {
             if (trim($answer) == '') {
