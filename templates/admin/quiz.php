@@ -148,7 +148,7 @@ include'header.php';
                     </tbody>
                 </table>
                 <p><button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button></p>
-                <p style="margin-top: 50px"><label for="">Comentariu:</label>
+                <p style="margin-top: 50px"><label for="">Explicație:</label>
                    <input name="" id="" type="text" placeholder="Comentariul aici" class="form-control" />
                 </p>
             </div>

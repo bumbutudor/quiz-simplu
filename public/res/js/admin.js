@@ -214,7 +214,8 @@ $(function(){
             
         });
     });
-    
+   
+   //added 25/09 by Jhonny 
     function highlightedText() {
     try {
         if (window.ActiveXObject) {
