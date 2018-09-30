@@ -40,11 +40,12 @@
             <?php
             $x = 1;
             $numquestions = $quiz->countQuestions();
-       
+            echo "<ul>";
+            echo "<li>";
             foreach ($quiz->getAllAnswersGroupedByQuestion() as $answergroup) :
                 if ($x % 2 !== 0) { echo '<div style="clear:both"></div>';}
-                echo '<div class="col-md-6 clearfix">';
-                echo '<h4>Question' . ($x) . ': ' . $quiz->getQuestion($x)->getText() . '</h4>';
+                echo '<div class="row clearfix">';
+                echo '<h4>Întrebarea ' . ($x) . ': ' . $quiz->getQuestion($x)->getText() . '</h4>';
                 echo '<ol>' . PHP_EOL;
                     $y = 0;
                     foreach( $answergroup as $answer) :
@@ -82,6 +83,8 @@
                 //move on to next set of answers
                 $x++;
             endforeach; ?>
+           </li>
+           </ul>
             </div>
         </div>
 
@@ -90,7 +93,8 @@
             <h2 class="userscore"><?php echo $percentage; ?>%</h2>
             <h3 id="time">Timp de: <?php echo $timetaken['mins'] . $timetaken['secs']; ?></h3>
 
-            <p id="compare"><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->getId(); ?>/results"></a></p>
+            <p><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->getId(); ?>">Înapoi la începutul exercițiului</a></p>
+            <p><a href="<?php echo $root; ?>">Înapoi la pagina pricipală</a></p>
             </div>
 
 
