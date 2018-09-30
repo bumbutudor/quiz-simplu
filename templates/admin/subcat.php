@@ -20,9 +20,7 @@ include'header.php';
                           
                       </ul>
                         <button id="editsubcat" title="Edit Quiz Details" type="button" class="btn btn-primary">Editează Detalii Submodul <span class="glyphicon glyphicon-pencil"></span></button>
-                        <?php
-                         echo '<button data-quiz-id="'.$subcat->id.'" title="Sterge Exercitiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>'
-                         ?>
+                        
                     </div>
                   
                    

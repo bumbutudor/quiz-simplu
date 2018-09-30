@@ -7,7 +7,23 @@ include'header.php';
       <div class="row" >
          <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
+           
            <div class="row">
+              <div class="col-sm-12">
+                <ul>
+                  <li class="dropdown active">
+                    <a href="<?php echo $root; ?>/admin/" class="dropdown-toggle" data-toggle="dropdown">Module <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php foreach ($categories as $cat): ?>
+                           <li><a href="<?php echo $root; ?>/admin/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+              </ul>
+             </div>
+           </div>
+           <div class="row">
+
              <div class="col-sm-6">
                <h4>Submodule</h4>                       
              </div>

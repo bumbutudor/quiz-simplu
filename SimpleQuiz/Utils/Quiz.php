@@ -154,8 +154,9 @@ class Quiz implements Base\IQuiz {
      * @param $type
      * @param array $answers
      * @return bool
+     * @return explanation
      */
-    public function addQuestion($text, $type, Array $answers)
+    public function addQuestion($text, $type, Array $answers, $explanation)
     {
         $max = \ORM::for_table('questions')->where('quiz_id', $this->_id)->max('num');
         $num = $max + 1;
@@ -165,7 +166,8 @@ class Quiz implements Base\IQuiz {
             array(
                 'num' => $num,
                 'quiz_id' => $this->_id,
-                'text' => $text
+                'text' => $text,
+                'explanation' => $explanation
             )
         );
         //save the new question in db then add to the question storage
@@ -269,7 +271,7 @@ class Quiz implements Base\IQuiz {
             /**
              * @todo make the instance name dynamic
              */
-            $questionObject = new RadioQuestion($question['id'], $question['num'], $this->_id, $question['text']);
+            $questionObject = new RadioQuestion($question['id'], $question['num'], $this->_id, $question['text'], $question['explanation']);
             $this->_questions->attach($questionObject);
         }
 

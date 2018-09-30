@@ -142,7 +142,7 @@ class Simple implements Base\ISimple {
 
     public function getSubcategory($id) {
         
-        $id_subcategory = \ORM::for_table('subcategories')->select_many('name','description')->find_one($id);
+        $id_subcategory = \ORM::for_table('subcategories')->select_many('name','description', 'id_category')->find_one($id);
         
         return $id_subcategory;
     }
@@ -162,8 +162,7 @@ class Simple implements Base\ISimple {
     }
     
     public function getCategoryQuizzes($id) {
-        
-        $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active')->where('quizzes.category', $id)->find_many();
+            $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active')->where('quizzes.category', $id)->find_many();
         
         return $quizzes;
     }

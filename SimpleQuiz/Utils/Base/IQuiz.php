@@ -19,7 +19,7 @@ interface IQuiz {
     
     public function addAnswers($questionid, Array $answers);
     
-    public function addQuestion($question, $type, Array $answers);
+    public function addQuestion($question, $type, Array $answers, $explanation);
     
     public function updateQuestion ($questionnum, $text);
     

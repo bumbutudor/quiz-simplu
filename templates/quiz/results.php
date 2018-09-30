@@ -2,7 +2,7 @@
 <div id="container" class="quiz">
         <div class="row">
             <div class="col-md-5 col-md-offset-2">
-                <h2>Rezultatele pentru <span><?php echo $user->getName();  ?></span></h2>
+                <h2>Rezultate</span></h2>
             <?php
             $x = 1;
             $numquestions = $quiz->countQuestions();
@@ -47,29 +47,6 @@
                 //move on to next set of answers
                 $x++;
             endforeach; ?>
-            </div>
-            <div class="col-md-3">   
-                <h2>Scoruri de Top</h2>
-                <ul class="leaders">
-                    <?php
-                    $leaders = $quiz->getLeaders(30);
-                    $counter = 1;
-                    foreach ($leaders as $leader) :
-                        $name = '';
-                        //if current user, bolden the username
-                        if ($leader['name'] == $user->getName()) :
-                            $name = '<strong class="currentuser">' . $leader['name'] . '</strong>';
-                        else:
-                            $name = $leader['name'];
-                        endif;
-                        $percentage = round(( (int) $leader['score'] / (int) $numquestions ) * 100);
-                        echo '<li>' . $name. ': ' .  $percentage . '%</li>';
-                        
-                        $counter++;
-                        
-                    endforeach;
-                    ?>
-                </ul>
             </div>
         </div>
     </div><!--container-->

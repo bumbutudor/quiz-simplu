@@ -207,10 +207,17 @@ $app->get('/categories/', function () use ($app) {
 
 $app->get('/categories/:id', function ($id) use ($app) {
     $simple = $app->simple;
-    $category = $simple->getCategory($id);
-    $quizzes = $simple->getCategoryQuizzes($id);
+
+    //Sidebar menu
     $categories = $simple->getCategories();
+
     $subcategories = $simple->getCategorySubcategories($id);
+    
+    //Jombotrone
+    $category = $simple->getCategory($id);
+    
+    //Content
+    $quizzes = $simple->getCategoryQuizzes($id);
 
     $session = $app->session;
     if( $category )
@@ -237,11 +244,11 @@ $app->get('/subcategories/', function () use ($app) {
 
 $app->get('/subcategories/:id', function ($id) use ($app) {
     $simple = $app->simple;
-    $category = $simple->getCategory($id);
     $subcategory = $simple->getSubcategory($id);
     $quizzes = $simple->getSubcategoryQuizzes($id);
     $categories = $simple->getCategories();
-    $subcategories = $simple->getCategorySubcategories($id);
+    $subcategories = $simple->getCategorySubcategories($subcategory->id_category);
+    $category = $simple->getCategory($subcategory->id_category);
     $session = $app->session;
     if( $subcategory )
     {
@@ -324,6 +331,8 @@ $app->post('/quiz/process/', $authenticate($app), function () use ($app) {
         $session->set('starttime', date('Y-m-d H:i:s'));
 
         $app->redirect($app->request->getRootUri() . '/quiz/' . $id . '/test');
+        // $app->render('quiz/test.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session));
+
     }
     else
     { //quiz logic

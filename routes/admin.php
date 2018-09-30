@@ -312,7 +312,7 @@ $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
         $categories = $app->simple->getCategories(false);
         $moduleId = $app->session->get('user')->getRole();
         $subcategories = $app->simple->getCategorySubcategories($moduleId);
-        $quiz_types = $app->simple->getQuizTypes(false);
+        $quiz_types = $app->simple->getQuizTypes(true);
         
         $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types));
     }
@@ -335,7 +335,9 @@ $app->put("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
         $quiz->populateQuestions();
 
         $categories = $app->simple->getCategories(false);
-        $quiz_types = $app->simple->getQuizTypes(false);
+        $moduleId = $app->session->get('user')->getRole();
+        $subcategories = $app->simple->getCategorySubcategories($moduleId);
+        $quiz_types = $app->simple->getQuizTypes(true);
         
         if ( (! ctype_digit($questionid)) || (trim($text) == '') ) {
             $app->redirect($app->request->getRootUri().'/admin/');
@@ -348,7 +350,7 @@ $app->put("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
             $app->flashnow('error', $e->getMessage());
         }
         $quiz->populateUsers();
-        $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types));
+        $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types, 'subcategories' => $subcategories));
         
     }
         
@@ -364,17 +366,20 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
     
     $question = trim($app->request->post('questiontext'));
     $correct = (int) trim($app->request()->post('correct'));
+    $explanation = trim($app->request->post('explanation'));
     $answerarray = $app->request()->post('answer');
     
     if ($quiz->setId($id)) {
         $quiz->populateQuestions();
         $categories = $app->simple->getCategories(false);
-        $quiz_types = $app->simple->getQuizTypes(false);
+        $moduleId = $app->session->get('user')->getRole();
+        $subcategories = $app->simple->getCategorySubcategories($moduleId);
+        $quiz_types = $app->simple->getQuizTypes(true);
         $i = 0;
         foreach ($answerarray as $answer) {
             if (trim($answer) == '') {
                 $app->flashnow('error', "Trebuie să fie cel puțin un răspuns!");
-                $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types));
+                $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types, 'subcategories' => $subcategories));
                 $app->stop();
             }
             if ($i == $correct) {
@@ -387,7 +392,7 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
             $i++;
         }
         try {
-            $quiz->addQuestion($question, 'radio', $answers);
+            $quiz->addQuestion($question, 'radio', $answers, $explanation);
             $app->flashnow('success', 'Întrebarea nouă a fost adăugată cu succes!');
         } catch (Exception $e ) {
             $app->flashnow('error', 'A aparut o eroare la adaugarea întrebării');
@@ -395,7 +400,7 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
         }
         $quiz->populateUsers();
    
-        $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories));
+        $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types, 'subcategories' => $subcategories));
     } else {
         echo 'oops';
     }

@@ -32,11 +32,7 @@
         </div><!--/span-->
         <div class="col-xs-12 col-sm-6">
             <div>
-                <div class="list-group">
-                  <?php foreach ($subcategories as $subcat): ?>
-                         <ul><li><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>"></a><?php echo $subcat->description; ?></li></ul>
-                  <?php endforeach; ?>
-                </div>
+            
                 <div class="list-group">
                 <?php foreach ($quizzes as $quiz) : 
                       echo '<a href="'.$root . '/quiz/' . $quiz->id .'" class="list-group-item">';
