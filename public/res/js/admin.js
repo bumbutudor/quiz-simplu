@@ -50,7 +50,7 @@ $(function(){
         var questionid = $(this).attr("data-question-id");
         var quizid = $(this).attr("data-quiz-id");
         
-        if (window.confirm("Ești 100% sigur că vrei să șteri întrebarea?") ) {
+        if (window.confirm("Ești 100% sigur că vrei să șteri exemplul?") ) {
             
             var parenttr = $(this).parents('tr.question');
            
@@ -104,7 +104,7 @@ $(function(){
         //console.log(location.pathname);
         var quizid = $(this).attr("data-quiz-id");
         
-        if (window.confirm("Ești 100% sigur că vrei să șteri întrebarea?") ) {
+        if (window.confirm("Ești 100% sigur că vrei să șteri exemplul?") ) {
             
             var parenttr = $(this).parents('tr.quiz');
            
@@ -140,7 +140,7 @@ $(function(){
         }
     });
     
-    //the button to add another answer for this question
+    //the button to add another answer for this example
     addanswer.on('click', function() {
         $.each( $('.answer-row:visible'), function(index, value) {
             $(this).find('.correct').val(index);
@@ -157,7 +157,7 @@ $(function(){
         context.fadeIn();
     });
     
-    //the button to add another question for this quiz
+    //the button to add another example for this quiz
     addquestion.on('click', function() {
         $('#q-add-modal').modal();
     });
@@ -197,7 +197,7 @@ $(function(){
         });
     });
     
-    //add a new question modal
+    //add a new example modal
     questionaddform.on('submit', function(e) {
         // if question text is empty
         if ($('#newquestioninput').val() === '') {

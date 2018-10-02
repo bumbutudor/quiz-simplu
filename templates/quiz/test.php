@@ -45,8 +45,7 @@
             foreach ($quiz->getAllAnswersGroupedByQuestion() as $answergroup) :
                 if ($x % 2 !== 0) { echo '<div style="clear:both"></div>';}
                 echo '<div class="row clearfix">';
-                echo '<h4>Întrebarea ' . ($x) . ': ' . $quiz->getQuestion($x)->getText() . '</h4>';
-                echo '<ol>' . PHP_EOL;
+                echo '<ul>' . PHP_EOL;
                     $y = 0;
                     foreach( $answergroup as $answer) :
                         if (isset($_SESSION['correct'][$x])):
@@ -64,8 +63,7 @@
                             //wrong AND chosen by user
                         else :
                             if ( in_array( $answer, $_SESSION['wrong'][$x])) :
-                                echo '<li class="wrong">' . $answer . ' (Gresit!)</li>' . PHP_EOL;
-                                echo '<p>'.$quiz->getQuestion($x)->getExplanation().'</p>';
+                                echo '<li class="wrong">' . $answer . ' (Gresit!)  <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="'.$quiz->getQuestion($x)->getExplanation().'">Comentariu</button></li> ' ;
                             //correct but not chosen by user
                             elseif ($y === 0) :
                                 echo '<li class="correct">' . $answer . '</li>'  . PHP_EOL;
@@ -77,7 +75,7 @@
                         
                          $y++;
                     endforeach;
-                echo '</ol>';
+                echo '</ul>';
                 echo '</div>';
              
                 //move on to next set of answers
@@ -103,4 +101,5 @@
 
     </div>
 </div><!--container-->
+
 <?php include 'footer.php';

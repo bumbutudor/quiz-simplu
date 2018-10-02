@@ -64,7 +64,7 @@ class Quiz implements Base\IQuiz {
      */
     public function getName()
     {
-        return ucwords($this->_name);
+        return $this->_name;
     }
 
     /**

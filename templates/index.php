@@ -21,21 +21,19 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p> -->
           <div class="jumbotron">
-            <h1>Logodava Quiz</h1>
-            <p>Sistem de administrare a testelor privind utilizarea corectă a limbii române. Scris în PHP.</p>
+            <h1>Logodava Quiz Admin</h1>
+            <p>Sistem de administrare a testelor privind utilizarea corectă a limbii române.</p>
           </div>
         </div><!--/span-->
 
         <div class="col-xs-4 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
-              <h4>Exercitii Recente</h4>
+              <h4>Teste Recente</h4>
               <div class="list-group">
               <?php foreach ($quizzes as $quiz) : 
                     echo '<a href="'.$root . '/quiz/' . $quiz->id .'" class="list-group-item">';
                     echo '<h4 class="list-group-item-heading">'. $quiz->name . '</h4>';
-                    echo '<p class="list-group-item-text">'. $quiz->description . '</p>';
-                    echo '<p class="list-group-item-text">'. $quiz->category . '</p>';
-                    echo '<p class="list-group-item-text">'. $quiz->subcategory . '</p>';
+
                     echo '</a>';
                 endforeach;
                 ?>

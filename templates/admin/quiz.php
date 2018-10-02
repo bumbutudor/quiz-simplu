@@ -15,44 +15,44 @@ include'header.php';
                     <div class="panel-body">
                       <ul style="width:50%;" class="list-group">
                           <li class="list-group-item"><strong>Nume</strong>: <?php echo $quiz->getName(); ?></li>
-                          <li class="list-group-item"><strong>Descriere</strong>: <?php echo $quiz->getDescription(); ?></li>
+                          <li class="list-group-item"><strong>Sarcina</strong>: <?php echo $quiz->getDescription(); ?></li>
                           <li class="list-group-item"><strong>Modul</strong>: <?php echo $quiz->getCategory(); ?></li>
                           <li class="list-group-item"><strong>Submodul</strong>: <?php echo $quiz->getSubcategory(); ?></li>
                           <li class="list-group-item"><strong>Tip Exercițiu</strong>: <?php echo $quiz->getQuizType(); ?></li>
                           <li class="list-group-item"><strong>Activ? </strong><?php echo $quiz->isActive() ? '<span class="glyphicon glyphicon-ok">' : '<span class="glyphicon glyphicon-remove-circle">' ?></li>
-                          <li class="list-group-item"><strong>Număr de întrebări</strong>: <span class="badge"><?php
+                          <li class="list-group-item"><strong>Număr de exemple</strong>: <span class="badge"><?php
                                   echo $quiz->countQuestions(); ?></span></li>
                           <li class="list-group-item"><strong>De câte ori a fost rezolvat</strong>: <span class="badge"><?php echo count($quiz->getUsers()); ?></span></li>
                       </ul>
                         <button id="editquiz" title="Modifică Detaliile Exercițiului" type="button" class="btn btn-primary">Editează Detalii Exercițiu <span class="glyphicon glyphicon-pencil"></span></button>
                     </div>
-                  <div class="panel-heading"><h3>Întrebări:</h3></div>
+                  <div class="panel-heading"><h3>Exemple:</h3></div>
                     <!-- Table -->
                     <table id="questions" class="table table-striped table-responsive">
                           <thead>
                               <tr>
-                                  <th>Întrebări</th><th>Acțiuni</th>
+                                  <th>Exemple</th><th>Acțiuni</th>
                               </tr>
                           </thead>
                           <tbody>
                               <?php
                               foreach ($quiz->getQuestions() as $question) :?>
                               <tr class="question">
-                                  <td class="question"><?php echo $question->getText(); ?></td>
+                                  <td class="question"><?php echo $question->getNum(); ?></td>
                                   <td style="text-align:center;">
-                                      <button data-question-id="<?php echo $question->getNum(); ?>" title="Editează Întrebarea" class="edit btn btn-default btn-primary" type="button"><span class="glyphicon glyphicon-pencil"></span></button>
+                                      <!-- <button data-question-id="<?php echo $question->getNum(); ?>" title="Editează Întrebarea" class="edit btn btn-default btn-primary" type="button"><span class="glyphicon glyphicon-pencil"></span></button> -->
                                       <a href="<?php echo $root; ?>/admin/quiz/<?php echo $quiz->getId();
                                       ?>/question/<?php echo $question->getNum(); ?>/edit/" title="Editează Răspunsuri"
-                                         class="answerlink btn btn-default btn-primary"><span class="glyphicon glyphicon-list"></span></a>
+                                         class="answerlink btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
                                       <button data-question-id="<?php echo $question->getNum(); ?>" data-quiz-id="<?php
-                                      echo $quiz->getId(); ?>" title="Șterge Întrebarea" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                                      echo $quiz->getId(); ?>" title="Șterge Exemplu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                   </td>
                               </tr>
                               <?php endforeach; ?>  
                           </tbody>
                       </table>
                       <div class="panel-body">
-                          <button id="addquestion" title="Adaugă o întrebare nouă" type="button" class="btn btn-primary pull-right">Adaugă o întrebare <span class="glyphicon glyphicon-plus-sign"></span></button>
+                          <button id="addquestion" title="Adaugă o întrebare nouă" type="button" class="btn btn-primary pull-right">Adaugă un exemplu <span class="glyphicon glyphicon-plus-sign"></span></button>
                       </div>
                 </div>
             </div>
@@ -92,14 +92,14 @@ include'header.php';
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Adaugă o nouă întrebare:</h4>
+            <h4 class="modal-title">Adaugă un exemplu nou:</h4>
           </div>
             <form id="questionadd" method="post" action="">
             <div class="modal-body">
-                <p><label for="newquestioninput">Întrebare:</label>
+                <!-- <p><label for="newquestioninput">Întrebare:</label>
                    <input name="questiontext" id="newquestioninput" type="text" placeholder="Întrebarea aici" class="form-control" />
                    <span class="helper help-block">Nu este întrebare!</span>
-                </p>
+                </p> -->
                 <h5><strong>Răspunsuri:</strong></h5>
                 <table id="newanswers" class="table table-responsive table-hover table-bordered">
                     <thead>
@@ -138,7 +138,7 @@ include'header.php';
                             </td>
                             <td>
                                 <div class="input-group">
-                                <input type="text" placeholder="Answer" name="" value="" class="form-control answerinput">
+                                <input type="text" placeholder="Răspuns" name="" value="" class="form-control answerinput">
                                 <span class="input-group-btn">
                                     <button class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                 </span>
@@ -148,8 +148,8 @@ include'header.php';
                     </tbody>
                 </table>
                 <p><button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button></p>
-                <p style="margin-top: 50px"><label for="">Explicație:</label>
-                   <input name="explanation" id="explanation" type="text" placeholder="Explicație aici" class="form-control" />
+                <p style="margin-top: 50px"><label for="">Comentariu:</label>
+                   <input name="explanation" id="explanation" type="text" placeholder="Comentează aici" class="form-control" />
                 </p>
             </div>
             <div class="modal-footer">
@@ -204,8 +204,8 @@ include'header.php';
                    <input name="quizname" id="quizname" type="text" placeholder="Quiz Name" class="form-control" value="<?php echo $quiz->getName(); ?>" />
                    <span class="helper help-block">Vă rugăm să dați un nume exercițiului!</span>
                 </p>
-                <p><label for="description">Descriere Exercițiu:</label>
-                   <input name="description" id="description" type="text" placeholder="Quiz Description" value="<?php echo $quiz->getDescription(); ?>" class="form-control" />
+                <p><label for="description">Sarcina:</label>
+                   <input name="description" id="description" type="text" placeholder="Sarcina" value="<?php echo $quiz->getDescription(); ?>" class="form-control" />
                 </p>
 
                 <p><label for="category">Modul Exercițiu:</label>

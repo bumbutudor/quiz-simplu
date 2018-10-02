@@ -10,9 +10,9 @@
                   .'</div>'; } ?>
           <h2><?php echo $quiz->getName(); ?></h2>
           <h4><?php echo $quiz->getDescription(); ?></h4>
-          <p>După ce ați început testul, încercați să răspundeți la toate întrebările.</p>
+          <p>După ce ați început testul, încercați să răspundeți la toate sarcinile.</p>
           <!-- <p>Pentru fiecare întrebare  dati click pe <strong>'Trimite Raspuns'</strong>. Vei primi o intrebare noua.</p> -->
-          <p>Acest test are <strong><?php echo $numquestions; ?></strong> întrebări.</p>
+          <p>Acest test are <strong><?php echo $numquestions; ?></strong> sarcini.</p>
           <p>Rezultatul îl vei vedea la sfîrșitul testului.</p>
          <!-- leaders-score start-->
 

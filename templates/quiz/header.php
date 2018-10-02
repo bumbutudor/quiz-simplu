@@ -7,6 +7,10 @@ header('Content-Type: text/html; charset=utf-8');
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+    
+
+    <!-- bootstrap 4 adaugat 1/10/2018 -->
+
     <link rel="shortcut icon" href="<?php echo $root; ?>/favicon.ico">
     <link rel="stylesheet" href="<?php echo $root; ?>/res/bootstrap/dist/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/quiz.css" />
@@ -15,8 +19,7 @@ header('Content-Type: text/html; charset=utf-8');
     <!--[if lt IE 9]>
       <script src="<?php echo $root; ?>/res/bootstrap/dist/assets/js/html5shiv.js"></script>
       <script src="<?php echo $root; ?>/res/bootstrap/dist/assets/js/respond.min.js"></script>
-    <![endif]-->
-    
+    <![endif]-->    
 </head>
 <body>
     <!-- Static navbar -->

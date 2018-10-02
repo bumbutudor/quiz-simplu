@@ -48,7 +48,7 @@ class Subcat implements Base\ISubcat {
      */
     public function getNameSubcat()
     {
-        return ucwords($this->_name);
+        return $this->_name;
     }
 
     /**

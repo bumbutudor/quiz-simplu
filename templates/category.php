@@ -37,7 +37,6 @@
                 <?php foreach ($quizzes as $quiz) : 
                       echo '<a href="'.$root . '/quiz/' . $quiz->id .'" class="list-group-item">';
                       echo '<h4 class="list-group-item-heading">'. $quiz->name . '</h4>';
-                      echo '<p class="list-group-item-text">'. $quiz->description . '</p>';
                       echo '</a>';
                   endforeach;
                   ?>

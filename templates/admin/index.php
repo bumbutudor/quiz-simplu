@@ -5,10 +5,10 @@ include'header.php';
 <div id="container" class="quiz">
       
       <div class="row" >
-         <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+         <div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
            
-           <div class="row">
+<!--            <div class="row">
               <div class="col-sm-12">
                 <ul>
                   <li class="dropdown active">
@@ -21,18 +21,18 @@ include'header.php';
                 </li>
               </ul>
              </div>
-           </div>
-           <div class="row">
+           </div> -->
+             <div class="row">
 
-             <div class="col-sm-6">
-               <h4>Submodule</h4>                       
-             </div>
-             <div class="col-sm-6">
-               <p>
-                <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
-               </p>
-             </div>
-          </div>
+               <div class="col-sm-6">
+                 <h4>Submodule</h4>                       
+               </div>
+               <div class="col-sm-4">
+                 <p>
+                  <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                 </p>
+               </div>
+            </div>
              <div class="row">
                <div class="col-sm-12">
                  <div class="list-group">
@@ -46,13 +46,13 @@ include'header.php';
           </div><!--/.sidebar-nav -->
         </div><!--/span-->
 
-          <div class="col-sm-10" id="intro">
+          <div class="col-sm-9" id="intro">
           <!--  <h2>Bine ați venit, domnule <span><?php echo $user->getName(); ?></span> </h2> -->
            <h2>Vă aflați în modulul <strong><?php echo $category->name; ?></strong></h2>
             <!-- <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br> -->     
           </div>
  
-          <div id="intro" class="col-md-8" style="padding-top: 10px">
+          <div id="intro" class="col-md-9" style="padding-top: 10px">
               <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
               <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
               <div id="ajaxupdater" class="alert"></div>
@@ -63,7 +63,7 @@ include'header.php';
             <table id="quizzes" class="table table-striped">
                 <thead>
 
-                   <tr><th>Nume</th><th>Descriere</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
+                   <tr><th>Nume</th><th>Sarcina</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
                 </thead>
                 <tbody>
                     <?php
@@ -144,8 +144,8 @@ include'header.php';
                    <input name="quizname" id="quizname" type="text" placeholder="Nume Exercitiu" class="form-control" />
                    <span class="helper help-block">Va rog să dați o denumire exercițiului</span>
                 </p>
-                <p><label for="description">Descriere Exercițiu:</label>
-                   <input name="description" id="description" type="text" placeholder="Descriere Exercitiu" class="form-control" />
+                <p><label for="description">Sarcina:</label>
+                   <input name="description" id="description" type="text" placeholder="Sarcina" class="form-control" />
                 </p>
                 <p><label for="category">Modul Exercițiu:</label>
                    <select name="category" id="category" class="form-control">

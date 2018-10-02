@@ -59,7 +59,7 @@ $app->post("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     $active = (int) trim($app->request()->post('active'));
     
     if ( ($quizname !== '') && ($quizdescription !== '') ) {
-        $quizmeta['name'] = ucwords($quizname);
+        $quizmeta['name'] = $quizname;
         $quizmeta['description'] = $quizdescription;
         $quizmeta['category'] = $quizcategory;
         $quizmeta['id_subcategory'] = $quizsubcategory;
@@ -100,7 +100,7 @@ $app->put("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     if ( ($quizname !== '') && ($quizdescription !== '') && (ctype_digit($quizid)) ) {
         
         $quizmeta['id'] = $quizid;
-        $quizmeta['name'] = ucwords($quizname);
+        $quizmeta['name'] = $quizname;
         $quizmeta['description'] = $quizdescription;
         $quizmeta['category'] = $quizcategory;
         $quizmeta['id_subcategory'] = $quizsubcategory;
@@ -160,7 +160,7 @@ $app->post("/admin/subcat/", $authenticate($app, true), function() use ($app) {
     $subcatcategory = trim($app->request->post('id_category'));
     
     if ( ($subcatname !== '') && ($subcatdescription !== '') ) {
-        $subcatmeta['name'] = ucwords($subcatname);
+        $subcatmeta['name'] = $subcatname;
         $subcatmeta['description'] = $subcatdescription;
         $subcatmeta['id_category'] = $subcatcategory;
      
@@ -197,7 +197,7 @@ $app->put("/admin/subcat/", $authenticate($app, true), function() use ($app) {
     if ( ($subcatname !== '') && ($subcatdescription !== '') && (ctype_digit($subcatid)) ) {
         
         $subcatmeta['id'] = $subcatid;
-        $subcatmeta['name'] = ucwords($subcatname);
+        $subcatmeta['name'] = $subcatname;
         $subcatmeta['description'] = $subcatdescription;
         $subcatmeta['id_category'] = $subcatcategory;
         
@@ -393,9 +393,9 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
         }
         try {
             $quiz->addQuestion($question, 'radio', $answers, $explanation);
-            $app->flashnow('success', 'Întrebarea nouă a fost adăugată cu succes!');
+            $app->flashnow('success', 'Exemplul nou a fost adăugată cu succes!');
         } catch (Exception $e ) {
-            $app->flashnow('error', 'A aparut o eroare la adaugarea întrebării');
+            $app->flashnow('error', 'A aparut o eroare la adaugarea exemplului!');
             $app->flashnow('error', $e->getMessage());
         }
         $quiz->populateUsers();

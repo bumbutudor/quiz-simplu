@@ -41,14 +41,22 @@
                     <input type="password" name="password" class="form-control" placeholder="Password">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Logare</button>
                     <br>
-                    <p><button id="register-button" class="btn btn-lg btn-primary btn-block">Inregistrare</button></p>
+                    <p><button id="register-button" class="btn btn-lg btn-primary btn-block">Inregistrare Manager</button></p>
                 </form>
                 <form style="display: none" id="register-form" class="form-signin" method="post" action="<?php echo $root;
                 ?>/register">
-                    <input type="text" name="username" class="form-control" placeholder="Username">
+                    <input type="text" name="username" class="form-control" placeholder="Nume de Cont">
                     <input type="email" name="email" class="form-control" placeholder="Email">
-                    <input type="password" name="regpassword" class="form-control" placeholder="Password">
-                    <input type="password" name="regpasswordconf" class="form-control" placeholder="Confirm Password">
+                    <input type="password" name="regpassword" class="form-control" placeholder="Parola">
+                    <input type="password" name="regpasswordconf" class="form-control" placeholder="Confirmă Parola">
+                    <div class="form-group">
+                      <select class="form-control" id="select1">
+                        <option selected="true" disabled="disabled">Selectează Modul</option>
+                            <?php foreach ($categories as $cat): ?>
+                              <option value="idmodul"> <?php echo $cat->name; ?></option>
+                            <?php endforeach; ?>
+                      </select>
+                    </div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Inregistrare</button>
                 </form>
             </div>
