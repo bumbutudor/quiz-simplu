@@ -46,6 +46,7 @@
                 if ($x % 2 !== 0) { echo '<div style="clear:both"></div>';}
                 echo '<div class="row clearfix">';
                 echo '<ul>' . PHP_EOL;
+                echo '</br>';
                     $y = 0;
                     foreach( $answergroup as $answer) :
                         if (isset($_SESSION['correct'][$x])):
@@ -63,7 +64,11 @@
                             //wrong AND chosen by user
                         else :
                             if ( in_array( $answer, $_SESSION['wrong'][$x])) :
-                                echo '<li class="wrong">' . $answer . ' (Gresit!)  <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="'.$quiz->getQuestion($x)->getExplanation().'">Comentariu</button></li> ' ;
+                                if (strlen($quiz->getQuestion($x)->getExplanation()) !== 0) :
+                                    echo '<li class="wrong">' . $answer . ' (Gresit!)  <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="'.$quiz->getQuestion($x)->getExplanation().'">Comentariu</button></li> ' . PHP_EOL;
+                                else : 
+                                    echo '<li class="wrong">' . $answer . ' (Gresit!) ';
+                                endif;
                             //correct but not chosen by user
                             elseif ($y === 0) :
                                 echo '<li class="correct">' . $answer . '</li>'  . PHP_EOL;
