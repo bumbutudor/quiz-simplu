@@ -1,6 +1,8 @@
 <?php
 namespace SimpleQuiz\Utils\Base;
 
+use \SimpleQuiz\Utils\Base\EnumCategories;
+
 class Utils {
 
     public static function shuffleAssoc($array)
@@ -34,5 +36,39 @@ class Utils {
         $ret['secs'] = $timeportions[1] . ' sec';
 
         return $ret;
+    }
+
+    public static function getCategoriesNumber() 
+    {
+        $refl = new \ReflectionClass('SimpleQuiz\Utils\Base\EnumCategories');
+        return count($refl->getConstants());
+    }
+
+    public static function binaryCalculation($binaryModuleId) {
+        $result = 0;
+
+        for($i = 0; $i < Utils::getCategoriesNumber(); $i++)
+        {
+            if ($binaryModuleId & EnumCategories::Ortografie) {
+                $result = 1; 
+            } 
+            if ($binaryModuleId & EnumCategories::Ortoepie) {
+                $result = 2; 
+            }
+            if ($binaryModuleId & EnumCategories::Morfologie) {
+                $result = 3; 
+            } 
+            if ($binaryModuleId & EnumCategories::Sintaxa) {
+                $result = 4; 
+            }   
+            if ($binaryModuleId & EnumCategories::LexicSemantica) {
+                $result = 5; 
+            }   
+            if ($binaryModuleId & EnumCategories::Stilistica) {
+                $result = 6; 
+            }  
+        }
+
+        return $result;
     }
 }

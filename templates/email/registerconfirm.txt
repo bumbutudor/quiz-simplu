@@ -1,7 +1,7 @@
-Hey {username}, welcome to Simple Quiz.
+Salutare {username}, bine ai venit la Logodava Quiz.
 
-To complete your registration, please confirm your email address by going to the following URL:
+Pentru a finaliza înregistrarea, vă rugăm să confirmați adresa de email, dați click pe linkul d emai jos:
 
 {sitename}confirm-registration/{hash}
 
-This link will expire after 24 hours.
+Acest link expiră în 24 ore.

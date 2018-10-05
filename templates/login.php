@@ -45,15 +45,15 @@
                 </form>
                 <form style="display: none" id="register-form" class="form-signin" method="post" action="<?php echo $root;
                 ?>/register">
-                    <input type="text" name="username" class="form-control" placeholder="Nume de Cont">
+                    <input type="text" name="username" class="form-control" placeholder="Nume de utilizator">
                     <input type="email" name="email" class="form-control" placeholder="Email">
                     <input type="password" name="regpassword" class="form-control" placeholder="Parola">
                     <input type="password" name="regpasswordconf" class="form-control" placeholder="Confirmă Parola">
                     <div class="form-group">
-                      <select class="form-control" id="select1">
+                      <select class="form-control" id="select1" name="moduleid">
                         <option selected="true" disabled="disabled">Selectează Modul</option>
                             <?php foreach ($categories as $cat): ?>
-                              <option value="idmodul"> <?php echo $cat->name; ?></option>
+                              <option value="<?php echo $cat->id; ?>"> <?php echo $cat->name; ?></option>
                             <?php endforeach; ?>
                       </select>
                     </div>

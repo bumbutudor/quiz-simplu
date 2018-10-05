@@ -61,7 +61,7 @@ $app->post('/login/', function () use ($app) {
         else
         {
             //pull details for this registered email
-            if ($authsql = \ORM::for_table('users')->select_many('id','pass','name','level','role')->where('email',
+            if ($authsql = \ORM::for_table('users')->select_many('id','pass','name','level','role', 'id_moduls')->where('email',
                 $email)->find_one())
             {
                 //verify the password against hash
@@ -84,6 +84,7 @@ $app->post('/login/', function () use ($app) {
 
                     $user->setId($authsql->id);
                     $user->setRole($authsql->role);
+                    $user->setModuleaccess($authsql->id_moduls);
 
                     $session->set('user', $user);
                     $session->regenerate();
@@ -123,6 +124,8 @@ $app->post('/register/', function () use ($app) {
     $email = trim($app->request()->post('email'));
     $password = trim($app->request()->post('regpassword'));
     $confpassword = trim($app->request()->post('regpasswordconf'));
+    $moduleId = trim($app->request()->post('moduleid'));
+    $category = $simple->getCategory($moduleId);
 
     if ((! empty($email)) && (! empty($password) ) && ($password == $confpassword) )
     {
@@ -134,6 +137,10 @@ $app->post('/register/', function () use ($app) {
         {
             $user = new \SimpleQuiz\Utils\User\EndUser($email, $username);
             $user->setPassword(password_hash($password,1));
+            $user->setModuleaccess($category['module_group']);
+            //TODO change hardcoded role id
+            $user->setRole(3);
+            $user->setLevel(1);
 
             try
             {

@@ -39,10 +39,13 @@ $app->get('/admin/', $authenticate($app, true), function () use ($app) {
     $simple = $app->simple;
     $quizzes = $simple->getQuizzes(false);
     $categories = $simple->getCategories(false);
-    $moduleId = $app->session->get('user')->getRole();
+    $binaryModuleId = $app->session->get('user')->getModuleaccess();
+    $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
     $subcategories = $simple->getCategorySubcategories($moduleId);
     $quiz_types = $simple->getQuizTypes(true);
     $category = $simple->getCategory($moduleId);//pentru a scoate categoria in dependenta de user
+    // BEDONE Sa primesc numai exercitiile de la categoria data
+    // $quizzes = $simple->getCategoryQuizzes($moduleId); 
 
     $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category));
 });

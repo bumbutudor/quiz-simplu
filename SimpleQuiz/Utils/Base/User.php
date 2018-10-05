@@ -11,7 +11,9 @@ class User {
     private $quizzes;
     private $password;
     private $id;
+    private $level;
     private $role;
+    private $moduleaccess;
 
     function __construct($email, $name)
     {
@@ -79,6 +81,16 @@ class User {
         return $this->hash;
     }
 
+     public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+    
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
     public function setRole($role)
     {
         $this->role = $role;
@@ -87,5 +99,15 @@ class User {
     public function getRole()
     {
         return $this->role;
+    }
+
+    public function setModuleaccess($moduleaccess)
+    {
+        $this->moduleaccess = $moduleaccess;
+    }
+
+    public function getModuleaccess()
+    {
+        return $this->moduleaccess;
     }
 }

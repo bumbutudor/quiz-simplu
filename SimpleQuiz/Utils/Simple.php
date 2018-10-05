@@ -135,7 +135,7 @@ class Simple implements Base\ISimple {
     
     public function getCategory($id) {
         
-        $category = \ORM::for_table('categories')->select_many('name','description')->find_one($id);
+        $category = \ORM::for_table('categories')->select_many('name','description', 'module_group')->find_one($id);
         
         return $category;
     }
@@ -202,6 +202,8 @@ class Simple implements Base\ISimple {
         $name = $user->getName();
         $email = $user->getEmail();
         $password = $user->getPassword();
+        $module = $user->getModuleaccess();
+        $role = $user->getRole();
 
         $userexists =  \ORM::for_table('users')->where_any_is(
                 array(
@@ -221,6 +223,8 @@ class Simple implements Base\ISimple {
             $newuser->set('name', $name);
             $newuser->set('email', $email);
             $newuser->set('pass', $password);
+            $newuser->set('id_moduls', $module);
+            $newuser->set('role', $role);
             $newuser->save();
             $user->setId($newuser->id());
 

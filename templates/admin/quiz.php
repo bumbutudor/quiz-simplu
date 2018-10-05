@@ -87,7 +87,7 @@ include'header.php';
     </div><!-- /.modal -->
     
 <!-- Add Question Modal -->
-    <div class="modal fade" id="q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="1q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -154,7 +154,7 @@ include'header.php';
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
-              <button type="submit" class="btn btn-success">Salvează Întrebare</button>
+              <button type="submit" class="btn btn-success">Salvează Exemplu</button>
             </div>
             </form>
         </div><!-- /.modal-content -->
@@ -162,7 +162,6 @@ include'header.php';
     </div><!-- /.modal -->
 
   <!-- START TEST QUIZ -->
-
     <div class="modal fade" id="1q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -180,15 +179,65 @@ include'header.php';
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
-              <button type="submit" class="btn btn-success">Salvează Întrebare</button>
+              <button type="submit" class="btn btn-success">Salvează Exemplu</button>
             </div>
             </form>
             <button id="transpormText">Butt</button>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
   <!-- END TEST QUIZ -->
+
+
+  <!-- Quiz de tip TEXT -->
+    <div class="modal fade" id="q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Adaugă un exemplu nou:</h4>
+          </div>
+            <form id="questionadd" method="post" action="">
+            <div class="modal-body">
+                <table id="newanswers" class="table table-responsive table-hover table-bordered">
+                    <thead>
+                        <tr><th style="text-align: center;">Text corect?</th><th>Text</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr class="answer-row">
+                            <td style="text-align: center;">
+                               <input class="correct" name="correct" value="0" type="checkbox" /> 
+                            </td>
+                            <td>
+                                <div class="input-group">
+<!--                                     <input type="text" name="answer[]" placeholder="Text" class="form-control"> -->
+                                    <textarea name="answer[]" placeholder="Scrie textul aici..." class="form-control" rows="7" cols="70"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="answer-row">
+                            <td style="text-align: center;">
+                               <input class="correct" name="correct" value="1" type="checkbox" /> 
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <!-- <input type="text" name="answer[]" placeholder="Text" class="form-control"> -->
+                                     <textarea name="answer[]" placeholder="Copie textul aici..." class="form-control" rows="7" cols="70"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
+              <button type="submit" class="btn btn-success">Salvează Exemplu</button>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+  <!-- Quiz de tip TEXT -->
     
     <!-- Update Quiz Modal -->
     <div class="modal fade" id="quiz-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
