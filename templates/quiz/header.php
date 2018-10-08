@@ -46,7 +46,7 @@ header('Content-Type: text/html; charset=utf-8');
           </ul> */?>
           <ul class="nav navbar-nav navbar-right">
               <?php if ($user): ?>
-                  <li><a href="<?php echo $root; ?>/logout/">Iesire</a></li>
+                  <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
                   <?php if($user->isAdmin()) :?>
                       <li><a href="<?php echo $root; ?>/admin/">Administrare</a></li>
                   <?php endif; ?>

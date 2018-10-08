@@ -29,12 +29,14 @@
             
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrare <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo $root; ?>/admin/">Toate exercitiile</a></li>
-                    <li><a href="<?php echo $root; ?>/admin/config/">Setari</a></li>
-                    <li><a href="<?php echo $root; ?>/admin/edit/">Schimba Parola</a></li>
-                    <li><a href="<?php echo $root; ?>/logout/">Iesire</a></li>
+                    <li><a href="<?php echo $root; ?>/admin/">Toate exercițiile</a></li>
+                    <!-- <li><a href="<?php echo $root; ?>/admin/config/">Setări</a></li> -->
+                    <!-- TODO pentru schimbarea parolelor -->
+                    <li><a href="<?php echo $root; ?>/admin/edit/">Schimbă Parola</a></li>
+                    <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
+                    <li><a href="<?php echo $root; ?>/admin/backup">Copie de rezervă a bazei de date</a></li>
                 </ul>
             </li>
           </ul>

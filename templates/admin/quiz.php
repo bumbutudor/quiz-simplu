@@ -189,8 +189,8 @@ include'header.php';
   <!-- END TEST QUIZ -->
 
 
-  <!-- Quiz de tip TEXT -->
-    <div class="modal fade" id="3q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- Quiz de tip TEXT> da eroare la adaugare inca un raspuns -->
+    <div class="modal fade" id="3q-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -203,14 +203,14 @@ include'header.php';
                     <thead>
                         <tr><th style="text-align: center;">Text corect?</th><th>Text</th></tr>
                     </thead>
-                    <tbody>
+                    <!-- Aici este o problema -->
+                    <!-- <tbody>
                         <tr class="answer-row">
                             <td style="text-align: center;">
                                <input class="correct" name="correct" value="0" type="checkbox" /> 
                             </td>
                             <td>
                                 <div class="input-group">
-<!--                                     <input type="text" name="answer[]" placeholder="Text" class="form-control"> -->
                                     <textarea name="answer[]" placeholder="Scrie textul aici..." class="form-control" rows="7" cols="70"></textarea>
                                 </div>
                             </td>
@@ -221,12 +221,11 @@ include'header.php';
                             </td>
                             <td>
                                 <div class="input-group">
-                                    <!-- <input type="text" name="answer[]" placeholder="Text" class="form-control"> -->
                                      <textarea name="answer[]" placeholder="Copie textul aici..." class="form-control" rows="7" cols="70"></textarea>
                                 </div>
                             </td>
                         </tr>
-                    </tbody>
+                    </tbody> -->
                 </table>
             </div>
             <div class="modal-footer">

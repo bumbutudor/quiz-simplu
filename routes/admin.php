@@ -493,3 +493,10 @@ $app->put("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
         echo 'Ups';
     }
 });
+
+//TODO copie de rezerva
+$app->get("/admin/backup", $authenticate($app, true), function() use ($app) { 
+    
+    $app->request->getRootUri().'/admin/backup.php';
+        
+});

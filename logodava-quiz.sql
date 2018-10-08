@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Окт 05 2018 г., 10:46
--- Версия сервера: 10.1.35-MariaDB
--- Версия PHP: 7.2.9
+-- Host: 127.0.0.1
+-- Generation Time: Oct 05, 2018 at 11:37 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `logodava-quiz`
+-- Database: `logodava-quiz`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `answers`
+-- Table structure for table `answers`
 --
 
 CREATE TABLE `answers` (
@@ -38,7 +38,7 @@ CREATE TABLE `answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `answers`
+-- Dumping data for table `answers`
 --
 
 INSERT INTO `answers` (`id`, `question_num`, `quiz_id`, `text`, `correct`, `comment`) VALUES
@@ -58,12 +58,14 @@ INSERT INTO `answers` (`id`, `question_num`, `quiz_id`, `text`, `correct`, `comm
 (33, 6, 43, 'el a fost cel care m-a pulit in cap', 1, ''),
 (34, 6, 43, 'sdgsdgs sdgs d sdg sg asga s', 0, ''),
 (37, 7, 43, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 0, ''),
-(38, 7, 43, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 1, '');
+(38, 7, 43, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has su', 1, ''),
+(39, 1, 45, 'medic-È™ef', 1, ''),
+(40, 1, 45, 'medic È™ef', 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -74,21 +76,21 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `module_group`) VALUES
-(1, 'Ortografie', 'Exercitii legate de ortografie. De exemplu: \"Alege forma corecta: Fiti/ fi-ti atenti!\"', 1),
-(2, 'Ortoepie', 'Exercitii legate de ortoepie. De exemplu: \"di la\" coractat in casuta', 2),
-(3, 'Morfologie', 'Exercitii legate de  morfologie. De exemplu: Alege forma corecta: \"hoteluri-hotele\".', 4),
-(4, 'Sintaxa', 'Exercitii legate de sintaxa. De exmplu în enunturi: Un grup de studenti a vizitat/au vizitat muzeul\".', 8),
-(5, 'Lexic & Semantica', 'Exercitii legate de lexic si semantica.', 16),
-(6, 'Stilistica', 'Exercitii legate de stilistica.', 32);
+(1, 'Ortografie', 'ExerciÈ›ii legate de ortografie.', 1),
+(2, 'Ortoepie', 'ExerciÈ›ii legate de ortoepie.', 2),
+(3, 'Morfologie', 'ExerciÈ›ii legate de morfologie.', 4),
+(4, 'SintaxÄƒ', 'ExerciÈ›ii legate de sintaxÄƒ. ', 8),
+(5, 'Lexic È™i SemanticÄƒ', 'ExerciÈ›ii legate de lexic È™i semanticÄƒ.', 16),
+(6, 'StilisticÄƒ', 'ExerciÈ›ii legate de stilisticÄƒ.', 32);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `questions`
+-- Table structure for table `questions`
 --
 
 CREATE TABLE `questions` (
@@ -101,7 +103,7 @@ CREATE TABLE `questions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `questions`
+-- Dumping data for table `questions`
 --
 
 INSERT INTO `questions` (`id`, `num`, `quiz_id`, `text`, `explanation`, `image`) VALUES
@@ -111,12 +113,13 @@ INSERT INTO `questions` (`id`, `num`, `quiz_id`, `text`, `explanation`, `image`)
 (9, 4, 43, '', 'Varianta corecta este fiti atenti, deoarece ...', ''),
 (10, 5, 43, '', '', ''),
 (13, 6, 43, '', '', ''),
-(15, 7, 43, '', '', '');
+(15, 7, 43, '', '', ''),
+(16, 1, 45, '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `quizzes`
+-- Table structure for table `quizzes`
 --
 
 CREATE TABLE `quizzes` (
@@ -132,17 +135,17 @@ CREATE TABLE `quizzes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `quizzes`
+-- Dumping data for table `quizzes`
 --
 
 INSERT INTO `quizzes` (`id`, `name`, `description`, `category`, `quiz_type`, `active`, `created`, `updated`, `id_subcategory`) VALUES
 (43, 'Test 1 Exercitiu', 'Alege varianta corecta:', 1, 1, 1, '2018-09-24 07:53:27', '2018-10-01 10:14:24', 1),
-(45, 'sdgsd', 'dsgsdg', 4, 1, 1, '2018-10-05 07:21:10', '2018-10-05 10:21:10', 6);
+(45, 'ExerciÈ›ii', 'dsgsdg', 4, 1, 1, '2018-10-05 07:21:10', '2018-10-05 12:00:38', 5);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `quiz_types`
+-- Table structure for table `quiz_types`
 --
 
 CREATE TABLE `quiz_types` (
@@ -153,7 +156,7 @@ CREATE TABLE `quiz_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `quiz_types`
+-- Dumping data for table `quiz_types`
 --
 
 INSERT INTO `quiz_types` (`id`, `name`, `description`, `is_visible`) VALUES
@@ -167,7 +170,7 @@ INSERT INTO `quiz_types` (`id`, `name`, `description`, `is_visible`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `quiz_users`
+-- Table structure for table `quiz_users`
 --
 
 CREATE TABLE `quiz_users` (
@@ -181,7 +184,7 @@ CREATE TABLE `quiz_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `quiz_users`
+-- Dumping data for table `quiz_users`
 --
 
 INSERT INTO `quiz_users` (`id`, `quiz_id`, `user_id`, `score`, `start_time`, `date_submitted`, `time_taken`) VALUES
@@ -217,7 +220,7 @@ INSERT INTO `quiz_users` (`id`, `quiz_id`, `user_id`, `score`, `start_time`, `da
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -227,7 +230,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `description`) VALUES
@@ -238,7 +241,7 @@ INSERT INTO `roles` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -248,21 +251,24 @@ CREATE TABLE `sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `sessions`
+-- Dumping data for table `sessions`
 --
 
 INSERT INTO `sessions` (`id`, `access`, `data`) VALUES
 ('2svglmo5kk1tj6ftbemf4spkuj', 1538677128, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":7:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:13:\"Administrator\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:22:\"bumbutudor10@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:1:\"1\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"1\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:2:\"63\";}'),
 ('6aropqhp7tps2pr7qd8oak62rl', 1538722971, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":8:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:18:\"Utilizator Sintaxa\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:17:\"sintaxa@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"11\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0level\";N;s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:1:\"8\";}'),
 ('6svc81870qovtbddb73m68raih', 1538569430, 'slim.flash|a:0:{}quizid|s:2:\"43\";score|i:0;correct|a:0:{}wrong|a:0:{}finished|s:2:\"no\";num|i:0;last|N;timetaken|N;starttime|N;urlRedirect|s:13:\"/quiz/process\";user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":6:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:13:\"Administrator\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:22:\"bumbutudor10@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:1:\"1\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"1\";}nonce|N;'),
+('8fkl1lhgoaenvj78sksoi3mhuk', 1538729517, 'user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":8:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:13:\"Administrator\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:22:\"bumbutudor10@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:1:\"1\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0level\";N;s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"1\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:2:\"63\";}'),
 ('8t65vv62qsmrdolk5vpshbcq9c', 1538725522, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":8:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:18:\"Utilizator Sintaxa\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:17:\"sintaxa@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"11\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0level\";N;s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:1:\"8\";}quizid|s:2:\"43\";score|i:0;correct|a:0:{}wrong|a:0:{}finished|s:2:\"no\";num|i:0;last|N;timetaken|N;starttime|s:19:\"2018-10-05 09:15:18\";nonce|s:32:\"a8a0b313755b352c8bdea23e1ca6f510\";'),
 ('9b1og7mm5bsjcmu4uhab91e90d', 1538682123, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":7:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:13:\"Administrator\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:22:\"bumbutudor10@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:1:\"1\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"1\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:2:\"63\";}'),
 ('9la51nj6t7iikr373oo3rm54k0', 1538657034, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":6:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:13:\"Administrator\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:22:\"bumbutudor10@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:1:\"1\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"1\";}'),
 ('9nlq3c9k306tapu6d54ralbebl', 1538666077, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":6:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:13:\"Administrator\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:22:\"bumbutudor10@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:1:\"1\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"1\";}'),
+('akqodmj1cj7j5qjph1thisgs3u', 1538732039, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":8:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:18:\"Utilizator Sintaxa\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:17:\"sintaxa@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"11\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0level\";N;s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:1:\"8\";}quizid|s:2:\"45\";score|i:0;correct|a:0:{}wrong|a:0:{}finished|s:2:\"no\";num|i:0;last|N;timetaken|N;starttime|N;'),
 ('an5b9uvh9lo2gfbqajimcn0nrg', 1538680006, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":7:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:5:\"Ciala\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:16:\"pidroc@yahoo.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"10\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:2:\"32\";}'),
 ('blohp5j0af1ub2pcgrhot665ps', 1538681703, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":7:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:5:\"Ciala\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:16:\"pidroc@yahoo.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"10\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:2:\"32\";}'),
 ('feee0n42s23c4absmg52odrh0a', 1538682694, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":7:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:5:\"Ciala\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:16:\"pidroc@yahoo.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"10\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:2:\"32\";}'),
 ('kqt3qr47ibt839atta50hhtf5t', 1538651914, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":6:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:13:\"Administrator\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:22:\"bumbutudor10@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:1:\"1\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"1\";}'),
+('l14ech4o96kf6l1vlf92v9en7b', 1538729566, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":8:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:18:\"Utilizator Sintaxa\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:17:\"sintaxa@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"11\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0level\";N;s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:1:\"8\";}'),
 ('l1dj7bl67an4gumouvcn2bu75d', 1538723627, 'slim.flash|a:0:{}user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":8:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:18:\"Utilizator Sintaxa\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:17:\"sintaxa@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"11\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0level\";N;s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:1:\"8\";}'),
 ('mkt12b4c93csakgu154smum6kn', 1538562456, 'slim.flash|a:0:{}quizid|s:2:\"43\";score|i:0;correct|a:0:{}wrong|a:0:{}finished|s:2:\"no\";num|i:0;last|N;timetaken|N;starttime|N;urlRedirect|s:13:\"/quiz/process\";user|O:31:\"SimpleQuiz\\Utils\\User\\AdminUser\":6:{s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:13:\"Administrator\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:22:\"bumbutudor10@gmail.com\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:1:\"1\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"1\";}'),
 ('nei8duq0cbsc3p6nab8v7nbnil', 1538679946, 'slim.flash|a:0:{}user|O:29:\"SimpleQuiz\\Utils\\User\\EndUser\":8:{s:38:\"\0SimpleQuiz\\Utils\\User\\EndUser\0quizzes\";N;s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0name\";s:5:\"Ciala\";s:33:\"\0SimpleQuiz\\Utils\\Base\\User\0email\";s:16:\"pidroc@yahoo.com\";s:36:\"\0SimpleQuiz\\Utils\\Base\\User\0password\";N;s:30:\"\0SimpleQuiz\\Utils\\Base\\User\0id\";s:2:\"10\";s:32:\"\0SimpleQuiz\\Utils\\Base\\User\0role\";s:1:\"3\";s:40:\"\0SimpleQuiz\\Utils\\Base\\User\0moduleaccess\";s:2:\"32\";s:35:\"\0SimpleQuiz\\Utils\\Base\\User\0quizzes\";N;}'),
@@ -274,7 +280,7 @@ INSERT INTO `sessions` (`id`, `access`, `data`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `subcategories`
+-- Table structure for table `subcategories`
 --
 
 CREATE TABLE `subcategories` (
@@ -285,7 +291,7 @@ CREATE TABLE `subcategories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `subcategories`
+-- Dumping data for table `subcategories`
 --
 
 INSERT INTO `subcategories` (`id`, `name`, `description`, `id_category`) VALUES
@@ -307,7 +313,7 @@ INSERT INTO `subcategories` (`id`, `name`, `description`, `id_category`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -324,20 +330,19 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Дамп данных таблицы `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `pass`, `email`, `level`, `role`, `confirmed`, `confirmhash`, `hashstamp`, `id_moduls`) VALUES
 (1, 'Administrator', '$2y$10$LK9O0BesGScRkDWPnpVP3uGVcN6JqB/xsuFTq/xQFpNjsx2DvTOl2', 'bumbutudor10@gmail.com', 1, 1, 1, NULL, NULL, 63),
-(5, 'tudor', '$2y$10$LK9O0BesGScRkDWPnpVP3uGVcN6JqB/xsuFTq/xQFpNjsx2DvTOl2', 'tudor@bumbu.com', 0, 3, 1, NULL, NULL, 1),
 (11, 'Utilizator Sintaxa', '$2y$10$wsPmVLKiB2r8Ig2uO36I7uVJH/vPC1LKBQT/f2Q0.nHNWVsuzMiNW', 'sintaxa@gmail.com', 1, 3, 1, NULL, NULL, 8);
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `answers`
+-- Indexes for table `answers`
 --
 ALTER TABLE `answers`
   ADD PRIMARY KEY (`id`),
@@ -346,13 +351,13 @@ ALTER TABLE `answers`
   ADD KEY `quiz_question_num` (`question_num`,`quiz_id`);
 
 --
--- Индексы таблицы `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `questions`
+-- Indexes for table `questions`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`),
@@ -362,7 +367,7 @@ ALTER TABLE `questions`
   ADD KEY `id` (`id`);
 
 --
--- Индексы таблицы `quizzes`
+-- Indexes for table `quizzes`
 --
 ALTER TABLE `quizzes`
   ADD PRIMARY KEY (`id`),
@@ -373,13 +378,13 @@ ALTER TABLE `quizzes`
   ADD KEY `id_subcategory` (`id_subcategory`);
 
 --
--- Индексы таблицы `quiz_types`
+-- Indexes for table `quiz_types`
 --
 ALTER TABLE `quiz_types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `quiz_users`
+-- Indexes for table `quiz_users`
 --
 ALTER TABLE `quiz_users`
   ADD PRIMARY KEY (`id`),
@@ -387,26 +392,26 @@ ALTER TABLE `quiz_users`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Индексы таблицы `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `subcategories`
+-- Indexes for table `subcategories`
 --
 ALTER TABLE `subcategories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_modul` (`id_category`);
 
 --
--- Индексы таблицы `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -417,88 +422,88 @@ ALTER TABLE `users`
   ADD KEY `id_role` (`role`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `answers`
+-- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT для таблицы `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT для таблицы `questions`
+-- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT для таблицы `quizzes`
+-- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT для таблицы `quiz_types`
+-- AUTO_INCREMENT for table `quiz_types`
 --
 ALTER TABLE `quiz_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT для таблицы `quiz_users`
+-- AUTO_INCREMENT for table `quiz_users`
 --
 ALTER TABLE `quiz_users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT для таблицы `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `subcategories`
+-- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `answers`
+-- Constraints for table `answers`
 --
 ALTER TABLE `answers`
   ADD CONSTRAINT `answers_ibfk_2` FOREIGN KEY (`question_num`,`quiz_id`) REFERENCES `questions` (`num`, `quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `answers_ibfk_3` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `questions`
+-- Constraints for table `questions`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `subcategories`
+-- Constraints for table `subcategories`
 --
 ALTER TABLE `subcategories`
   ADD CONSTRAINT `subcategories_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`) ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role`) REFERENCES `roles` (`id`) ON UPDATE CASCADE;
