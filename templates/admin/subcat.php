@@ -31,7 +31,7 @@ include'header.php';
 </div><!--container-->
 <!-- Modals -->
 
-    <!-- Update Quiz Modal -->
+    <!-- Update Quiz Modal BEDONE la modificare se adauga submodul nou-->
     <div class="modal fade" id="subcat-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -42,17 +42,17 @@ include'header.php';
             <form id="subcatedit" method="post" action="<?php echo $root . '/admin/subcat/'; ?>">
             <div class="modal-body">
                 <p><label for="subcatname">Nume Submodul:</label>
-                   <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" value="<?php echo $subcat->getName(); ?>" />
+                   <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" value="<?php echo $subcat->getNameSubcat(); ?>" />
                    <span class="helper help-block">Vă rugăm să dați un nume submodulului!</span>
                 </p>
                 <p><label for="subcatdescription">Descriere Submodul:</label>
-                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul" value="<?php echo $subcat->getDescription(); ?>" class="form-control" />
+                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul" value="<?php echo $subcat->getDescriptionSubcat(); ?>" class="form-control" />
                 </p>
 
                 <p><label for="id_category">Categorie Submodul:</label>
                    <select name="id_category" id="id_category" class="form-control" />
                      <?php foreach ($categories as $category) : ?>
-                           <?php $selected = ($category->name == $subcat->getCategory()) ? 'selected' : ''; ?>
+                           <?php $selected = ($category->name == $subcat->getCategorySubcat()) ? 'selected' : ''; ?>
                            <option value="<?php echo $category->id; ?>" <?php echo $selected; ?>><?php echo $category->name; ?></option>
                        <?php endforeach; ?>
                    </select>

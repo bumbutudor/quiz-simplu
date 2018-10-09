@@ -29,7 +29,7 @@ include'header.php';
                </div>
                <div class="col-sm-4">
                  <p>
-                  <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adauga  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                  <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adaugă  <span class="glyphicon glyphicon-plus-sign"></span></button>
                  </p>
                </div>
             </div>
@@ -48,8 +48,7 @@ include'header.php';
 
           <div class="col-sm-9" id="intro">
           <!--  <h2>Bine ați venit, domnule <span><?php echo $user->getName(); ?></span> </h2> -->
-           <h2>Vă aflați în modulul <strong><?php echo $category->name; ?></strong></h2>
-            <!-- <p>Ai grijă, avînd putere mare trebuie responsabilități mari.</p><br> -->     
+           <h2>Vă aflați în modulul <strong><?php echo $category->name; ?></strong></h2>   
           </div>
  
           <div id="intro" class="col-md-9" style="padding-top: 10px">
@@ -83,6 +82,7 @@ include'header.php';
                 <button id="addquiz" title="Adauga Un Exercitiu" type="button" class="btn btn-primary pull-right">Creează Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
 
+
         </div>
 
       </div>
@@ -91,45 +91,7 @@ include'header.php';
         
     </div><!--container-->
 
-
-
-  <!-- Add Sucategory Modal -->
-    <div class="modal fade" id="subcategory-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            
-            <h4 class="modal-title">Adaugă Un Submodul:</h4>
-          </div>
-            <form id="subcatadd" method="post" action="<?php echo $root . '/admin/subcat/'; ?>">
-            <div class="modal-body">
-                <p><label for="subcatname">Nume Submodul</label>
-                   <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" />
-                   <span class="helper help-block">Va rugăm să dați o denumire submodulului</span>
-                </p>
-                <p><label for="subcatdescription">Descriere Submodul:</label>
-                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul" class="form-control" />
-                </p>
-                <p><label for="id_category">Modul</label>
-                   <select name="id_category" id="id_category" class="form-control">
-                       <?php foreach ($categories as $category) : ?>
-                            <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
-                       <?php endforeach; ?>
-                   </select>
-                </p>
-
-                
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Anulare</button>
-              <button type="submit" class="btn btn-success">Creeaza Submodul</button>
-            </div>
-            </form>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    
+  
     <!-- Add Quiz Modal -->
     <div class="modal fade" id="quiz-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -149,8 +111,10 @@ include'header.php';
                 </p>
                 <p><label for="category">Modul Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
+                      <!--08/10/20 Iau numai categoria care trebuie BEDONE-->
+                       <!-- <option selected="selected" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?></option> -->
                        <?php foreach ($categories as $category) : ?>
-                            <option value="<?php echo $category->id; ?>"> <?php echo $category->name; ?></option>
+                            <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
                        <?php endforeach; ?>
                    </select>
                 </p>
@@ -186,6 +150,46 @@ include'header.php';
               <button type="submit" class="btn btn-success">Creează Exercițiu</button>
             </div>
           </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+      <!-- Add Sucategory Modal -->
+    <div class="modal fade" id="subcategory-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            
+            <h4 class="modal-title">Adaugă Un Submodul:</h4>
+            
+          </div>
+            <form id="subcatadd" method="post" action="<?php echo $root . '/admin/subcat/'; ?>">
+            <div class="modal-body">
+                <p><label for="subcatname">Nume Submodul</label>
+                   <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" />
+                   <span class="helper help-block">Va rugăm să dați o denumire submodulului</span>
+                </p>
+                <p><label for="subcatdescription">Descriere Submodul:</label>
+                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul" class="form-control" />
+                </p>
+                <!--08/10/20 Iau numai categoria care trebuie BEDONE-->
+                <p><label for="id_category">Modul</label>
+                   <select name="id_category" id="id_category" class="form-control">
+                       <?php foreach ($categories as $category) : ?>
+                            <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                       <?php endforeach; ?>
+                   </select>
+                </p>
+
+                
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Anulare</button>
+              <button type="submit" class="btn btn-success">Creeaza Submodul</button>
+            </div>
+            </form>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

@@ -167,22 +167,22 @@ include'header.php';
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Adaugă o nouă întrebare:</h4>
+            <h4 class="modal-title">Adaugă un nou exemplu:</h4>
           </div>
             <form id="questionTypeInput" method="post" action="">
             <div class="modal-body">
-                <p><label for="newquestiontypeinput">Întrebare:</label>
+                <p><label for="newquestiontypeinput">Exemplu:</label>
                    <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Întrebarea aici" class="form-control" />
-                   <span class="helper help-block">Nu este întrebare!</span>
+                   <span class="helper help-block">Nu este exemlu!</span>
                 </p>
-                <a href="#" id="createInput">Creaza input</a>
+                <a href="#" id="createInput">Creează input</a>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
               <button type="submit" class="btn btn-success">Salvează Exemplu</button>
             </div>
             </form>
-            <button id="transpormText">Butt</button>
+            <button id="transpormText">Buton</button>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
@@ -249,7 +249,7 @@ include'header.php';
             <form id="quizedit" method="post" action="<?php echo $root . '/admin/quiz/'; ?>">
             <div class="modal-body">
                 <p><label for="quizname">Nume Exercițiu:</label>
-                   <input name="quizname" id="quizname" type="text" placeholder="Quiz Name" class="form-control" value="<?php echo $quiz->getName(); ?>" />
+                   <input name="quizname" id="quizname" type="text" placeholder="Denumire Exercițiu" class="form-control" value="<?php echo $quiz->getName(); ?>" />
                    <span class="helper help-block">Vă rugăm să dați un nume exercițiului!</span>
                 </p>
                 <p><label for="description">Sarcina:</label>

@@ -95,9 +95,9 @@ $app->put("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     $quizid = trim($app->request->put('quizid'));
     $quizname = trim($app->request->put('quizname'));
     $quizdescription = trim($app->request->put('description'));
-    $quizcategory = trim($app->request->post('category'));
-    $quizsubcategory = trim($app->request->post('id_subcategory'));
-    $quiz_type = trim($app->request->post('quiz_type'));
+    $quizcategory = trim($app->request->put('category')); //10/08/2018 din post in put
+    $quizsubcategory = trim($app->request->put('id_subcategory')); //10/08/2018 din post in put
+    $quiz_type = trim($app->request->put('quiz_type')); //10/08/2018 din post in put
     $active = (int) trim($app->request()->put('active'));
     
     if ( ($quizname !== '') && ($quizdescription !== '') && (ctype_digit($quizid)) ) {
@@ -206,7 +206,7 @@ $app->put("/admin/subcat/", $authenticate($app, true), function() use ($app) {
         
         $simple = $app->simple;
     
-        if ($simple->updateSubcat($quizmeta)) {
+        if ($simple->updateSubcat($subcatmeta)) {
             $app->flash('success', 'Submodulul a fost modificat!');
 
             $app->redirect($app->request->getRootUri().'/admin/');
@@ -252,7 +252,8 @@ $app->get("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($a
     
     if ($subcat->setIdSubcat($id)) {
         $categories = $app->simple->getCategories(false);
-        $moduleId = $app->session->get('user')->getRole();       
+        $binaryModuleId = $app->session->get('user')->getModuleaccess();
+        $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
         $app->render('admin/subcat.php', array('subcat' => $subcat, 'categories' => $categories));
     }
         
@@ -271,7 +272,8 @@ $app->put("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($a
     
     if ($subcat->setIdSubcat($id)) {
         $categories = $app->simple->getCategories(false);
-        $moduleId = $app->session->get('user')->getRole();
+        $binaryModuleId = $app->session->get('user')->getModuleaccess();
+        $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
         
         
         $app->render('admin/subcat.php', array('subcat' => $subcat, 'categories' => $categories));
@@ -292,7 +294,8 @@ $app->post("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($
     
     if ($subcat->setIdSubcat($id)) {
         $categories = $app->simple->getCategories(false);
-        $moduleId = $app->session->get('user')->getRole();
+        $binaryModuleId = $app->session->get('user')->getModuleaccess();
+        $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
         
 
    
@@ -313,7 +316,8 @@ $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
         $quiz->populateQuestions();
         $quiz->populateUsers();
         $categories = $app->simple->getCategories(false);
-        $moduleId = $app->session->get('user')->getRole();
+        $binaryModuleId = $app->session->get('user')->getModuleaccess();
+        $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
         $subcategories = $app->simple->getCategorySubcategories($moduleId);
         $quiz_types = $app->simple->getQuizTypes(true);
         
@@ -338,7 +342,8 @@ $app->put("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
         $quiz->populateQuestions();
 
         $categories = $app->simple->getCategories(false);
-        $moduleId = $app->session->get('user')->getRole();
+        $binaryModuleId = $app->session->get('user')->getModuleaccess();
+        $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
         $subcategories = $app->simple->getCategorySubcategories($moduleId);
         $quiz_types = $app->simple->getQuizTypes(true);
         
@@ -375,7 +380,8 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
     if ($quiz->setId($id)) {
         $quiz->populateQuestions();
         $categories = $app->simple->getCategories(false);
-        $moduleId = $app->session->get('user')->getRole();
+        $binaryModuleId = $app->session->get('user')->getModuleaccess();
+        $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
         $subcategories = $app->simple->getCategorySubcategories($moduleId);
         $quiz_types = $app->simple->getQuizTypes(true);
         $i = 0;

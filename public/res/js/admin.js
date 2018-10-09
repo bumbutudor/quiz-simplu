@@ -104,7 +104,7 @@ $(function(){
         //console.log(location.pathname);
         var quizid = $(this).attr("data-quiz-id");
         
-        if (window.confirm("Ești 100% sigur că vrei să șteri exemplul?") ) {
+        if (window.confirm("Ești 100% sigur că vrei să ștergi exemplul?") ) {
             
             var parenttr = $(this).parents('tr.quiz');
            

@@ -84,6 +84,8 @@ $app->post('/login/', function () use ($app) {
 
                     $user->setId($authsql->id);
                     $user->setRole($authsql->role);
+                    //HDCODE
+                    $user->setLevel($authsql->level);
                     $user->setModuleaccess($authsql->id_moduls);
 
                     $session->set('user', $user);
@@ -140,6 +142,7 @@ $app->post('/register/', function () use ($app) {
             $user->setModuleaccess($category['module_group']);
             //TODO change hardcoded role id
             $user->setRole(3);
+            //TODO change hardcoded level id
             $user->setLevel(1);
 
             try
