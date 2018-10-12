@@ -13,32 +13,22 @@
     
 </head>
 <body>
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="<?php echo $root; ?>/">Logodava Quiz</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="<?php echo $root; ?>/">Exercitii</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+
     <div class="container">
+
         <p><?php if (isset($errors['loginerror']) ) { echo $errors['loginerror']; }?></p>
         <p><?php if (isset($errors['registererror']) ) { echo $errors['registererror']; }?></p>
+        <div class="row-fluid">
+            <div style="margin-top: 50px;" class="col-sm-6 col-sm-offset-3">
+                <div>
+                   <img style="margin: 0 auto; " class="img-responsive" width="200" src="<?php echo $root; ?>/images/logodava.svg"/> 
+                </div>
+        </div>
         <div class="row-fluid">
             <div class="col-sm-6 col-sm-offset-3">
                 <form id="login-form" class="form-signin" method="post" action="<?php echo $root; ?>/login">
                     <input type="email" name="email" class="form-control" placeholder="Email" autofocus>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Parola">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Logare</button>
                     <br>
                     <p><button id="register-button" class="btn btn-lg btn-primary btn-block">Inregistrare Manager</button></p>

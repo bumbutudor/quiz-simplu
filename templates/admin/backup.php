@@ -1,37 +1,25 @@
+<!-- Adaugat la 10/10/2018 15:40 -->
 <?php
- 
-$username = "supervizor"; 
-$password = "Logodava2018"; 
-$hostname = "localhost"; 
-$dbname   = "logodava-quiz";
- 
-// if mysqldump is on the system path you do not need to specify the full path
-// simply use "mysqldump --add-drop-table ..." in this case
-$dumpfname = $dbname . "_" . date("Y-m-d_H-i-s").".sql";
-$command = "C:\\xampp\\mysql\\bin\\mysqldump --add-drop-table --host=$hostname
-    --user=$username ";
-if ($password) 
-        $command.= "--password=". $password ." "; 
-$command.= $dbname;
-$command.= " > " . $dumpfname;
-system($command);
- 
-// zip the dump file
-$zipfname = $dbname . "_" . date("Y-m-d_H-i-s").".zip";
-$zip = new ZipArchive();
-if($zip->open($zipfname,ZIPARCHIVE::CREATE)) 
-{
-   $zip->addFile($dumpfname,$dumpfname);
-   $zip->close();
-}
- 
-// read zip file and send it to standard output
-if (file_exists($zipfname)) {
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename='.basename($zipfname));
-    flush();
-    readfile($zipfname);
-    exit;
-}
+include'header.php';
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+$database = 'logodava-quiz';
+$user = 'supervizor';
+$pass = 'Logodava2018';
+$host = 'localhost';
+$dir = dirname(__FILE__) . '/Backups/db_copie_' .$database.'_'. date("d.m.Y") . '.sql';
+
+exec("mysqldump --user={$user} --password={$pass} --host={$host} {$database} --result-file={$dir} 2>&1", $output);
+    if (is_null($output)){
+        echo 'Nu se află nimic în baza de date!';
+    } else {
+        // var_dump($output);
+        echo '<h4 style="text-align:center;">Copia de rezervă a fost creată cu success în <code>'.$dir.'</code></h4>';
+    }
+?>
+<div style="text-align: center;"><a class="btn btn-primary" href="<?php echo $root; ?>/admin/"><span class="glyphicon glyphicon-arrow-left"></span> Înapoi</a></div>
+<?php 
+include 'footer.php'; 
 ?>

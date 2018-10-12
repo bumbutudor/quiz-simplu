@@ -71,6 +71,7 @@ class Simple implements Base\ISimple {
             'id_category' => $subcatmeta['id_category'],
 
         ));
+        $subcat->save();
    
         return true;
     }
@@ -160,9 +161,9 @@ class Simple implements Base\ISimple {
         
         return $quiz_types;
     }
-    
+    //modificat 11/10/2018 10:39
     public function getCategoryQuizzes($id) {
-            $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), 'quizzes.active')->where('quizzes.category', $id)->find_many();
+            $quizzes = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->join('quiz_types', array('quizzes.quiz_type', '=', 'quiz_types.id'))->select_many('quizzes.id', 'quizzes.name', 'quizzes.description', array('category' => 'categories.name'), array('id_subcategory' => 'subcategories.name'), array('quiz_type' => 'quiz_types.name'), 'quizzes.active')->where('quizzes.category', $id)->find_many();
         
         return $quizzes;
     }
@@ -204,6 +205,7 @@ class Simple implements Base\ISimple {
         $password = $user->getPassword();
         $module = $user->getModuleaccess();
         $role = $user->getRole();
+        $level = $user->getLevel();
 
         $userexists =  \ORM::for_table('users')->where_any_is(
                 array(
@@ -225,6 +227,7 @@ class Simple implements Base\ISimple {
             $newuser->set('pass', $password);
             $newuser->set('id_moduls', $module);
             $newuser->set('role', $role);
+            $newuser->set('level', $level);
             $newuser->save();
             $user->setId($newuser->id());
 

@@ -46,10 +46,24 @@ include'header.php';
           </div><!--/.sidebar-nav -->
         </div><!--/span-->
 
-          <div class="col-sm-9" id="intro">
-          <!--  <h2>Bine ați venit, domnule <span><?php echo $user->getName(); ?></span> </h2> -->
-           <h2>Vă aflați în modulul <strong><?php echo $category->name; ?></strong></h2>   
+          <div class="col-sm-5" id="intro">
+                  <?php if (isset($admin)) {?>
+            <h2 style="text-align: center;">Aveți acces la toate modulele. Modulul curent este:</h2>
+            
           </div>
+          <div class="col-sm-2">
+            <form id="modulese" method="post" action="<?php echo $root . '/admin'; ?>">
+              <input type="hidden" name="_METHOD" value="POST"/>
+                <?php foreach ($categories as $categorie) : ?>
+                       <input name="selectedModule" type="submit" value="<?php echo $categorie->id; ?>"/>
+                  <?php endforeach; ?>
+            </form>
+          
+            <?php } else {?>
+               <h4><strong><?php echo $category->name; ?></strong> </h4>
+             <?php }?>
+             </div>
+
  
           <div id="intro" class="col-md-9" style="padding-top: 10px">
               <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>

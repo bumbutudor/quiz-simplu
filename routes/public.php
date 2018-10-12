@@ -100,7 +100,7 @@ $app->post('/login/', function () use ($app) {
     }
     else
     {
-        $errors['loginerror'] = "Verificați dacă email-ul sau parola au fost introduse corect și mai încercați din nou.";
+        $errors['loginerror'] = "Verificați dacă email-ul sau parola au fost introduse corect și încercați din nou.";
     }
 
     if (count($errors) > 0)

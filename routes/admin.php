@@ -37,18 +37,75 @@ $app->get("/logout/", function () use ($app) {
 $app->get('/admin/', $authenticate($app, true), function () use ($app) {
     
     $simple = $app->simple;
-    $quizzes = $simple->getQuizzes(false);
+
+    $user = $app->session->get('user');
+
     $categories = $simple->getCategories(false);
-    $binaryModuleId = $app->session->get('user')->getModuleaccess();
+    $binaryModuleId = $user->getModuleaccess();
     $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
     $subcategories = $simple->getCategorySubcategories($moduleId);
     $quiz_types = $simple->getQuizTypes(true);
     $category = $simple->getCategory($moduleId);//pentru a scoate categoria in dependenta de user
+
+    // BEDONE Sa primesc numai exercitiile de la categoria data    
+
+    if($user->getRole() == 1){
+        // if(isset($_GLOBALS["selectedModule"])){
+        //     $quizzes = $simple->getCategoryQuizzes($_GLOBALS["selectedModule"]);
+        //     //adaugat 11/10/2018 10:40
+        //     $subcategories = $simple->getCategorySubcategories(1); 
+        // } else{
+        //     
+        // }
+            $quizzes = $simple->getQuizzes(false);
+
+        $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category, 'admin' => true));
+    }
+    else {
+        $quizzes = $simple->getCategoryQuizzes($moduleId);
+
+        $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category));
+    }
+});
+
+$app->post('/admin/', $authenticate($app, true), function () use ($app) {
+     
+    $simple = $app->simple;
+
+    $user = $app->session->get('user');
+
+    $categories = $simple->getCategories(false);
+    $binaryModuleId = $user->getModuleaccess();
+    $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
+    $subcategories = $simple->getCategorySubcategories($moduleId);
+    $quiz_types = $simple->getQuizTypes(true);
+    $category = $simple->getCategory($moduleId);//pentru a scoate categoria in dependenta de user
+
+    if(trim($app->request->post('selectedModule'))) {
+        $_GLOBALS["selectedModule"] = trim($app->request->post('selectedModule'));
+    }
+
     // BEDONE Sa primesc numai exercitiile de la categoria data
     // $quizzes = $simple->getCategoryQuizzes($moduleId); 
 
-    $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category));
+    if($user->getRole() == 1){
+        if(isset($_GLOBALS["selectedModule"])){
+            $quizzes = $simple->getCategoryQuizzes($app->request->post('selectedModule'));
+            //adaugat 11/10/2018 10:40
+            $subcategories = $simple->getCategorySubcategories($app->request->post('selectedModule')); 
+        } else{
+            $quizzes = $simple->getQuizzes(false);
+        }
+
+        $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category, 'admin' => true));
+    }
+    else {
+        $quizzes = $simple->getQuizzes(false);
+
+        $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category));
+    }
 });
+
 
 $app->post("/admin/quiz/", $authenticate($app, true), function() use ($app) {
     
@@ -501,8 +558,15 @@ $app->put("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
 });
 
 //TODO copie de rezerva
-$app->get("/admin/backup", $authenticate($app, true), function() use ($app) { 
+//TODO schimbare a parolei
+$app->get("/admin/config/", $authenticate($app, true), function() use ($app) { 
     
-    $app->request->getRootUri().'/admin/backup.php';
+    $app->render('/admin/config.php');
+        
+});
+
+$app->get("/admin/backup/", $authenticate($app, true), function() use ($app) { 
+    
+    $app->render('/admin/backup.php');
         
 });

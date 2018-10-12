@@ -84,3 +84,9 @@ a#editor {cursor:pointer;}
 p.signed {padding-right:20px;}
 .helper { display:none;}
 #submitstart{padding: 10px 30px;}
+img .logo{
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  display: block;
+}

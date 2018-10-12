@@ -57,7 +57,8 @@ include'header.php';
                        <?php endforeach; ?>
                    </select>
                 </p>
-                
+                <input type="hidden" name="_METHOD" value="PUT" />
+                <input type="hidden" name="subcatid" value="<?php echo $subcat->getIdSubcat(); ?>" />
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
