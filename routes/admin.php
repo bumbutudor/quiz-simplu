@@ -46,24 +46,14 @@ $app->get('/admin/', $authenticate($app, true), function () use ($app) {
     $subcategories = $simple->getCategorySubcategories($moduleId);
     $quiz_types = $simple->getQuizTypes(true);
     $category = $simple->getCategory($moduleId);//pentru a scoate categoria in dependenta de user
+    $quizzes = $simple->getCategoryQuizzes($moduleId);
 
     // BEDONE Sa primesc numai exercitiile de la categoria data    
 
     if($user->getRole() == 1){
-        // if(isset($_GLOBALS["selectedModule"])){
-        //     $quizzes = $simple->getCategoryQuizzes($_GLOBALS["selectedModule"]);
-        //     //adaugat 11/10/2018 10:40
-        //     $subcategories = $simple->getCategorySubcategories(1); 
-        // } else{
-        //     
-        // }
-            $quizzes = $simple->getQuizzes(false);
-
         $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category, 'admin' => true));
     }
     else {
-        $quizzes = $simple->getCategoryQuizzes($moduleId);
-
         $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category));
     }
 });
@@ -81,21 +71,19 @@ $app->post('/admin/', $authenticate($app, true), function () use ($app) {
     $quiz_types = $simple->getQuizTypes(true);
     $category = $simple->getCategory($moduleId);//pentru a scoate categoria in dependenta de user
 
-    if(trim($app->request->post('selectedModule'))) {
-        $_GLOBALS["selectedModule"] = trim($app->request->post('selectedModule'));
+    if(trim($app->request->post('userModule'))) {
+        $_SESSION["userModule"] = trim($app->request->post('userModule')[0]);
     }
 
     // BEDONE Sa primesc numai exercitiile de la categoria data
     // $quizzes = $simple->getCategoryQuizzes($moduleId); 
 
     if($user->getRole() == 1){
-        if(isset($_GLOBALS["selectedModule"])){
-            $quizzes = $simple->getCategoryQuizzes($app->request->post('selectedModule'));
+        if(isset($_SESSION["userModule"])){
+            $quizzes = $simple->getCategoryQuizzes($app->request->post('userModule'));
             //adaugat 11/10/2018 10:40
-            $subcategories = $simple->getCategorySubcategories($app->request->post('selectedModule')); 
-        } else{
-            $quizzes = $simple->getQuizzes(false);
-        }
+            $subcategories = $simple->getCategorySubcategories($app->request->post('userModule')); 
+        } 
 
         $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category, 'admin' => true));
     }
@@ -364,7 +352,6 @@ $app->post("/admin/subcat/:id/", $authenticate($app, true), function($id) use ($
 });
 
 
-//29/09/2018 Schimbat cu locul
 $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
 
     $quiz = $app->quiz;
@@ -372,16 +359,30 @@ $app->get("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
     if ($quiz->setId($id)) {
         $quiz->populateQuestions();
         $quiz->populateUsers();
-        $categories = $app->simple->getCategories(false);
+
         $binaryModuleId = $app->session->get('user')->getModuleaccess();
         $moduleId = SimpleQuiz\Utils\Base\Utils::binaryCalculation($binaryModuleId);
-        $subcategories = $app->simple->getCategorySubcategories($moduleId);
+        if(isset($_SESSION["userModule"])) {
+            $subcategories = $app->simple->getCategorySubcategories($_SESSION["userModule"]);
+        } else {
+            $subcategories = $app->simple->getCategorySubcategories($moduleId);
+        }
+
+        $quiz_type = $quiz->getQuizType()->id;
         $quiz_types = $app->simple->getQuizTypes(true);
+
+        // if($user->getRole() == 1) {
+        //     $categories = $app->simple->getCategories(false);
+        // } else {
+        //     $categories = $app->simple->getCategory($moduleId);
+        // }
+        $category = $app->simple->getCategory($_SESSION["userModule"]);
         
-        $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types));
+        $app->render('admin/quiz.php', array('quiz' => $quiz, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'quiz_type' => $quiz_type,'category' => $category));
     }
         
 })->conditions(array('id' => '\d+'));
+
 
 $app->put("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
     
@@ -466,7 +467,7 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
         }
         $quiz->populateUsers();
    
-        $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types, 'subcategories' => $subcategories));
+        $app->redirect($app->request->getRootUri().'/admin/quiz/'.$quiz->getId(), array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types, 'subcategories' => $subcategories));
     } else {
         echo 'oops';
     }

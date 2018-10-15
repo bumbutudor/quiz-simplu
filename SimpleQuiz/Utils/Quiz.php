@@ -12,6 +12,7 @@ class Quiz implements Base\IQuiz {
     protected $_category;
     protected $_id_subcategory;
     protected $_quiz_type;
+    protected $_quiz_type_class;
     protected $_active;
     protected $_answers = array();
     protected $_questions;
@@ -34,7 +35,7 @@ class Quiz implements Base\IQuiz {
      */
     public function setId($id)
     {
-        $quizobj = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->join('quiz_types', array('quizzes.quiz_type', '=', 'quiz_types.id'))->select_many('quizzes.name', 'quizzes.description', array('category' => 'categories.name'), array('id_subcategory' => 'subcategories.name'), array('quiz_type' => 'quiz_types.name'), 'quizzes.active')->find_one($id);
+        $quizobj = \ORM::for_table('quizzes')->join('categories', array('quizzes.category', '=', 'categories.id'))->join('subcategories', array('quizzes.id_subcategory', '=', 'subcategories.id'))->join('quiz_types', array('quizzes.quiz_type', '=', 'quiz_types.id'))->select_many('quizzes.name', 'quizzes.description', array('category' => 'categories.name'), array('id_subcategory' => 'subcategories.name'), array('quiz_type' => 'quiz_types.name'), array('quiz_type_class' => 'quiz_types.class'), array('quiz_type_id' => 'quiz_types.id'), 'quizzes.active')->find_one($id);
        
         if ($quizobj) {
             $this->_id = $id;
@@ -42,8 +43,9 @@ class Quiz implements Base\IQuiz {
             $this->_description = $quizobj->description;
             $this->_category = $quizobj->category;
             $this->_id_subcategory = $quizobj->id_subcategory;
-            $this->_quiz_type = $quizobj->quiz_type;
+            $this->_quiz_type = $obj = (object) array('name'=> $quizobj->quiz_type, 'id' => $quizobj->quiz_type_id);
             $this->_active = $quizobj->active;
+            $this->_quiz_type_class = $quizobj->quiz_type_class;
             
             return true;
         }
@@ -271,7 +273,11 @@ class Quiz implements Base\IQuiz {
             /**
              * @todo make the instance name dynamic
              */
-            $questionObject = new RadioQuestion($question['id'], $question['num'], $this->_id, $question['text'], $question['explanation']);
+
+            $clazz = new \ReflectionClass('SimpleQuiz\Utils\\'.$this->_quiz_type_class);
+            $instance = $clazz->newInstanceArgs( array($question['id'], $question['num'], $this->_id, $question['text'], $question['explanation']));
+
+            $questionObject = $instance;        //new RadioQuestion($question['id'], $question['num'], $this->_id, $question['text'], $question['explanation']);
             $this->_questions->attach($questionObject);
         }
 

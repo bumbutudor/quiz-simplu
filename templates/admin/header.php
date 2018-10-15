@@ -15,20 +15,21 @@
 </head>
 <body>
     <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
+    <div  style="background-color: #002b7f;" class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo $root; ?>/">Logodava Quiz</a>
+          <a style="color: #C8C8C8; font-size: 24px;" class="navbar-brand" href="<?php echo $root; ?>/"><img width="50" src="<?php echo $root; ?>/images/logodava-white.svg"/> Logodava Quiz</a>
         </div>
         <div class="navbar-collapse collapse">
-            
+      
+         
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown active">
+            <li style="padding-top: 15px;" class="dropdown active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrare <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="<?php echo $root; ?>/admin/">Toate exercițiile</a></li>
@@ -40,7 +41,7 @@
                 </ul>
             </li>
           </ul>
-            <p class="signed navbar-text pull-right"><span class="glyphicon glyphicon-user"></span> Logat ca
+            <p style="color: #C8C8C8; padding-top: 15px;" class="signed navbar-text pull-right "><span class="glyphicon glyphicon-user"></span> Logat ca
                 <strong><?php echo $user->getName(); ?></strong></p>
         </div><!--/.nav-collapse -->
       </div>

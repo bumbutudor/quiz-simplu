@@ -90,6 +90,8 @@ $app->post('/login/', function () use ($app) {
 
                     $session->set('user', $user);
                     $session->regenerate();
+
+                    $_SESSION["userModule"] = SimpleQuiz\Utils\Base\Utils::binaryCalculation($authsql->id_moduls);
                 }
             }
             else

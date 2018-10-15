@@ -1,5 +1,7 @@
 <?php
 include'header.php';
+
+use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
 ?>
 <div id="container" class="quiz">
       <div class="row">
@@ -18,11 +20,11 @@ include'header.php';
                           <li class="list-group-item"><strong>Sarcina</strong>: <?php echo $quiz->getDescription(); ?></li>
                           <li class="list-group-item"><strong>Modul</strong>: <?php echo $quiz->getCategory(); ?></li>
                           <li class="list-group-item"><strong>Submodul</strong>: <?php echo $quiz->getSubcategory(); ?></li>
-                          <li class="list-group-item"><strong>Tip Exercițiu</strong>: <?php echo $quiz->getQuizType(); ?></li>
+                          <li class="list-group-item"><strong>Tip Exercițiu</strong>: <?php echo $quiz->getQuizType()->name; ?></li>
                           <li class="list-group-item"><strong>Activ? </strong><?php echo $quiz->isActive() ? '<span class="glyphicon glyphicon-ok">' : '<span class="glyphicon glyphicon-remove-circle">' ?></li>
                           <li class="list-group-item"><strong>Număr de exemple</strong>: <span class="badge"><?php
                                   echo $quiz->countQuestions(); ?></span></li>
-                          <li class="list-group-item"><strong>De câte ori a fost rezolvat</strong>: <span class="badge"><?php echo count($quiz->getUsers()); ?></span></li>
+                          
                       </ul>
                         <button id="editquiz" title="Modifică Detaliile Exercițiului" type="button" class="btn btn-primary">Editează Detalii Exercițiu <span class="glyphicon glyphicon-pencil"></span></button>
                     </div>
@@ -94,149 +96,22 @@ include'header.php';
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Adaugă un exemplu nou:</h4>
           </div>
-            <form id="questionadd" method="post" action="">
-            <div class="modal-body">
-                <!-- <p><label for="newquestioninput">Întrebare:</label>
-                   <input name="questiontext" id="newquestioninput" type="text" placeholder="Întrebarea aici" class="form-control" />
-                   <span class="helper help-block">Nu este întrebare!</span>
-                </p> -->
-                <h5><strong>Răspunsuri:</strong></h5>
-                <table id="newanswers" class="table table-responsive table-hover table-bordered">
-                    <thead>
-                        <tr><th style="text-align: center;">Răspuns corect?</th><th>Raspuns</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr class="answer-row">
-                            <td style="text-align: center;">
-                               <input class="correct" name="correct" value="0" type="radio" /> 
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                    <input type="text" name="answer[]" placeholder="Răspuns" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
-                                    </span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="answer-row">
-                            <td style="text-align: center;">
-                               <input class="correct" name="correct" value="1" type="radio" /> 
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                    <input type="text" name="answer[]" placeholder="Răspuns" class="form-control">
-                                    <span class="input-group-btn">
-                                        <button class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
-                                    </span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="template answer-row" style="display:none;">
-                            <td style="text-align: center;">
-                               <input class="correct" name="correct" type="radio" /> 
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                <input type="text" placeholder="Răspuns" name="" value="" class="form-control answerinput">
-                                <span class="input-group-btn">
-                                    <button class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
-                                </span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button></p>
-                <p style="margin-top: 50px"><label for="">Comentariu: <sup>*</sup></label>
-                   <input name="explanation" id="explanation" type="text" placeholder="Comentează aici" class="form-control" />
-                </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
-              <button type="submit" class="btn btn-success">Salvează Exemplu</button>
-            </div>
-            </form>
+            <?php 
+              if($quiz_type == EnumTypeQuestions::RadioQuestion) {
+                  include'radioquestion.php';
+              } elseif ($quiz_type == EnumTypeQuestions::SelectQuestion) {
+                  include'selectQuestion.php';
+              } elseif ($quiz_type == EnumTypeQuestions::InputQuestion) {
+                  include'inputquestion.php';
+              } elseif ($quiz_type == EnumTypeQuestions::TextQuestion) {
+                  include'radioquestion.php';
+              } elseif ($quiz_type == EnumTypeQuestions::ImageQuestion) {
+                  include'radioquestion.php';
+              }?>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-  <!-- START TEST QUIZ -->
-    <div class="modal fade" id="1q-add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Adaugă un nou exemplu:</h4>
-          </div>
-            <form id="questionTypeInput" method="post" action="">
-            <div class="modal-body">
-                <p><label for="newquestiontypeinput">Exemplu:</label>
-                   <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Întrebarea aici" class="form-control" />
-                   <span class="helper help-block">Nu este exemlu!</span>
-                </p>
-                <a href="#" id="createInput">Creează input</a>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
-              <button type="submit" class="btn btn-success">Salvează Exemplu</button>
-            </div>
-            </form>
-            <button id="transpormText">Buton</button>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-  <!-- END TEST QUIZ -->
-
-
-  <!-- Quiz de tip TEXT> da eroare la adaugare inca un raspuns -->
-    <div class="modal fade" id="3q-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Adaugă un exemplu nou:</h4>
-          </div>
-            <form id="questionadd" method="post" action="">
-            <div class="modal-body">
-                <table id="newanswers" class="table table-responsive table-hover table-bordered">
-                    <thead>
-                        <tr><th style="text-align: center;">Text corect?</th><th>Text</th></tr>
-                    </thead>
-                    <!-- Aici este o problema -->
-                    <!-- <tbody>
-                        <tr class="answer-row">
-                            <td style="text-align: center;">
-                               <input class="correct" name="correct" value="0" type="checkbox" /> 
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                    <textarea name="answer[]" placeholder="Scrie textul aici..." class="form-control" rows="7" cols="70"></textarea>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="answer-row">
-                            <td style="text-align: center;">
-                               <input class="correct" name="correct" value="1" type="checkbox" /> 
-                            </td>
-                            <td>
-                                <div class="input-group">
-                                     <textarea name="answer[]" placeholder="Copie textul aici..." class="form-control" rows="7" cols="70"></textarea>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody> -->
-                </table>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
-              <button type="submit" class="btn btn-success">Salvează Exemplu</button>
-            </div>
-            </form>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-  <!-- Quiz de tip TEXT -->
     
     <!-- Update Quiz Modal -->
     <div class="modal fade" id="quiz-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -258,10 +133,8 @@ include'header.php';
 
                 <p><label for="category">Modul Exercițiu:</label>
                    <select name="category" id="category" class="form-control" />
-                     <?php foreach ($categories as $category) : ?>
-                           <?php $selected = ($category->name == $quiz->getCategory()) ? 'selected' : ''; ?>
-                           <option value="<?php echo $category->id; ?>" <?php echo $selected; ?>><?php echo $category->name; ?></option>
-                       <?php endforeach; ?>
+                       <?php $selected = ($category->name == $quiz->getCategory()) ? 'selected' : ''; ?>
+                       <option value="<?php echo $category->id; ?>" <?php echo $selected; ?>><?php echo $category->name; ?></option>
                    </select>
                 </p>
 
@@ -280,7 +153,7 @@ include'header.php';
                 <p><label for="quiz_type">Tip Exercițiu:</label>
                    <select name="quiz_type" id="quiz_type" class="form-control" />
                      <?php foreach ($quiz_types as $quiz_type) : ?>
-                             <?php $selected = ($quiz_type->name == $quiz->getQuizType()) ? 'selected' : ''; ?>
+                             <?php $selected = ($quiz_type->name == $quiz->getQuizType()->name) ? 'selected' : ''; ?>
                             <option value="<?php echo $quiz_type->id; ?>" <?php echo $selected; ?>><?php echo $quiz_type->name; ?></option>
                        <?php endforeach; ?>
                    </select>

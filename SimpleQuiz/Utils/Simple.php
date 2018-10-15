@@ -136,7 +136,7 @@ class Simple implements Base\ISimple {
     
     public function getCategory($id) {
         
-        $category = \ORM::for_table('categories')->select_many('name','description', 'module_group')->find_one($id);
+        $category = \ORM::for_table('categories')->select_many('id','name','description', 'module_group')->find_one($id);
         
         return $category;
     }
@@ -150,7 +150,7 @@ class Simple implements Base\ISimple {
 
     public function getQuizType($id) {
         
-        $quiz_type = \ORM::for_table('quiz_types')->select_many('name','description')->find_one($id);
+        $quiz_type = \ORM::for_table('quiz_types')->select_many('id','name','description')->find_one($id);
         
         return $quiz_type;
     }

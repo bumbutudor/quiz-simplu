@@ -216,36 +216,65 @@ $(function(){
    
    //added 25/09 by Jhonny 
     function highlightedText() {
-    try {
-        if (window.ActiveXObject) {
-            var c = document.selection.createRange();
-            return c.htmlText;
-        }
-    
-        var nNd = document.createElement("span");
-        nNd.setAttribute("id", "answer");
-        var w = getSelection().getRangeAt(0);
-        w.surroundContents(nNd);
-        return nNd.innerHTML;
-    } catch (e) {
-        if (window.ActiveXObject) {
-            return document.selection.createRange();
-        } else {
-            return getSelection();
+        try {
+            if (window.ActiveXObject) {
+                var c = document.selection.createRange();
+                return c.htmlText;
+            }
+        
+            var nNd = document.createElement("span");
+            nNd.setAttribute("id", "answer");
+            var w = getSelection().getRangeAt(0);
+            w.surroundContents(nNd);
+            return nNd.innerHTML;
+        } catch (e) {
+            if (window.ActiveXObject) {
+                return document.selection.createRange();
+            } else {
+                return getSelection();
+            }
         }
     }
-}
     
     $('#createInput').on('click', function() {
         var selectedElement = highlightedText();
-        $('#answer').replaceWith( "<input id='param1'/>" );
+        if(selectedElement.localeCompare("") !== 0) {
+            $('#answer').replaceWith( "<input name='answer[]' id='newanswers' class='form-control' value='"+ selectedElement +"' readonly/>" );
+        }
+    });
+
+    $('#createSelect').on('click', function() {
+        var selectedElement = highlightedText();
+        var options = $('#newanswers [name="answer[]"');
+        var selectTag = "";
+
+        if(selectedElement.localeCompare("") !== 0) {
+            selectTag += "<select id='newanswers' class='form-control'>";
+            options.each(function(index, value){
+                selectTag += "<option value='"+ index +"'>"+ $(value).val() +"</option>";
+            });
+            selectTag += "</select>";
+
+            $('#answer').replaceWith(selectTag);
+        }
     });
 
     $('#transpormText').on('click', function() {
-       var inputText = $('#newquestiontypeinput');
-       inputText.replaceWith("<span>" + inputText.val() + "</span>");
+       var inputText = $('input#newquestiontypeinput');
+       inputText.replaceWith("<span id='newquestiontypeinput'>" + inputText.val() + "</span>");
 
        inputText.hide();
+       $(this).addClass('hidden');
+       $('#editText').removeClass('hidden');
+    });
+
+    $('#editText').on('click', function() {
+        var inputText = $('span#newquestiontypeinput');
+        var text = inputText.text();
+        inputText.replaceWith("<input name='questiontext' id='newquestiontypeinput' type='text' value='"+ text +"' class='form-control'>");
+
+        $(this).addClass('hidden');
+        $('#transpormText').removeClass('hidden');
     });
 
     

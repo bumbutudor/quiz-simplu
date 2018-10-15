@@ -31,7 +31,7 @@
               <h4>Teste Recente</h4>
               <div class="list-group">
               <?php foreach ($quizzes as $quiz) : 
-                    echo '<a href="'.$root . '/quiz/' . $quiz->id .'" class="list-group-item">';
+                    echo '<a href="'.$root . '/quiz/' . $quiz->id .'/test" class="list-group-item">';
                     echo '<h4 class="list-group-item-heading">'. $quiz->name . '</h4>';
 
                     echo '</a>';

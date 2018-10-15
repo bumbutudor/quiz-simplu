@@ -4,68 +4,49 @@ include'header.php';
 
 <div id="container" class="quiz">
       
-      <div class="row" >
-         <div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="sidebar-nav">
-           
-<!--            <div class="row">
-              <div class="col-sm-12">
-                <ul>
-                  <li class="dropdown active">
-                    <a href="<?php echo $root; ?>/admin/" class="dropdown-toggle" data-toggle="dropdown">Module <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <?php foreach ($categories as $cat): ?>
-                           <li><a href="<?php echo $root; ?>/admin/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
-              </ul>
-             </div>
-           </div> -->
-             <div class="row">
-
-               <div class="col-sm-6">
-                 <h4>Submodule</h4>                       
-               </div>
-               <div class="col-sm-4">
-                 <p>
-                  <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adaugă  <span class="glyphicon glyphicon-plus-sign"></span></button>
-                 </p>
-               </div>
-            </div>
-             <div class="row">
-               <div class="col-sm-12">
-                 <div class="list-group">
-                <?php foreach ($subcategories as $subcat): ?>
-                       <ul><li><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
-                <?php endforeach; ?>
-              </div>
-               </div>
-             </div>
-          
-          </div><!--/.sidebar-nav -->
-        </div><!--/span-->
-
-          <div class="col-sm-5" id="intro">
-                  <?php if (isset($admin)) {?>
-            <h2 style="text-align: center;">Aveți acces la toate modulele. Modulul curent este:</h2>
-            
-          </div>
-          <div class="col-sm-2">
+      <div class="row">
+          <div class="col-sm-12" id="intro2">
+           <?php if (isset($admin)) {?> 
             <form id="modulese" method="post" action="<?php echo $root . '/admin'; ?>">
               <input type="hidden" name="_METHOD" value="POST"/>
                 <?php foreach ($categories as $categorie) : ?>
-                       <input name="selectedModule" type="submit" value="<?php echo $categorie->id; ?>"/>
+                       <input name="userModule" type="submit" value="<?php echo $categorie->id.". ".$categorie->name?>" class="btn btn-color btn-lg"/>
                   <?php endforeach; ?>
             </form>
           
             <?php } else {?>
-               <h4><strong><?php echo $category->name; ?></strong> </h4>
+               <h3><strong><?php echo $category->name; ?></strong> </h3>
              <?php }?>
              </div>
-
- 
-          <div id="intro" class="col-md-9" style="padding-top: 10px">
+      </div>
+      
+      <div class="row" >
+        <div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="sidebar-nav">
+            <div class="row">
+             <div class="col-sm-12" style="padding-top: 10px">
+               <h4>Submodule</h4>                       
+             </div>              
+            </div>
+            <div class="row">
+              <div class="col-sm-12" >
+                <div class="list-group">
+                  <?php foreach ($subcategories as $subcat): ?>
+                    <ul><li><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                 <p>
+                  <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adaugă Un Submodul  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                 </p>
+               </div>
+            </div>
+          </div><!--/.sidebar-nav -->
+        </div><!--/span-->
+        <div id="intro" class="col-md-10" style="padding-top: 10px">
               <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
               <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
               <div id="ajaxupdater" class="alert"></div>
@@ -98,7 +79,6 @@ include'header.php';
 
 
         </div>
-
       </div>
 
 
