@@ -122,12 +122,24 @@ img .logo{
   border-color: #002b7f !important;
 }
 
-/*.btn-primary:hover,
+.btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   color: #ffffff !important;
-  background-color: #002b7f !important;
-  border-color: #002b7f !important;
-}*/
+  background-color: #001a4f !important;
+  border-color: #001a4f !important;
+}
+
+a {
+    color: #002b7f;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active,
+a.active {
+  color: #001a4f !important;
+}
