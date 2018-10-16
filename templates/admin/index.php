@@ -10,7 +10,8 @@ include'header.php';
             <form id="modulese" method="post" action="<?php echo $root . '/admin'; ?>">
               <input type="hidden" name="_METHOD" value="POST"/>
                 <?php foreach ($categories as $categorie) : ?>
-                       <input name="userModule" type="submit" value="<?php echo $categorie->id.". ".$categorie->name?>" class="btn btn-color btn-lg"/>
+                       <input name="userModule" type="submit" value="<?php echo $categorie->id.". ".$categorie->name?>" class="btn btn-color btn-lg"
+                       style="<?php if($_SESSION["userModule"] == $categorie->id){ echo "background-color:#3f51b5 !important; color: white !important;"; }?>"/>
                   <?php endforeach; ?>
             </form>
           

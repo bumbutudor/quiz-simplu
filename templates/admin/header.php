@@ -34,7 +34,7 @@
                   <a href="#" class="signed pull-right "><span class="glyphicon glyphicon-user"></span> Logat ca
                 <em><?php echo $user->getName(); ?></em></a>
                 </li>
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administrare <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo $root; ?>/admin/">Toate exercițiile</a></li>

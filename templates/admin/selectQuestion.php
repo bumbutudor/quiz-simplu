@@ -1,12 +1,12 @@
 <form id="selectTypeInput" method="post" action="">
       <div class="modal-body">
-          <p><label for="newquestiontypeinput">Exemplu:</label>
+          <p style="display: inline-block;" "><label for="newquestiontypeinput">Exemplu:</label>
              <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Întrebarea aici" class="form-control" />
              <span class="helper help-block">Nu este exemlu!</span>
           </p>
 
-          <button type="button" id="transpormText">Accepta</button>
-          <button type="button" id="editText" class="hidden">Editeaza optiunile</button>
+          <button type="button" id="transpormText" class="btn btn-secondary">Accepta</button>
+          <button type="button" id="editText" class="hidden btn btn-secondary">Editeaza optiunile</button>
 
                 <h5><strong>Răspunsuri:</strong></h5>
                 <table id="newanswers" class="table table-responsive table-hover table-bordered">
@@ -58,7 +58,7 @@
                 <p>
                   <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button>
                 </p>
-                <button type="button" id="createSelect">Creează select</button>
+                <button type="button" id="createSelect" class="btn btn-primary">Creează select</button>
                 
                 <p style="margin-top: 50px"><label for="">Comentariu: <sup>*</sup></label>
                    <input name="explanation" id="explanation" type="text" placeholder="Comentează aici" class="form-control" />

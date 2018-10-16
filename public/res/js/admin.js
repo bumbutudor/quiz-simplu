@@ -235,6 +235,20 @@ $(function(){
             }
         }
     }
+
+    function selectTagGenerator() {
+        var selectTag = "";
+        var options = $('#newanswers [name="answer[]"');
+
+        selectTag += "<select id='selectForm' class='form-control'>";
+        options.each(function(index, value){
+            selectTag += "<option value='"+ index +"'>"+ $(value).val() +"</option>";
+        });
+        
+        selectTag += "</select>";
+
+        return selectTag;
+    }
     
     $('#createInput').on('click', function() {
         var selectedElement = highlightedText();
@@ -243,20 +257,27 @@ $(function(){
         }
     });
 
+    $('#createTextareaInput').on('click', function() {
+        var selectedElement = highlightedText();
+        if(selectedElement.localeCompare("") !== 0) {
+            $('#answer').replaceWith( "<input name='answer[]' class='form-control' value='"+ selectedElement +"' readonly/>" + '&nbsp' );
+        }
+    });
+
     $('#createSelect').on('click', function() {
         var selectedElement = highlightedText();
-        var options = $('#newanswers [name="answer[]"');
-        var selectTag = "";
 
         if(selectedElement.localeCompare("") !== 0) {
-            selectTag += "<select id='newanswers' class='form-control'>";
-            options.each(function(index, value){
-                selectTag += "<option value='"+ index +"'>"+ $(value).val() +"</option>";
-            });
-            selectTag += "</select>";
+            var selectTag = selectTagGenerator();
 
             $('#answer').replaceWith(selectTag);
         }
+    });
+
+    $('#selectForm').on('click', function() {
+        var selectTag = selectTagGenerator();
+
+        $('#selectTag').replaceWith(selectTag);
     });
 
     $('#transpormText').on('click', function() {
@@ -268,6 +289,15 @@ $(function(){
        $('#editText').removeClass('hidden');
     });
 
+    $('#transpormTextarea').on('click', function() {
+       var inputText = $('textarea#newquestiontypeinput');
+       inputText.replaceWith("<span id='newquestiontypeinput'>" + inputText.val() + "</span>");
+
+       inputText.hide();
+       $(this).addClass('hidden');
+       $('#editTextarea').removeClass('hidden');
+    });
+
     $('#editText').on('click', function() {
         var inputText = $('span#newquestiontypeinput');
         var text = inputText.text();
@@ -275,6 +305,15 @@ $(function(){
 
         $(this).addClass('hidden');
         $('#transpormText').removeClass('hidden');
+    });
+
+    $('#editTextarea').on('click', function() {
+        var inputText = $('span#newquestiontypeinput');
+        var text = inputText.text();
+        inputText.replaceWith("<textarea name='questiontext' id='newquestiontypeinput' type='text' class='form-control'>"+ text +"</textarea>");
+
+        $(this).addClass('hidden');
+        $('#transpormTextarea').removeClass('hidden');
     });
 
     

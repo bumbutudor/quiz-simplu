@@ -104,7 +104,7 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
               } elseif ($quiz_type == EnumTypeQuestions::InputQuestion) {
                   include'inputquestion.php';
               } elseif ($quiz_type == EnumTypeQuestions::TextQuestion) {
-                  include'radioquestion.php';
+                  include'textquestion.php';
               } elseif ($quiz_type == EnumTypeQuestions::ImageQuestion) {
                   include'radioquestion.php';
               }?>

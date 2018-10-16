@@ -46,11 +46,22 @@ $app->get('/admin/', $authenticate($app, true), function () use ($app) {
     $subcategories = $simple->getCategorySubcategories($moduleId);
     $quiz_types = $simple->getQuizTypes(true);
     $category = $simple->getCategory($moduleId);//pentru a scoate categoria in dependenta de user
-    $quizzes = $simple->getCategoryQuizzes($moduleId);
+    $quizzes = $simple->getCategoryQuizzes($moduleId);  
 
-    // BEDONE Sa primesc numai exercitiile de la categoria data    
+
+    // if($user->getRole() == 1){
+    //     $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category, 'admin' => true));
+    // }
+    // else {
+    //     $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category));
+    // }
 
     if($user->getRole() == 1){
+        if(isset($_SESSION["userModule"])){
+            $quizzes = $simple->getCategoryQuizzes($_SESSION["userModule"]);
+            $subcategories = $simple->getCategorySubcategories($_SESSION["userModule"]); 
+        } 
+
         $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category, 'admin' => true));
     }
     else {
@@ -75,14 +86,11 @@ $app->post('/admin/', $authenticate($app, true), function () use ($app) {
         $_SESSION["userModule"] = trim($app->request->post('userModule')[0]);
     }
 
-    // BEDONE Sa primesc numai exercitiile de la categoria data
-    // $quizzes = $simple->getCategoryQuizzes($moduleId); 
-
     if($user->getRole() == 1){
         if(isset($_SESSION["userModule"])){
-            $quizzes = $simple->getCategoryQuizzes($app->request->post('userModule'));
+            $quizzes = $simple->getCategoryQuizzes($_SESSION["userModule"]);
             //adaugat 11/10/2018 10:40
-            $subcategories = $simple->getCategorySubcategories($app->request->post('userModule')); 
+            $subcategories = $simple->getCategorySubcategories($_SESSION["userModule"]); 
         } 
 
         $app->render('admin/index.php', array('quizzes' => $quizzes, 'categories' => $categories, 'subcategories' => $subcategories, 'quiz_types' => $quiz_types, 'category' => $category, 'admin' => true));
