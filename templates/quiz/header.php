@@ -22,42 +22,38 @@ header('Content-Type: text/html; charset=utf-8');
     <![endif]-->    
 </head>
 <body>
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
+
+    <!-- Static navbar 16/10/2018 -->
+   <div class="navClass">
+    <nav class="navbar navbar-inverse navbar-static-top color">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="<?php echo $root; ?>/">Logodava Quiz</a>
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="<?php echo $root; ?>/" class="navbar-brand"><img height="50" src="<?php echo $root; ?>/images/logodava-white.svg"/> Logodava Quiz</a>
         </div>
-        <div class="navbar-collapse collapse">
-         <?php /*<ul class="nav navbar-nav">
-              <li class="dropdown active">
-                <a href="<?php echo $root; ?>/categories/" class="dropdown-toggle" data-toggle="dropdown">Categorii <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <?php foreach ($categories as $cat): ?>
-                       <li><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </li>
-          </ul> */?>
-          <ul class="nav navbar-nav navbar-right">
-              <?php if ($user): ?>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right navClass">
+                <?php if ($user): ?>
                   <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
                   <?php if($user->isAdmin()) :?>
                       <li><a href="<?php echo $root; ?>/admin/">Administrare</a></li>
                   <?php endif; ?>
-              <?php else : ?>
-                  <li><a href="<?php echo $root; ?>/login/">Logare</a></li>
-              <?php endif; ?>
-          </ul>
-            <?php if ($user) : ?>
-                <p class="signed navbar-text pull-right"><span class="glyphicon glyphicon-user"></span> Logat ca
-                <strong><?php echo $user->getName(); ?></strong></p>
-            <?php endif; ?>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+                <?php else : ?>
+                    <!-- <li><a href="<?php echo $root; ?>/login/">Logare</a></li> -->
+                <?php endif; ?>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navClass">
+                <?php if ($user) : ?>
+                <li class="active"><a href="#" class="signed pull-right"><span class="glyphicon glyphicon-user"></span> Logat ca
+                <em><?php echo $user->getName(); ?></em></a></li>
+            <?php endif; ?>               
+            </ul>
+        </div>
+    </nav>
+  </div>

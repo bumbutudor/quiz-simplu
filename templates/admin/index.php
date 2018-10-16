@@ -25,7 +25,7 @@ include'header.php';
           <div class="sidebar-nav">
             <div class="row">
              <div class="col-sm-12" style="padding-top: 10px">
-               <h4>Submodule</h4>                       
+               <h4><strong>Submodule</strong></h4>                   
              </div>              
             </div>
             <div class="row">
@@ -52,7 +52,7 @@ include'header.php';
               <div id="ajaxupdater" class="alert"></div>
           
           
-          <h4>Exerciții</h4>
+          <h4><strong>Exerciții</strong></h4>
           <?php if (count($quizzes) > 0): ?>
             <table id="quizzes" class="table table-striped">
                 <thead>

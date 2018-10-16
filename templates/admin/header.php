@@ -14,35 +14,37 @@
     
 </head>
 <body>
-    <!-- Static navbar -->
-    <div  style="background-color: #002b7f;" class="navbar navbar-default navbar-static-top">
-      <div class="container-fluid">
+ <!-- Navigation Bar Static navbar -->
+  <div class="navClass">
+    <nav class="navbar navbar-inverse navbar-static-top color">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a style="color: #C8C8C8; font-size: 24px;" class="navbar-brand" href="<?php echo $root; ?>/"><img width="50" src="<?php echo $root; ?>/images/logodava-white.svg"/> Logodava Quiz</a>
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="<?php echo $root; ?>/" class="navbar-brand"><img height="50" src="<?php echo $root; ?>/images/logodava-white.svg"/> Logodava Quiz</a>
         </div>
-        <div class="navbar-collapse collapse">
-      
-         
-          <ul class="nav navbar-nav navbar-right">
-            <li style="padding-top: 15px;" class="dropdown active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrare <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="<?php echo $root; ?>/admin/">Toate exercițiile</a></li>
-                    <li><a href="<?php echo $root; ?>/admin/config/">Setări</a></li>
-                    <!-- TODO pentru schimbarea parolelor -->
-                    <li><a href="<?php echo $root; ?>/admin/edit/">Schimbă Parola</a></li>
-                    <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
-                    <!-- <li><a href="<?php echo $root; ?>/admin/backup">Copie de rezervă a bazei de date</a></li> -->
-                </ul>
-            </li>
-          </ul>
-            <p style="color: #C8C8C8; padding-top: 15px;" class="signed navbar-text pull-right "><span class="glyphicon glyphicon-user"></span> Logat ca
-                <strong><?php echo $user->getName(); ?></strong></p>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right navClass">
+                <li>
+                  <a href="#" class="signed pull-right "><span class="glyphicon glyphicon-user"></span> Logat ca
+                <em><?php echo $user->getName(); ?></em></a>
+                </li>
+                <li class="dropdown active">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administrare <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo $root; ?>/admin/">Toate exercițiile</a></li>
+                        <li><a href="<?php echo $root; ?>/admin/config/">Setări</a></li>
+                        <li><a href="<?php echo $root; ?>/admin/edit/">Schimbă Parola</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
+                    </ul>
+                </li>                
+            </ul>
+        </div>
+    </nav>
+  </div>

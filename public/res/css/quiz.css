@@ -1,16 +1,27 @@
-/*
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600,600italic,700,700italic,900,900italic");
 
-* Simple-Quiz by @elanman
-* Copyright 2013 Ben Hall.
-* Licensed under http://www.apache.org/licenses/LICENSE-2.0
 
-*/
+{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-/*.navbar-static-top {
-  margin-bottom: 19px;
-}*/
+html
+{
+  height: 100%;
+  overflow: auto;
+  
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
 
-/* Pad the edges of the mobile views a bit */
+body
+{
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+}
+
 .quiz {
   padding-left: 15px;
   padding-right: 15px;
@@ -112,14 +123,14 @@ img .logo{
 .btn-color.active,
 .open .dropdown-toggle.btn-color {
   color: #F8F8F8 !important;
-  background-color: #002b7f !important;
-  border-color: #002b7f !important;
+  background-color: #3f51b5 !important;
+  border-color: #3f51b5 !important;
 }
 
 .btn-primary {
   color: #ffffff !important; 
-  background-color: #002b7f !important;
-  border-color: #002b7f !important;
+  background-color: #3f51b5 !important;
+  border-color: #3f51b5 !important;
 }
 
 .btn-primary:hover,
@@ -128,11 +139,14 @@ img .logo{
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   color: #ffffff !important;
-  background-color: #001a4f !important;
-  border-color: #001a4f !important;
+  background-color: #002b7f !important;
+  border-color: #002b7f !important;
 }
-
-a {
+.color{
+  background-color: #002b7f !important;
+  border:none;
+}
+/*a {
     color: #002b7f;
     text-decoration: none;
 }
@@ -142,4 +156,36 @@ a:focus,
 a:active,
 a.active {
   color: #001a4f !important;
+}
+*/
+.navClass.navbar-brand {
+  height: 80px;
+
+}
+
+.navClass .nav >li >a {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #C8C8C8;
+  font-size: 14px;
+
+}
+.navClass .navbar-toggle {
+  padding: 10px;
+  margin: 25px 15px 25px 0;
+}
+
+.navClass .navbar-inverse .navbar-brand {
+    color: #C8C8C8;
+    font-size: 22px;
+}
+.navClass .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #3f51b5;}
+
+.navClass .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color: #3f51b5;}
+.navClass .navbar-nav{
+  padding-left: 20px;
 }
