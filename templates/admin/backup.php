@@ -15,7 +15,7 @@ exec("mysqldump --user={$user} --password={$pass} --host={$host} {$database} --r
     if (is_null($output)){
         echo 'Nu se află nimic în baza de date!';
     } else {
-        // var_dump($output);
+        var_dump($output);
         echo '<h4 style="text-align:center;">Copia de rezervă a fost creată cu success în <code>'.$dir.'</code></h4>';
     }
 ?>
