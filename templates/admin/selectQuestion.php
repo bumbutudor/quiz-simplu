@@ -1,17 +1,17 @@
 <form id="selectTypeInput" method="post" action="">
       <div class="modal-body">
           <p style="display: inline-block;" "><label for="newquestiontypeinput">Exemplu:</label>
-             <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Întrebarea aici" class="form-control" />
+             <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Scrie aici propoziția" class="form-control" />
              <span class="helper help-block">Nu este exemlu!</span>
           </p>
 
-          <button type="button" id="transpormText" class="btn btn-secondary">Accepta</button>
-          <button type="button" id="editText" class="hidden btn btn-secondary">Editeaza optiunile</button>
+          <button type="button" id="transpormText" class="btn btn-secondary">Acceptă</button>
+          <button type="button" id="editText" data-toogle="tooltip" title="Editează propoziția" class="hidden btn btn-secondary">Editează</button>
 
-                <h5><strong>Răspunsuri:</strong></h5>
+                <h5><strong>Răspunsuri afișate în căsuță:</strong></h5>
                 <table id="newanswers" class="table table-responsive table-hover table-bordered">
                     <thead>
-                        <tr><th style="text-align: center;">Răspuns corect?</th><th>Raspuns</th></tr>
+                        <tr><th style="text-align: center;">Răspuns corect?</th><th>Răspuns</th></tr>
                     </thead>
                     <tbody>
                         <tr class="answer-row">
@@ -58,9 +58,9 @@
                 <p>
                   <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button>
                 </p>
-                <button type="button" id="createSelect" class="btn btn-primary">Creează select</button>
-                
-                <p style="margin-top: 50px"><label for="">Comentariu: <sup>*</sup></label>
+                <button type="button" id="createSelect" data-toogle="tooltip" title="Înserează cuvântul și apasă pe acest buton" class="btn btn-primary">Creează căsuță</button>
+                <hr/>
+                <p><label for="">Comentariu: <sup>*</sup></label>
                    <input name="explanation" id="explanation" type="text" placeholder="Comentează aici" class="form-control" />
                 </p>
       </div>

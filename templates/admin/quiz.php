@@ -26,7 +26,7 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                                   echo $quiz->countQuestions(); ?></span></li>
                           
                       </ul>
-                        <button id="editquiz" title="Modifică Detaliile Exercițiului" type="button" class="btn btn-primary">Editează Detalii Exercițiu <span class="glyphicon glyphicon-pencil"></span></button>
+                        <button id="editquiz" data-toggle="tooltip" title="Modifică detaliile exercițiului în caz că ceva este greșit" type="button" class="btn btn-primary">Editează Detalii Exercițiu <span class="glyphicon glyphicon-pencil"></span></button>
                     </div>
                   <div class="panel-heading"><h3>Exemple:</h3></div>
                     <!-- Table -->

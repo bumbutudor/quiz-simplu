@@ -11,7 +11,7 @@ include'header.php';
               <input type="hidden" name="_METHOD" value="POST"/>
                 <?php foreach ($categories as $categorie) : ?>
                        <input name="userModule" type="submit" value="<?php echo $categorie->id.". ".$categorie->name?>" class="btn btn-color btn-lg"
-                       style="<?php if($_SESSION["userModule"] == $categorie->id){ echo "background-color:#3f51b5 !important; color: white !important;"; }?>"/>
+                       style="<?php if($_SESSION["userModule"] == $categorie->id){ echo "background-color:#002b7f !important; color: white !important;"; }?>"/>
                   <?php endforeach; ?>
             </form>
           
@@ -41,7 +41,7 @@ include'header.php';
             <div class="row">
               <div class="col-sm-12">
                  <p>
-                  <button id="addsubcategory" title="Adauga Un Submodul" type="button" class="btn btn-primary">Adaugă Un Submodul  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                  <button id="addsubcategory" data-toggle="tooltip" title="Adaugă un submodul nou" type="button" class="btn btn-primary">Adaugă Un Submodul  <span class="glyphicon glyphicon-plus-sign"></span></button>
                  </p>
                </div>
             </div>
@@ -64,7 +64,7 @@ include'header.php';
                     <?php
                         foreach ($quizzes as $quiz) :
                             $activeSpan = $quiz->active == 1 ? 'glyphicon-ok-circle' : 'glyphicon-remove-circle';
-                            echo '<tr class="quiz"><td><strong><a href="'. $root .'/admin/quiz/'. $quiz->id .'">' . $quiz->name. '</a></strong></td><td>'.$quiz->description.'</td><td>'.$quiz->category.'</td><td>'.$quiz->id_subcategory.'</td><td>'.$quiz->quiz_type.'</td><td><span class="glyphicon '.$activeSpan.'"></span></td><td><a href="'. $root .'/admin/quiz/'. $quiz->id .'" data-quiz-id="'.$quiz->id.'" title="Modifica Exercitiu" class="edit btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> <button data-quiz-id="'.$quiz->id.'" title="Sterge Exercitiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></td></tr>';
+                            echo '<tr class="quiz"><td><strong><a href="'. $root .'/admin/quiz/'. $quiz->id .'">' . $quiz->name. '</a></strong></td><td>'.$quiz->description.'</td><td>'.$quiz->category.'</td><td>'.$quiz->id_subcategory.'</td><td>'.$quiz->quiz_type.'</td><td><span class="glyphicon '.$activeSpan.'"></span></td><td><a href="'. $root .'/admin/quiz/'. $quiz->id .'" data-quiz-id="'.$quiz->id.'" data-toggle="tooltip" title="Modifică exercițiu" class="edit btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> <button data-quiz-id="'.$quiz->id.'"data-toggle="tooltip" title="Șterge Exercițiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></td></tr>';
                         endforeach;
                     ?>
                 </tbody>
@@ -75,7 +75,7 @@ include'header.php';
           <?php endif; ?>
             
             <p>
-                <button id="addquiz" title="Adauga Un Exercitiu" type="button" class="btn btn-primary pull-right">Creează Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button id="addquiz" data-toggle="tooltip" title="Adaugă un exercițiu nou" type="button" class="btn btn-primary pull-right">Adaugă Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
 
 

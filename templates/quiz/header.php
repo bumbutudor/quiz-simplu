@@ -19,7 +19,8 @@ header('Content-Type: text/html; charset=utf-8');
     <!--[if lt IE 9]>
       <script src="<?php echo $root; ?>/res/bootstrap/dist/assets/js/html5shiv.js"></script>
       <script src="<?php echo $root; ?>/res/bootstrap/dist/assets/js/respond.min.js"></script>
-    <![endif]-->    
+    <![endif]--> 
+
 </head>
 <body>
 
@@ -42,15 +43,15 @@ header('Content-Type: text/html; charset=utf-8');
                 <?php if ($user): ?>
                   <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
                   <?php if($user->isAdmin()) :?>
-                      <li><a href="<?php echo $root; ?>/admin/">Administrare</a></li>
+                      <li><a href="<?php echo $root; ?>/admin/" data-toggle="tooltip" data-placement="bottom" title="Pagina de adăugare și editare a exercițiilor">Administrare Exerciții</a></li>
                   <?php endif; ?>
                 <?php else : ?>
-                    <!-- <li><a href="<?php echo $root; ?>/login/">Logare</a></li> -->
+                    <li><a href="<?php echo $root; ?>/login/">Logare</a></li>
                 <?php endif; ?>
             </ul>
             <ul class="nav navbar-nav navbar-right navClass">
                 <?php if ($user) : ?>
-                <li class="active"><a href="#" class="signed pull-right"><span class="glyphicon glyphicon-user"></span> Logat ca
+                <li class="active"><a href="#" data-toggle="tooltip" title="Bine ați venit <?php echo $user->getName(); ?>" data-placement="bottom" class="signed pull-right"><span class="glyphicon glyphicon-user"></span> Logat ca
                 <em><?php echo $user->getName(); ?></em></a></li>
             <?php endif; ?>               
             </ul>

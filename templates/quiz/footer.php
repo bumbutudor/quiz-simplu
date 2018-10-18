@@ -1,4 +1,9 @@
     <script src="<?php echo $root; ?>/res/bootstrap/assets/js/jquery.js"></script>
+    <script>
+		$(document).ready(function(){
+		    $('[data-toggle="tooltip"]').tooltip();   
+		});
+	</script>
     <script src="<?php echo $root; ?>/res/bootstrap/dist/js/bootstrap.min.js"></script>
         <?php if ($session->get('num') === 0 ): ?>
         <script type="text/javascript" src="<?php echo $root; ?>/res/js/start.js"></script>

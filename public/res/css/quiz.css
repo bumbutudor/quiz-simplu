@@ -20,6 +20,8 @@ html
 body
 {
   font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  padding-right:0px !important;
+  margin-right:0px !important;
 }
 
 .quiz {
@@ -106,10 +108,10 @@ img .logo{
   margin: 0 auto;
   display: block;
 }
-#selectTypeInput .modal-body .form-control{
+/*#selectTypeInput .modal-body .form-control{
   display:inline-block !important;
   width:fit-content !important;
-}
+}*/
 
 .btn-color {
   color: #333333 !important; 

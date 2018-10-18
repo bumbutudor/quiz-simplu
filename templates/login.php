@@ -53,6 +53,11 @@
         </div>
     </div><!--container-->
     <script src="<?php echo $root; ?>/res/bootstrap/assets/js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
     <script src="<?php echo $root; ?>/res/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?php echo $root; ?>/res/js/login.js"></script>
 </body>
