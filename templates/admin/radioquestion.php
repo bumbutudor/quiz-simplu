@@ -48,10 +48,12 @@
                     </tbody>
                 </table>
                 <p>
-                  <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button>
+                  <button id="addanswer" type="button" class="btn btn-primary">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button>
                 </p>
-                <p style="margin-top: 50px"><label for="">Comentariu: <sup>*</sup></label>
-                   <input name="explanation" id="explanation" type="text" placeholder="Comentează aici" class="form-control" />
+                <hr/>
+                <p><label for="">Comentariu: <sup>*</sup></label>
+                   <div id="editor"></div>
+                   <input name="explanation" id="explanation" type="hidden" class="form-control" />
                 </p>
             </div>
             <div class="modal-footer">

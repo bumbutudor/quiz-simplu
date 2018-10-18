@@ -13,7 +13,9 @@ header('Content-Type: text/html; charset=utf-8');
 
     <link rel="shortcut icon" href="<?php echo $root; ?>/favicon.ico">
     <link rel="stylesheet" href="<?php echo $root; ?>/res/bootstrap/dist/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/fonts.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/quiz.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/tooltip-classic.css" />
     <title><?php echo $title; ?></title>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -22,11 +24,11 @@ header('Content-Type: text/html; charset=utf-8');
     <![endif]--> 
 
 </head>
-<body>
+<body class="client-quiz">
 
     <!-- Static navbar 16/10/2018 -->
    <div class="navClass">
-    <nav class="navbar navbar-inverse navbar-static-top color">
+    <nav class="navbar navbar-inverse navbar-static-top color image">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">

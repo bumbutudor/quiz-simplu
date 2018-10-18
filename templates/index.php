@@ -5,28 +5,26 @@
         <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
-              <h3>Module</h3>
-              <div class="list-group">
+              <h2>GRAMATICĂ ȘI VOCABULAR</h2>
+
                         
                     <?php foreach ($categories as $cat): ?>
                        <ul><li><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li></ul>
-
                     <?php endforeach; ?>
-              </div>
+
           </div><!--/.sidebar-nav -->
         </div><!--/span-->
 
         <div class="col-xs-12 col-sm-8">
-          <!-- <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p> -->
-          <div class="jumbotron">
-            <h1>Logodava Quiz Admin</h1>
-            <p>Sistem de administrare a testelor privind utilizarea corectă a limbii române.</p>
+          <div class="main-col">
+            <div class="wrapper">
+              <h1>Logodava Quiz Admin</h1>
+              <p>Sistem de administrare a testelor privind utilizarea corectă a limbii române.</p>
+            </div>
           </div>
         </div><!--/span-->
 
-        <div class="col-xs-4 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+        <?php /*<div class="col-xs-4 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
               <h4>Teste Recente</h4>
               <div class="list-group">
@@ -39,7 +37,7 @@
                 ?>
               </div>
           </div>
-        </div> 
+        </div> */?> 
       </div><!--/row-->
         
     </div><!--container-->

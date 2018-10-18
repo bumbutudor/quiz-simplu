@@ -5,6 +5,8 @@
     <link rel="shortcut icon" href="<?php echo $root; ?>/favicon.ico">
     <link rel="stylesheet" href="<?php echo $root; ?>/res/bootstrap/dist/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/quiz.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/tooltip-classic.css" />
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <title>Logodava :: Admin</title>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,6 +36,7 @@
                   <a href="#" class="signed pull-right "><span class="glyphicon glyphicon-user"></span> Logat ca
                 <em><?php echo $user->getName(); ?></em></a>
                 </li>
+                <?php if (isset($admin)) {?>
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administrare <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -43,7 +46,10 @@
                         <li class="divider"></li>
                         <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
                     </ul>
-                </li>                
+                </li>
+                <?php } else { ?>
+                <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
+                <?php } ?>            
             </ul>
         </div>
     </nav>

@@ -65,7 +65,7 @@
                         else :
                             if ( in_array( $answer, $_SESSION['wrong'][$x])) :
                                 if (strlen($quiz->getQuestion($x)->getExplanation()) !== 0) :
-                                    echo '<li class="wrong">' . $answer . ' (Gresit!)  <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="'.$quiz->getQuestion($x)->getExplanation().'">Comentariu</button></li> ' . PHP_EOL;
+                                    echo '<li class="wrong">' . $answer . ' (Gresit!) <span class="tooltip-quiz tooltip-effect-1"><span class="tooltip-item-quiz">Comentariu</span><span class="tooltip-content-quiz"><span class="tooltip-text-quiz">'.$quiz->getQuestion($x)->getExplanation().'</span></span></span>' . PHP_EOL;
                                 else : 
                                     echo '<li class="wrong">' . $answer . ' (Gresit!) ';
                                 endif;

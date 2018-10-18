@@ -19,9 +19,13 @@ html
 
 body
 {
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+
+  font-family: "Source Sans Pro", Arial, sans-serif !important;
   padding-right:0px !important;
   margin-right:0px !important;
+}
+body.client-quiz{
+    background-color: rgb(249, 250, 253);
 }
 
 .quiz {
@@ -108,10 +112,10 @@ img .logo{
   margin: 0 auto;
   display: block;
 }
-/*#selectTypeInput .modal-body .form-control{
-  display:inline-block !important;
-  width:fit-content !important;
-}*/
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    display: inline-block !important;
+    width: auto !important;
+}
 
 .btn-color {
   color: #333333 !important; 
@@ -190,4 +194,114 @@ a.active {
     background-color: #3f51b5;}
 .navClass .navbar-nav{
   padding-left: 20px;
+}
+.main-col{
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    box-shadow: 0 0 12px #d1f0ec;
+    border-radius: 2px;
+    border: 1px solid rgba(191, 204, 203, 0.5);
+    float: left;
+    padding-bottom: 3em;
+    width: 90%;
+    margin-left: -30px;
+}
+.wrapper {
+    margin: 0 auto;
+    padding: 0;
+    width: 94%;
+    *zoom: 1;
+}
+.page-exercise h1 {
+  border-bottom: 5px solid #72A0C1; }
+
+
+
+
+h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro", Arial, sans-serif !important;
+  color: inherit;
+  font-weight: bold;
+  text-rendering: optimizelegibility; }
+  h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    font-weight: normal;
+    line-height: 1;
+    color: #8a7b7b; }
+
+h1, .h1{
+    font-family: "andada", Arial, sans-serif;
+    font-size: 2.25em;
+    font-weight: bold !important;
+    hyphens: manual;
+    line-height: 1.2;
+    padding: 0 0 .5em 0;
+}
+.subnav-onpage h2 {
+    
+    border-bottom: 1px solid #ccc;
+    font-size: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: .8em;
+    padding-top: .8em;
+    transition: all .3s;
+    margin-left: -40px;
+    margin-top: -2px;
+    vertical-align: middle;
+
+}
+
+.subnav-onpage a {
+
+    text-decoration: none;
+    color: black;
+}
+.subnav-onpage a:hover {
+color: black;
+}
+
+.subnav-onpage1 li {
+    font-size: 20px;
+    margin-left: -40px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: .5em;
+    padding-top: .5em;
+    vertical-align: middle;
+    
+  }
+.subnav-onpage1 a{
+  text-decoration: none;
+}
+
+.sidebar-nav h2 {
+    color: #72A0C1;
+    font-size: .75em;
+    font-weight: bold;
+    letter-spacing: .05em;
+    margin: 1.75em 0 .5em;
+    padding: .5em .875em .5em 0;
+    text-transform: uppercase;
+  }
+.sidebar-nav {
+    list-style: none;
+    padding: 15px 0 0 40px;
+}
+.sidebar-nav a {
+    border-left: 2px solid  #72A0C1;
+    color:  #72A0C1;
+    display: block;
+    font-size: .875em;
+    line-height: 1.2;
+    padding: .75em .75em .75em 7%;
+    text-decoration: none;}
+     .sidebar-nav a:hover {
+    background-color: #fff;}
+ul {
+  margin-bottom: 0 !important;
+}
+.sidebar-nav li{
+  margin-left: -40px;
 }
