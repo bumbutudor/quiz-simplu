@@ -209,6 +209,20 @@ a.active {
     width: 90%;
     margin-left: -30px;
 }
+@media only screen and (max-width: 800px) {
+    .main-col {
+    width: 100%;
+    margin-left: 0px;
+    }
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #fff;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: inherit;
+    border: #fff solid;
+}
+
 .wrapper {
     margin: 0 auto;
     padding: 0;
@@ -287,9 +301,9 @@ color: black;
   }
 .sidebar-nav {
     list-style: none;
-    padding: 15px 0 0 40px;
+    padding: 0 0 0 40px;
 }
-.sidebar-nav a {
+.client a {
     border-left: 2px solid  #72A0C1;
     color:  #72A0C1;
     display: block;
@@ -297,11 +311,24 @@ color: black;
     line-height: 1.2;
     padding: .75em .75em .75em 7%;
     text-decoration: none;}
-     .sidebar-nav a:hover {
+     .client a:hover {
+    background-color: #fff;}
+
+.admin a {
+    border-left: 2px solid;
+    display: block;
+    font-size: 1em;
+    line-height: 1.2;
+    padding: .75em .75em .75em 7%;
+    text-decoration: none;}
+     .admin a:hover {
     background-color: #fff;}
 ul {
   margin-bottom: 0 !important;
 }
 .sidebar-nav li{
   margin-left: -40px;
+}
+.modal {
+  overflow-y: auto !important;
 }

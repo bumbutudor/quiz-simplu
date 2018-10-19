@@ -9,12 +9,12 @@
 
                         
                     <?php foreach ($categories as $cat): ?>
-                       <ul><li><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li></ul>
+                       <ul><li class="client"><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li></ul>
                     <?php endforeach; ?>
                     <!-- Click sa apara de desupt submodulele -->
                     <hr/>
                   <?php foreach ($subcategories as $subcat): ?>
-                       <ul><li><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
+                       <ul><li class="client"><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
                     <?php endforeach; ?>
 
           </div><!--/.sidebar-nav -->

@@ -9,7 +9,7 @@
 
                         
                     <?php foreach ($categories as $cat): ?>
-                       <ul><li><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li></ul>
+                       <ul><li class="client"><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li></ul>
                     <?php endforeach; ?>
 
           </div><!--/.sidebar-nav -->

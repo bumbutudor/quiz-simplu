@@ -33,7 +33,7 @@ include'header.php';
               <div class="col-sm-12" >
                 <div class="list-group">
                   <?php foreach ($subcategories as $subcat): ?>
-                    <ul><li><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
+                    <ul><li class="admin"><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
                   <?php endforeach; ?>
                 </div>
               </div>
