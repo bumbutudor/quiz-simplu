@@ -312,7 +312,6 @@ h1, .h1{
       }
 
 .admin a {
-    border-left: 1px #ccc solid;
     display: block;
     font-size: 1em;
     line-height: 1.2;
