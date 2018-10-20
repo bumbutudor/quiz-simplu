@@ -7,7 +7,7 @@
 
           <button type="button" id="transpormText" class="btn btn-secondary">Acceptă</button>
           <button type="button" id="editText" data-toogle="tooltip" title="Editează propoziția" class="hidden btn btn-secondary">Editează</button>
-
+                <div id="responseArea" class="hidden">
                 <h5><strong>Răspunsuri afișate în căsuță:</strong></h5>
                 <table id="newanswers" class="table table-responsive table-hover table-bordered">
                     <thead>
@@ -58,13 +58,15 @@
                 <p>
                   <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă încă un răspuns <span class="glyphicon glyphicon-plus-sign"></span></button>
                 </p>
-                <button type="button" id="createSelect" data-toogle="tooltip" title="Înserează cuvântul și apasă pe acest buton" class="btn btn-primary">Creează căsuță</button>
+                <button type="button" id="createSelect" data-toogle="tooltip" title="Înserează cuvântul și apasă pe acest buton" class="btn btn-primary hidden">Creează căsuță</button>
+              </div>
                 <hr/>
                 <p><label for="">Comentariu: <sup>*</sup></label>
                    <input name="explanation" id="explanation" type="text" placeholder="Comentează aici" class="form-control" />
                 </p>
       </div>
       <div class="modal-footer">
+          <input type="hidden" name="questiontext" id="questiontext"/>
           <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="location.reload()">Anulează</button>
           <button type="submit" class="btn btn-success">Salvează Exemplu</button>
       </div>

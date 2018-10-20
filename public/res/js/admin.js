@@ -10,6 +10,7 @@ $(function(){
     var questionaddform = $('#questionadd');
     var aform = $('form#answeredit');
     var saveprompt = "<div class=\"alert alert-warning\">Apasă 'Salvează' pentru a fi făcute modificările.</div>";
+    var txtrightanswer = "";
     
     $('table#newanswers').on('click', '.remove', function() {
            var parenttr = $(this).parents('tr');
@@ -249,11 +250,17 @@ $(function(){
 
         return selectTag;
     }
+
+    function createEmptySelectForm() {
+        return "<select id='selectForm' class='form-control'>";
+    }
     
     $('#createInput').on('click', function() {
         var selectedElement = highlightedText();
         if(selectedElement.localeCompare("") !== 0) {
-            $('#answer').replaceWith( "<input name='answer[]' id='newanswers' class='form-control' value='"+ selectedElement +"' readonly/>" );
+            $('#answer').replaceWith( "<input name='answer[]' id='newanswers' class='form-control' value=''/>" );
+            $('#questiontext').val($('#newquestiontypeinput').html());
+            $('#newanswers').replaceWith( "<input name='answer[]' id='newanswers' class='form-control' value='"+ selectedElement +"' readonly/>");
         }
     });
 
@@ -261,6 +268,7 @@ $(function(){
         var selectedElement = highlightedText();
         if(selectedElement.localeCompare("") !== 0) {
             $('#answer').replaceWith( "<input name='answer[]' class='form-control' value='"+ selectedElement +"' readonly/>" + '&nbsp' );
+            $('#rightAnswer').removeClass('hidden');
         }
     });
 
@@ -270,7 +278,9 @@ $(function(){
         if(selectedElement.localeCompare("") !== 0) {
             var selectTag = selectTagGenerator();
 
-            $('#answer').replaceWith(selectTag);
+            $('#answer').replaceWith(createEmptySelectForm());
+            $('#questiontext').val($('#newquestiontypeinput').html());
+            $('#selectForm').replaceWith(selectTag);
         }
     });
 
@@ -282,11 +292,15 @@ $(function(){
 
     $('#transpormText').on('click', function() {
        var inputText = $('input#newquestiontypeinput');
-       inputText.replaceWith("<span id='newquestiontypeinput'>" + inputText.val() + "</span>");
-
-       inputText.hide();
-       $(this).addClass('hidden');
-       $('#editText').removeClass('hidden');
+       if(inputText.val().localeCompare("") !== 0) {
+            inputText.replaceWith("<span id='newquestiontypeinput'>" + inputText.val() + "</span>");
+            
+            inputText.hide();
+            $(this).addClass('hidden');
+            $('#editText').removeClass('hidden');
+            $('#createInput').removeClass('hidden');
+            $('#responseArea').removeClass('hidden');
+       }
     });
 
     $('#transpormTextarea').on('click', function() {
@@ -301,20 +315,32 @@ $(function(){
     $('#editText').on('click', function() {
         var inputText = $('span#newquestiontypeinput');
         var text = inputText.text();
-        inputText.replaceWith("<input name='questiontext' id='newquestiontypeinput' type='text' value='"+ text +"' class='form-control'>");
+        inputText.replaceWith("<input id='newquestiontypeinput' type='text' value='"+ text +"' class='form-control'>");
 
         $(this).addClass('hidden');
         $('#transpormText').removeClass('hidden');
+        $('#createInput').addClass('hidden');
     });
 
     $('#editTextarea').on('click', function() {
         var inputText = $('span#newquestiontypeinput');
         var text = inputText.text();
-        inputText.replaceWith("<textarea name='questiontext' id='newquestiontypeinput' type='text' class='form-control'>"+ text +"</textarea>");
+        inputText.replaceWith("<textarea id='newquestiontypeinput' type='text' class='form-control'>"+ text +"</textarea>");
 
         $(this).addClass('hidden');
         $('#transpormTextarea').removeClass('hidden');
     });
 
-    
+    $('[name="copytext"]').on('click', function() {
+        $('#wronganswer').val($('#rightanswer').val());
+    });
+
+    $('[name="answer[]"]').on('mouseout', function(){
+        $.each( $('[name="answer[]"]'), function(index, value) {
+            if($(value).val().localeCompare("") !== 0) {
+                $('#createSelect').removeClass('hidden');
+            }
+        });
+    });
+
 });

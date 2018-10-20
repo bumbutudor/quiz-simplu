@@ -414,16 +414,7 @@ $app->get('/quiz/:id/test/', $authenticate($app), function ($id) use ($app) {
     $simple = $app->simple;
     $categories = $simple->getCategories();
     $subcategories = $simple->getSubcategories();
-
     
-
-    //1/10/2018 trec peste butonul incepe test 
-    if ( $session->get('quizid') !== $id) {
-        $app->flashnow('quizerror','A apărut o eroare. Vă rugăm să vă întoarceți la exercițiu și să mai încercați.');
-        $app->render('quiz/error.php', array( 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session, 'questions' => $questions));
-        $app->stop();
-    }
-
     $quiz = $app->quiz;
     $questions = $quiz->getQuestions();
 

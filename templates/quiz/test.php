@@ -95,8 +95,8 @@
             <h2 id="score"> Ați răspuns corect la <?php echo $session->get('score'); ?> din <?php echo $quiz->countQuestions(); ?></h2>
             <h2 class="userscore"><?php echo $percentage; ?>%</h2>
             <h3 id="time">Timp de: <?php echo $timetaken['mins'] . $timetaken['secs']; ?></h3>
-
-            <p><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->getId(); ?>">Înapoi la începutul exercițiului</a></p>
+            <?php $_SESSION['last'] = false; $_SESSION['finished'] = 'no';?>
+            <p><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->getId(); ?>/test">Înapoi la începutul exercițiului</a></p>
             <p><a href="<?php echo $root; ?>">Înapoi la pagina pricipală</a></p>
             </div>
 

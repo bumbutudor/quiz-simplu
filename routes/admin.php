@@ -442,6 +442,11 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
     $correct = (int) trim($app->request()->post('correct'));
     $explanation = trim($app->request->post('explanation'));
     $answerarray = $app->request()->post('answer');
+
+    // $path = '1.jpg';
+    // $type = pathinfo($path, PATHINFO_EXTENSION);
+    // $data = file_get_contents($path, FILE_USE_INCLUDE_PATH);
+    // $image = 'data:image/' . $type . ';base64,' . base64_encode($data);
     
     if ($quiz->setId($id)) {
         $quiz->populateQuestions();

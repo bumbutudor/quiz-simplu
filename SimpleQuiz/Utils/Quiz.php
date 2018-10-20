@@ -164,14 +164,26 @@ class Quiz implements Base\IQuiz {
         $num = $max + 1;
 
         //insert new question
-        $newquestion = \ORM::for_table('questions')->create(
-            array(
-                'num' => $num,
-                'quiz_id' => $this->_id,
-                'text' => $text,
-                'explanation' => $explanation
-            )
-        );
+        if(is_null($image)) {
+            $newquestion = \ORM::for_table('questions')->create(
+                array(
+                    'num' => $num,
+                    'quiz_id' => $this->_id,
+                    'text' => $text,
+                    'explanation' => $explanation
+                )
+            );
+        } else {
+            $newquestion = \ORM::for_table('questions')->create(
+                array(
+                    'num' => $num,
+                    'quiz_id' => $this->_id,
+                    'text' => $text,
+                    'explanation' => $explanation,
+                    'image' => $image
+                )
+            );
+        }
         //save the new question in db then add to the question storage
         if ($newquestion->save())
         {

@@ -27,7 +27,7 @@
               </div>
                 <div class="subnav-onpage1">
                 <?php foreach ($quizzes as $quiz) : ?>
-                  <ul><li><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->id ;?>"><?php echo $quiz->name; ?></a></li></ul>
+                  <ul><li><a href="<?php echo $root; ?>/quiz/<?php echo $quiz->id ;?>/test"><?php echo $quiz->name; ?></a></li></ul>
                   <?php endforeach; ?>
                   </div>
             </div>
