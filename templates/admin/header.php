@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="<?php echo $root; ?>/favicon.ico">
     <link rel="stylesheet" href="<?php echo $root; ?>/res/bootstrap/dist/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/quiz.css" />
+     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/fonts.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/tooltip-classic.css" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <title>Logodava :: Admin</title>
@@ -28,7 +29,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="<?php echo $root; ?>/" class="navbar-brand"><img height="50" src="<?php echo $root; ?>/images/logodava-white.svg"/> Logodava Quiz</a>
+            <a href="<?php echo $root; ?>/" class="navbar-brand"><img height="50" src="<?php echo $root; ?>/images/logodava-white.svg"/>&ensp;Logodava Quiz</a>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">

@@ -152,18 +152,7 @@ img .logo{
   background-color: #002b7f !important;
   border:none;
 }
-/*a {
-    color: #002b7f;
-    text-decoration: none;
-}
 
-a:hover,
-a:focus,
-a:active,
-a.active {
-  color: #001a4f !important;
-}
-*/
 .navClass.navbar-brand {
   height: 80px;
 
@@ -182,8 +171,15 @@ a.active {
 }
 
 .navClass .navbar-inverse .navbar-brand {
-    color: #C8C8C8;
-    font-size: 22px;
+    font-size: 1.25em;
+    font-family: "andada", Arial, sans-serif !important;
+    color: #72A0C1;
+    font-weight: 900;
+}
+.navClass .navbar-inverse .navbar-brand:hover {
+   
+    color: #f8f8f8 !important;
+
 }
 .navClass .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     color: #ffffff;
@@ -256,7 +252,7 @@ h1, .h1{
 .subnav-onpage h2 {
     
     border-bottom: 1px solid #ccc;
-    font-size: 20px;
+    font-size: 1.250em;
     margin-bottom: 0;
     margin-top: 0;
     padding-bottom: .8em;
@@ -266,17 +262,16 @@ h1, .h1{
     margin-top: -2px;
     vertical-align: middle;
 
+}.subnav-onpage h2:hover{
+  border-bottom: 1px solid #72A0C1;
 }
 
 .subnav-onpage a {
 
     text-decoration: none;
-    color: black;
+    color: #000;
+    font-weight: 600;
 }
-.subnav-onpage a:hover {
-color: black;
-}
-
 .subnav-onpage1 li {
     font-size: 20px;
     margin-left: -40px;
@@ -301,7 +296,7 @@ color: black;
   }
 .sidebar-nav {
     list-style: none;
-    padding: 0 0 0 40px;
+    padding-left: 15px;
 }
 .client a {
     border-left: 2px solid  #72A0C1;
@@ -312,17 +307,19 @@ color: black;
     padding: .75em .75em .75em 7%;
     text-decoration: none;}
      .client a:hover {
-    background-color: #fff;}
+    background-color: #fff;
+    border-left: 2px solid  #002b7f;
+      }
 
 .admin a {
-    border-left: 2px solid;
+    border-left: 1px #ccc solid;
     display: block;
     font-size: 1em;
     line-height: 1.2;
     padding: .75em .75em .75em 7%;
     text-decoration: none;}
      .admin a:hover {
-    background-color: #fff;}
+    background-color: #f8f8f8;}
 ul {
   margin-bottom: 0 !important;
 }

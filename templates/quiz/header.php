@@ -39,7 +39,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="<?php echo $root; ?>/" class="navbar-brand"><img height="50" src="<?php echo $root; ?>/images/logodava-white.svg"/> Logodava Quiz</a>
+            <a href="<?php echo $root; ?>/" class="navbar-brand"><img height="50" src="<?php echo $root; ?>/images/logodava-white.svg"/>&ensp;Logodava Quiz</a>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">

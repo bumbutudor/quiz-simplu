@@ -28,7 +28,7 @@
               </div>
               <div>
                   <?php foreach ($subcategories as $subcat): ?>
-                         <ul><li  class="subnav-onpage"><h2><img height="16" src="<?php echo $root; ?>/images/arrow-accordion.svg"/><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>">  <?php echo $subcat->name; ?></a></h2></li></ul>
+                         <ul><li  class="subnav-onpage"><h2><img height="16" src="<?php echo $root; ?>/images/arrow-accordion.svg"/><a href="<?php echo $root; ?>/subcategories/<?php echo $subcat->id ;?>">&ensp;<?php echo $subcat->name; ?></a></h2></li></ul>
                       <?php endforeach; ?>
               </div>
               
