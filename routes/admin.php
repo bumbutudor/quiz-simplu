@@ -215,7 +215,7 @@ $app->post("/admin/subcat/", $authenticate($app, true), function() use ($app) {
     $subcatdescription = trim($app->request->post('subcatdescription'));
     $subcatcategory = trim($app->request->post('id_category'));
     
-    if ( ($subcatname !== '') && ($subcatdescription !== '') ) {
+    if ( ($subcatname !== '') ) {    //if ( ($subcatname !== '') && ($subcatdescription !== '') ) { 21/10 Fara descrierea la submodul
         $subcatmeta['name'] = $subcatname;
         $subcatmeta['description'] = $subcatdescription;
         $subcatmeta['id_category'] = $subcatcategory;
@@ -234,7 +234,7 @@ $app->post("/admin/subcat/", $authenticate($app, true), function() use ($app) {
         }
     } else {
         //problem with post inputs
-        $app->flash('error', 'Problemă la adaugarea submodulului. Ceva nu e în regulă cu ce ați introdus');
+        $app->flash('error', 'Problemă la adăugarea submodulului. Ceva nu e în regulă cu ce ați introdus');
         $app->redirect($app->request->getRootUri().'/admin/');
     }
         
@@ -250,7 +250,7 @@ $app->put("/admin/subcat/", $authenticate($app, true), function() use ($app) {
     $subcatcategory = trim($app->request->post('id_category'));
   
     
-    if ( ($subcatname !== '') && ($subcatdescription !== '') && (ctype_digit($subcatid)) ) {
+    if ( ($subcatname !== '') && (ctype_digit($subcatid)) ) {  // if ( ($subcatname !== '') && ($subcatdescription !== '') && (ctype_digit($subcatid)) ) {  21/10 Editare descriere submodul optionala
         
         $subcatmeta['id'] = $subcatid;
         $subcatmeta['name'] = $subcatname;
@@ -419,7 +419,7 @@ $app->put("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app
 
         try {
             $quiz->updateQuestion($questionid, $text);
-            $app->flashnow('success', 'Intrebarea a fost salvata cu succes!');
+            $app->flashnow('success', 'Exemplul a fost salvat cu succes!');
         } catch (Exception $e ) {
             $app->flashnow('error', $e->getMessage());
         }
@@ -443,10 +443,7 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
     $explanation = trim($app->request->post('explanation'));
     $answerarray = $app->request()->post('answer');
 
-    // $path = '1.jpg';
-    // $type = pathinfo($path, PATHINFO_EXTENSION);
-    // $data = file_get_contents($path, FILE_USE_INCLUDE_PATH);
-    // $image = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    $image = trim($app->request->post('fileBase64'));
     
     if ($quiz->setId($id)) {
         $quiz->populateQuestions();
@@ -472,10 +469,10 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
             $i++;
         }
         try {
-            $quiz->addQuestion($question, 'radio', $answers, $explanation);
-            $app->flashnow('success', 'Exemplul nou a fost adăugată cu succes!');
+            $quiz->addQuestion($question, 'radio', $answers, $explanation, $image);
+            $app->flashnow('success', 'Exemplul nou a fost adăugat cu succes!');
         } catch (Exception $e ) {
-            $app->flashnow('error', 'A aparut o eroare la adaugarea exemplului!');
+            $app->flashnow('error', 'A aparut o eroare la adăugarea exemplului!');
             $app->flashnow('error', $e->getMessage());
         }
         $quiz->populateUsers();
@@ -504,7 +501,7 @@ $app->delete("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($
         } catch (Exception $e ) {
             echo json_encode(array('error' => $e->getMessage()));
         }
-        echo json_encode(array('success' => 'Intrebarea a fost ștearsă cu succes!'));
+        echo json_encode(array('success' => 'Exemplul a fost șters cu succes!'));
         $app->stop();
     }
         
@@ -544,7 +541,7 @@ $app->put("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
         $i = 0;
         foreach ($answerarray as $answer) {
             if (trim($answer) == '') {
-                $app->flashnow('error', 'Nu sunt răspusnuri adăugate!');
+                $app->flashnow('error', 'Nu sunt răspunsuri adăugate!');
                 $answers = $quiz->getAnswers($questionid);
                 $app->render('admin/editanswers.php', array('quizid' => $quizid,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
                 $app->stop();
@@ -560,9 +557,9 @@ $app->put("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
         }
         try {
             $quiz->updateAnswers($answers, $questionid);
-            $app->flashnow('success', 'Raspunsurile au fost modificate cu succes');
+            $app->flashnow('success', 'Răspunsurile au fost modificate cu succes');
         } catch (Exception $e ) {
-            $app->flashnow('error', 'A aparut o eroare la modificarea răspunsului!');
+            $app->flashnow('error', 'A aparut o eroare la modificarea răspunsurilor!');
         }
         $answers = $quiz->getAnswers($questionid);
         $app->render('admin/editanswers.php', array('quizid' => $quizid,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
@@ -583,4 +580,71 @@ $app->get("/admin/backup/", $authenticate($app, true), function() use ($app) {
     
     $app->render('/admin/backup.php');
         
+});
+
+
+//Înregistrare manager 21/10/2018
+$app->get("/admin/register/", $authenticate($app, true), function() use ($app) { 
+    
+    $simple = $app->simple;
+
+    $user = $app->session->get('user');
+
+    $categories = $simple->getCategories(false);
+
+     $app->render('admin/register.php', array('categories' => $categories));
+        
+});
+
+//Înregistrare manager 21/10/2018
+$app->post("/admin/register/", $authenticate($app, true), function() use ($app) {
+
+    $simple = $app->simple;
+    $quizzes = $simple->getQuizzes(true);
+    $categories = $simple->getCategories();
+    $session = $app->session;
+    $errors = array();
+
+    $username = trim($app->request()->post('username'));
+    $email = trim($app->request()->post('email'));
+    $password = trim($app->request()->post('regpassword'));
+    $confpassword = trim($app->request()->post('regpasswordconf'));
+    $moduleId = trim($app->request()->post('moduleid'));
+    $category = $simple->getCategory($moduleId);
+
+    if ((! empty($email)) && (! empty($password) ) && ($password == $confpassword) )
+    {
+            $user = new \SimpleQuiz\Utils\User\EndUser($email, $username);
+            $user->setPassword(password_hash($password,1));
+            $user->setModuleaccess($category['module_group']);
+            //TODO change hardcoded role id
+            $user->setRole(3);
+            //TODO change hardcoded level id
+            $user->setLevel(1);
+
+            try
+            {
+                
+                $user = $simple->registerUser($user);
+                $app->flash('success', 'Managerul a fost înregistrat cu succes!');
+                $app->redirect($app->request->getRootUri().'/admin/');
+
+            }
+            catch (\SimpleQuiz\Utils\Exceptions\RegisterException $e)
+            {
+                $errors['registererror'] = $e->getMessage();
+            }
+    }
+    else
+    {   
+        $app->flash('error', 'Mai încercați încă o dată, ceva nu e în regulă cu ce ați introdus!');
+        $errors['registererror'] = "A apărut o eroare în legătură cu numele de cont și/sau parola. Vă rugăm să mai încercați.";
+    }
+
+    if (count($errors) > 0)
+    {
+        $app->flash('errors', $errors);
+        $app->redirect($app->request->getRootUri().'/admin/');
+    }
+
 });

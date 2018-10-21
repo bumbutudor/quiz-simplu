@@ -9,7 +9,8 @@
           <button type="button" id="editText" class="hidden btn btn-secondary">Editează propoziția</button>
           <hr/>
           <p><label title="Comentariul este opțional" for="">Comentariu: <sup>*</sup></label>
-             <input name="explanation" id="explanation" type="text" placeholder="Comentează aici" class="form-control" />
+             <div id="editor"></div>
+             <input name="explanation" id="explanation" type="hidden" class="form-control" />
           </p>
       </div>
       <div class="modal-footer">

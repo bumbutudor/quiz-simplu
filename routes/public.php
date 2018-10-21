@@ -418,6 +418,11 @@ $app->get('/quiz/:id/test/', $authenticate($app), function ($id) use ($app) {
     $quiz = $app->quiz;
     $questions = $quiz->getQuestions();
 
+    // if ( $session->get('quizid') !== $id) {
+    //     $app->flashnow('quizerror','A apărut o eroare. Vă rugăm să vă întoarceți la exercițiu și să mai încercați.');
+    //     $app->render('quiz/error.php', array( 'categories' => $categories, 'subcategories' => $subcategories, 'session' => $session, 'questions' => $questions));
+    //     $app->stop();
+    // }
     /**
      * @todo implement serialize() on quiz object and store in session
      */

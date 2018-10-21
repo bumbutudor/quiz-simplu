@@ -15,7 +15,7 @@ include'header.php';
                     <div class="panel-body">
                       <ul style="width:50%;" class="list-group">
                           <li class="list-group-item"><strong>Nume</strong>: <?php echo $subcat->getNameSubcat(); ?></li>
-                          <li class="list-group-item"><strong>Descriere</strong>: <?php echo $subcat->getDescriptionSubcat(); ?></li>
+                          <li class="list-group-item"><strong>Descriere<sup>*</sup></strong>: <?php echo $subcat->getDescriptionSubcat(); ?></li>
                           <li class="list-group-item"><strong>Categorie</strong>: <?php echo $subcat->getCategorySubcat(); ?></li>
                           
                       </ul>
@@ -42,11 +42,11 @@ include'header.php';
             <form id="subcatedit" method="post" action="<?php echo $root . '/admin/subcat/'; ?>">
             <div class="modal-body">
                 <p><label for="subcatname">Nume Submodul:</label>
-                   <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" value="<?php echo $subcat->getNameSubcat(); ?>" />
+                   <input name="subcatname" id="subcatname" type="text" placeholder="Denumire Submodul" class="form-control" value="<?php echo $subcat->getNameSubcat(); ?>" />
                    <span class="helper help-block">Vă rugăm să dați un nume submodulului!</span>
                 </p>
-                <p><label for="subcatdescription">Descriere Submodul:</label>
-                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul" value="<?php echo $subcat->getDescriptionSubcat(); ?>" class="form-control" />
+                <p><label for="subcatdescription">Descriere Submodul:<sup>*</sup></label>
+                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul (opțional)" value="<?php echo $subcat->getDescriptionSubcat(); ?>" class="form-control" />
                 </p>
 
                 <p><label for="id_category">Categorie Submodul:</label>

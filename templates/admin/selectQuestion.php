@@ -1,7 +1,7 @@
 <form id="selectTypeInput" method="post" action="">
       <div class="modal-body">
-          <p style="display: inline-block;" "><label for="newquestiontypeinput">Exemplu:</label>
-             <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Scrie aici propoziția" class="form-control" />
+          <p ><label for="newquestiontypeinput">Exemplu:</label>
+             <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Scrie aici propoziția" class="form-control" /></span>
              <span class="helper help-block">Nu este exemlu!</span>
           </p>
 
@@ -62,7 +62,8 @@
               </div>
                 <hr/>
                 <p><label for="">Comentariu: <sup>*</sup></label>
-                   <input name="explanation" id="explanation" type="text" placeholder="Comentează aici" class="form-control" />
+                    <div id="editor"></div>
+                    <input name="explanation" id="explanation" type="hidden" class="form-control" />
                 </p>
       </div>
       <div class="modal-footer">

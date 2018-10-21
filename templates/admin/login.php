@@ -42,7 +42,7 @@
         <input type="email" name="email" class="form-control" placeholder="Email" autofocus>
         <input type="password" name="password" class="form-control" placeholder="Password">
         
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Logare</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Autentificare</button>
       </form>
     </div><!--container-->
     <script src="<?php echo $root; ?>/res/bootstrap/assets/js/jquery.js"></script>

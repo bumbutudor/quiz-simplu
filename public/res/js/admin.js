@@ -241,7 +241,7 @@ $(function(){
         var selectTag = "";
         var options = $('#newanswers [name="answer[]"');
 
-        selectTag += "<select id='selectForm' class='form-control'>";
+        selectTag += "<select id='selectForm' class='form-control formControlul'>";
         options.each(function(index, value){
             selectTag += "<option value='"+ index +"'>"+ $(value).val() +"</option>";
         });
@@ -341,6 +341,25 @@ $(function(){
                 $('#createSelect').removeClass('hidden');
             }
         });
+    });
+
+
+
+      $('#image').on('change', function(event) {
+        $('#fullFilePath').val('D:\\@IllustratorWorkspace\\33.jpg');
+      });
+
+    $('#image').on('change', function() {
+        if (this.files && this.files[0]) {
+            var FR = new FileReader();
+            
+            FR.addEventListener("load", function(e) {
+              $('#fileBase64').val(e.target.result);
+              $('#preview').replaceWith("<img src='" + e.target.result + "' id='preview'/>");
+            }); 
+
+            FR.readAsDataURL( this.files[0] );
+        }
     });
 
 });

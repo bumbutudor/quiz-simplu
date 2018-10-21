@@ -32,28 +32,3 @@
         
     </div><!--container-->
 <?php include 'footer.php';
-
-/* <div id="leaders-score">
-                <h4>Scoruri de Top <?php echo $leadersToShow; ?></h4>
-                <div class="row">
-                    <ul class="leaders col-md-6">
-                        <?php
-                        $leaders = $quiz->getLeaders($leadersToShow);
-                        $counter = 1;
-                        foreach ($leaders as $leader) :
-
-                            echo '<li><strong>' . $leader["name"] . '</strong>: ' .  $leader["score"] . '/' . $numquestions . '</li>';
-
-                            //Use modulus to create new sub-list if required.
-                            if ($counter % (round($leadersToShow/2)) == 0) :  
-                                echo '</ul>' . PHP_EOL . '<ul class="leaders col-md-6">' . PHP_EOL;
-                            endif;
-
-                            $counter++;
-
-                        endforeach;
-                        ?>
-                    </ul>
-                </div>
-            </div>
-*/

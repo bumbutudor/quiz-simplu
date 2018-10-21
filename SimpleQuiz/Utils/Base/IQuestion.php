@@ -12,7 +12,9 @@ interface IQuestion {
 
     public function getText();
 
-    public function update($text);
+    public function getImage();
+
+    public function update($text, $image);
 
     public function getAnswers();
 

@@ -11,7 +11,13 @@ include'header.php';
                 <h3>Editează Răspunsuri: </h3>
                 <div class="row">
                     <div class="col-md-7">
-                        <h4><?php echo $question->getText(); ?></h4>
+                        <?php if (!empty($question->getText()))  { ?>
+                        <p style="padding-bottom: 30px;" class="formControlul"><?php echo $question->getText(); ?></p>
+                        <?php } ?>
+                        <?php if (!empty($question->getImage()))  { ?>
+                        <img style="max-width: 60%; height: auto; display: block; margin-left: auto; margin-right: auto; padding-bottom: 15px;" src="<?php echo $question->getImage();?>" class="img-rounded">
+                        <p></p>
+                         <?php } ?>
                             <form id="answeredit" action="" method="post">
                             <table id="answers" class="table table-responsive table-hover table-bordered">
                                 <thead>
@@ -52,7 +58,12 @@ include'header.php';
                                     </tr>
                                 </tbody>
                             </table>
-                            <p>
+                                <?php if (!empty($question->getExplanation()))  { ?>
+                                <p style="padding-top: 20px;"> Comentariu: </p>
+                                <div style="padding-bottom: 20px; margin-top: -10px;"><?php echo $question->getExplanation(); ?></div>
+                                <?php } ?>
+        
+                            
                                 <button type="submit" class="btn btn-success">Salvează <span class="glyphicon glyphicon-ok"></span></button>
                                 <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă <span class="glyphicon glyphicon-plus-sign"></span></button>
                             </p>

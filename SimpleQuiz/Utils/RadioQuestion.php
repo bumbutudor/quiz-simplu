@@ -13,14 +13,16 @@ class RadioQuestion implements IQuestion {
     protected $_quizid;
     protected $_text;
     protected $_answers = array();
+    protected $_image;
     protected $_explanation;
 
-    function __construct($_id, $_num, $_quizid, $_text, $_explanation)
+    function __construct($_id, $_num, $_quizid, $_text, $_image, $_explanation)
     {
         $this->_id = $_id;
         $this->_num = $_num;
         $this->_quizid = $_quizid;
         $this->_text = $_text;
+        $this->_image = $_image;
         $this->_explanation = $_explanation;
     }
 
@@ -40,15 +42,21 @@ class RadioQuestion implements IQuestion {
         return $this->_text;
     }
 
+    public function getImage()
+    {
+        return $this->_image;
+    }
+
     public function getExplanation()
     {
         return $this->_explanation;
     }
 
-    public function update($text)
+    public function update($text, $image)
     {
         $q = \ORM::for_table('questions')->where('quiz_id', $this->_quizid)->where('num', $this->_num)->find_one();
         $q->set('text',$text);
+        $q->set('image',$image);
         $q->save();
 
         return true;

@@ -70,8 +70,8 @@ include'header.php';
                 </tbody>
             </table>
           <?php else: ?>
-          <p>Nu este nici un exercițiu la moment. Poate adaugați unul?</p>
-          <p>Doar dati click pe butonul 'Creează Un Exercițiu'</p>
+          <p>Nu este nici un exercițiu la moment. Doriți să adăugați unul?</p>
+          <p>Doar dați click pe butonul 'Adaugă Un Exercițiu'.</p>
           <?php endif; ?>
             
             <p>
@@ -101,16 +101,21 @@ include'header.php';
                    <input name="quizname" id="quizname" type="text" placeholder="Nume Exercitiu" class="form-control" />
                    <span class="helper help-block">Va rog să dați o denumire exercițiului</span>
                 </p>
-                <p><label for="description">Sarcina:</label>
+                <p><label for="description">Sarcină:</label>
                    <input name="description" id="description" type="text" placeholder="Sarcina" class="form-control" />
                 </p>
                 <p><label for="category">Modul Exercițiu:</label>
                    <select name="category" id="category" class="form-control">
                       <!--08/10/20 Iau numai categoria care trebuie BEDONE-->
-                       <!-- <option selected="selected" value="<?php echo $category->id; ?>"> <?php echo $category->name; ?></option> -->
-                       <?php foreach ($categories as $category) : ?>
-                            <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                       <?php if (isset($admin)) { ?>
+                       <?php foreach ($categories as $category) : 
+                            if( isset($_SESSION["userModule"]) && $_SESSION["userModule"] == $category->id) {?>
+                              <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                            <?php } ?>
                        <?php endforeach; ?>
+                       <?php } else { ?>
+                       <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                       <?php } ?>
                    </select>
                 </p>
 
@@ -142,7 +147,7 @@ include'header.php';
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulare</button>
-              <button type="submit" class="btn btn-success">Creează Exercițiu</button>
+              <button type="submit" class="btn btn-success">Creați Exercițiu</button>
             </div>
           </form>
         </div><!-- /.modal-content -->
@@ -163,18 +168,24 @@ include'header.php';
             <form id="subcatadd" method="post" action="<?php echo $root . '/admin/subcat/'; ?>">
             <div class="modal-body">
                 <p><label for="subcatname">Nume Submodul</label>
-                   <input name="subcatname" id="subcatname" type="text" placeholder="Nume Submodul" class="form-control" />
+                   <input name="subcatname" id="subcatname" type="text" placeholder="Denumire Submodul" class="form-control" />
                    <span class="helper help-block">Va rugăm să dați o denumire submodulului</span>
                 </p>
-                <p><label for="subcatdescription">Descriere Submodul:</label>
-                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul" class="form-control" />
+                <p><label for="subcatdescription">Descriere Submodul:<sup>*</sup></label>
+                   <input name="subcatdescription" id="subcatdescription" type="text" placeholder="Descriere Submodul (opțional)" class="form-control" />
                 </p>
                 <!--08/10/20 Iau numai categoria care trebuie BEDONE-->
                 <p><label for="id_category">Modul</label>
                    <select name="id_category" id="id_category" class="form-control">
-                       <?php foreach ($categories as $category) : ?>
-                            <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                       <?php if (isset($admin)) { ?>
+                       <?php foreach ($categories as $category) : 
+                            if( isset($_SESSION["userModule"]) && $_SESSION["userModule"] == $category->id) {?>
+                              <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                            <?php } ?>
                        <?php endforeach; ?>
+                       <?php } else { ?>
+                       <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                       <?php } ?>
                    </select>
                 </p>
 
@@ -182,7 +193,7 @@ include'header.php';
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Anulare</button>
-              <button type="submit" class="btn btn-success">Creeaza Submodul</button>
+              <button type="submit" class="btn btn-success">Creați Submodul</button>
             </div>
             </form>
         </div><!-- /.modal-content -->

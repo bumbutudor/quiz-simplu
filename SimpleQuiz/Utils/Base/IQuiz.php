@@ -19,9 +19,9 @@ interface IQuiz {
     
     public function addAnswers($questionid, Array $answers);
     
-    public function addQuestion($question, $type, Array $answers, $explanation);
+    public function addQuestion($question, $type, Array $answers, $explanation, $image);
     
-    public function updateQuestion ($questionnum, $text);
+    public function updateQuestion ($questionnum, $text, $image);
     
     public function deleteQuestion($questionid);
     

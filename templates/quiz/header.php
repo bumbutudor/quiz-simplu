@@ -47,10 +47,10 @@ header('Content-Type: text/html; charset=utf-8');
                 <?php if ($user): ?>
                   <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
                   <?php if($user->isAdmin()) :?>
-                      <li><a href="<?php echo $root; ?>/admin/" data-toggle="tooltip" data-placement="bottom" title="Pagina de adăugare și editare a exercițiilor">Administrare Exerciții</a></li>
+                      <li><a href="<?php echo $root; ?>/admin/" title="Pagina de adăugare și editare a exercițiilor">Administrare Exerciții</a></li>
                   <?php endif; ?>
                 <?php else : ?>
-                    <li><a href="<?php echo $root; ?>/login/">Logare</a></li>
+                    <li><a href="<?php echo $root; ?>/login/">Autentificare</a></li>
                 <?php endif; ?>
             </ul>
             <ul class="nav navbar-nav navbar-right navClass">

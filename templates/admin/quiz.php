@@ -15,7 +15,7 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                     <!-- Default panel contents -->
                     <div class="panel-heading"><h3>Detalii exercițiu:</h3></div>
                     <div class="panel-body">
-                      <ul style="width:50%;" class="list-group">
+                      <ul style="width:50%; margin-bottom: 20px !important;" class="list-group">
                           <li class="list-group-item"><strong>Nume</strong>: <?php echo $quiz->getName(); ?></li>
                           <li class="list-group-item"><strong>Sarcina</strong>: <?php echo $quiz->getDescription(); ?></li>
                           <li class="list-group-item"><strong>Modul</strong>: <?php echo $quiz->getCategory(); ?></li>
@@ -23,10 +23,9 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                           <li class="list-group-item"><strong>Tip Exercițiu</strong>: <?php echo $quiz->getQuizType()->name; ?></li>
                           <li class="list-group-item"><strong>Activ? </strong><?php echo $quiz->isActive() ? '<span class="glyphicon glyphicon-ok">' : '<span class="glyphicon glyphicon-remove-circle">' ?></li>
                           <li class="list-group-item"><strong>Număr de exemple</strong>: <span class="badge"><?php
-                                  echo $quiz->countQuestions(); ?></span></li>
-                          
+                                  echo $quiz->countQuestions(); ?></span></li>  
                       </ul>
-                        <button id="editquiz" data-toggle="tooltip" title="Modifică detaliile exercițiului în caz că ceva este greșit" type="button" class="btn btn-primary">Editează Detalii Exercițiu <span class="glyphicon glyphicon-pencil"></span></button>
+                        <button id="editquiz" title="Modifică detaliile exercițiului în caz că ceva este greșit" type="button" class="btn btn-primary">Editează Detalii Exercițiu <span class="glyphicon glyphicon-pencil"></span></button>
                     </div>
                   <div class="panel-heading"><h3>Exemple:</h3></div>
                     <!-- Table -->
@@ -160,7 +159,7 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                 </p>
                
                 
-                <h4>Active?</h4>
+                <h4>Activ?</h4>
                 <p><label for="quizactiveyes" class="inline"> Da: </label>
                    <input name="active" id="quizactiveyes" value="1" <?php if ($quiz->isActive()) { echo 'checked';} ?> type="radio" class="" /><br />
                    <label for="quizactiveno"> Nu: </label>

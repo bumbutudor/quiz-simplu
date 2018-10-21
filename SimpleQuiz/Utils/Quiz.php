@@ -158,39 +158,28 @@ class Quiz implements Base\IQuiz {
      * @return bool
      * @return explanation
      */
-    public function addQuestion($text, $type, Array $answers, $explanation)
+    public function addQuestion($text, $type, Array $answers, $explanation, $image)
     {
         $max = \ORM::for_table('questions')->where('quiz_id', $this->_id)->max('num');
         $num = $max + 1;
 
-        //insert new question
-        if(is_null($image)) {
-            $newquestion = \ORM::for_table('questions')->create(
-                array(
-                    'num' => $num,
-                    'quiz_id' => $this->_id,
-                    'text' => $text,
-                    'explanation' => $explanation
-                )
-            );
-        } else {
-            $newquestion = \ORM::for_table('questions')->create(
-                array(
-                    'num' => $num,
-                    'quiz_id' => $this->_id,
-                    'text' => $text,
-                    'explanation' => $explanation,
-                    'image' => $image
-                )
-            );
-        }
+        $newquestion = \ORM::for_table('questions')->create(
+            array(
+                'num' => $num,
+                'quiz_id' => $this->_id,
+                'text' => $text,
+                'explanation' => $explanation,
+                'image'=> $image
+            )
+        );
+
         //save the new question in db then add to the question storage
         if ($newquestion->save())
         {
             //create a question of desired type
             $questionType = __NAMESPACE__  . '\\' . ucfirst($type) . 'Question';
             //create a new Question instance
-            $this->_question = new $questionType($newquestion->id(),$num, $this->_id, $text, $explanation);
+            $this->_question = new $questionType($newquestion->id(),$num, $this->_id, $text, $explanation, $image);
             $this->_question->addAnswers($answers);
             $this->_questions->attach($this->_question);
 
@@ -205,9 +194,9 @@ class Quiz implements Base\IQuiz {
      * @param $text
      * @return bool
      */
-    public function updateQuestion($questionid, $text)
+    public function updateQuestion($questionid, $text, $image)
     {
-        $this->getQuestion($questionid)->update($text);
+        $this->getQuestion($questionid)->update($text, $image);
 
         return true;
     }
@@ -282,12 +271,8 @@ class Quiz implements Base\IQuiz {
 
         foreach ($quizquestions as $question)
         {
-            /**
-             * @todo make the instance name dynamic
-             */
-
             $clazz = new \ReflectionClass('SimpleQuiz\Utils\\'.$this->_quiz_type_class);
-            $instance = $clazz->newInstanceArgs( array($question['id'], $question['num'], $this->_id, $question['text'], $question['explanation']));
+            $instance = $clazz->newInstanceArgs( array($question['id'], $question['num'], $this->_id, $question['text'], $question['image'], $question['explanation']));
 
             $questionObject = $instance;        //new RadioQuestion($question['id'], $question['num'], $this->_id, $question['text'], $question['explanation']);
             $this->_questions->attach($questionObject);

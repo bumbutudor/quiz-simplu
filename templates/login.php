@@ -24,31 +24,14 @@
                 <div>
                    <img style="margin: 0 auto; " class="img-responsive" width="200" src="<?php echo $root; ?>/images/logodava.svg"/> 
                 </div>
+            </div>
         </div>
         <div class="row-fluid">
             <div class="col-sm-6 col-sm-offset-3">
                 <form id="login-form" class="form-signin" method="post" action="<?php echo $root; ?>/login">
                     <input type="email" name="email" class="form-control" placeholder="Email" autofocus>
                     <input type="password" name="password" class="form-control" placeholder="Parola">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Logare</button>
-                    <br>
-                    <p><button id="register-button" class="btn btn-lg btn-primary btn-block">Inregistrare Manager</button></p>
-                </form>
-                <form style="display: none" id="register-form" class="form-signin" method="post" action="<?php echo $root;
-                ?>/register">
-                    <input type="text" name="username" class="form-control" placeholder="Nume de utilizator">
-                    <input type="email" name="email" class="form-control" placeholder="Email">
-                    <input type="password" name="regpassword" class="form-control" placeholder="Parola">
-                    <input type="password" name="regpasswordconf" class="form-control" placeholder="Confirmă Parola">
-                    <div class="form-group">
-                      <select class="form-control" id="select1" name="moduleid">
-                        <option selected="true" disabled="disabled">Selectează Modul</option>
-                            <?php foreach ($categories as $cat): ?>
-                              <option value="<?php echo $cat->id; ?>"> <?php echo $cat->name; ?></option>
-                            <?php endforeach; ?>
-                      </select>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Inregistrare</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Autentificare</button>
                 </form>
             </div>
         </div>

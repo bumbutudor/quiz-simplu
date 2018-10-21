@@ -2,32 +2,32 @@
       <div class="modal-body">
       <table id="newanswers" class="table table-responsive table-hover table-bordered">
                     <thead>
-                        <tr><th style="text-align: center;">Răspuns corect?</th><th>Texte</th></tr>
+                        <tr><th style="text-align: center;">Text corectat (bifat)</th><th>Texte</th></tr>
                     </thead>
                     <tbody>
                         <tr class="answer-row">
                             <td style="text-align: center;">
-                               <input class="correct" name="correct" value="1" type="radio" checked="checked" disabled/> 
+                               <input class="correct" name="correct" value="1" type="checkbox" checked="checked" disabled/> 
                             </td>
                             <td>
-                                <div class="input-group" style="width: 100%;">
-                                    <textarea id="rightanswer" name="answer[]" placeholder="Text" class="form-control" style="min-height: 200px;"></textarea>
+                                <div class="input-group">
+                                    <textarea id="rightanswer" name="answer[]" placeholder="Text" class="form-control" cols="70" rows="7"></textarea>
                                 </div>
                             </td>
                         </tr>
                         <tr class="answer-row">
                             <td style="text-align: center;">
-                               <input class="correct" name="correct" value="0" type="radio" disabled/> 
+                               <input class="correct" name="correct" value="0" type="checkbox" disabled/> 
                             </td>
                             <td>
-                                <div class="input-group"  style="width: 100%;">
-                                    <textarea id="wronganswer" class="form-control" name="answer[]" placeholder="Text" style="min-height: 200px;"></textarea>
+                                <div class="input-group">
+                                    <textarea id="wronganswer" class="form-control" name="answer[]" placeholder="Text" cols="70" rows="7"></textarea>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-secondary" name="copytext">Copieeaza textul</button>
+                <button type="button" class="btn btn-primary" name="copytext">Copiați textul</button>
           </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="location.reload()">Anulează</button>
