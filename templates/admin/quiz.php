@@ -15,7 +15,7 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                     <!-- Default panel contents -->
                     <div class="panel-heading"><h3>Detalii exercițiu:</h3></div>
                     <div class="panel-body">
-                      <ul style="width:50%; margin-bottom: 20px !important;" class="list-group">
+                      <ul style="width:50%; margin-bottom: 15px !important;" class="list-group">
                           <li class="list-group-item"><strong>Nume</strong>: <?php echo $quiz->getName(); ?></li>
                           <li class="list-group-item"><strong>Sarcina</strong>: <?php echo $quiz->getDescription(); ?></li>
                           <li class="list-group-item"><strong>Modul</strong>: <?php echo $quiz->getCategory(); ?></li>
@@ -40,7 +40,7 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                               foreach ($quiz->getQuestions() as $question) :?>
                               <tr class="question">
                                   <td class="question"><?php echo $question->getNum(); ?></td>
-                                  <td style="text-align:center;">
+                                  <td>
                                       <!-- <button data-question-id="<?php echo $question->getNum(); ?>" title="Editează Întrebarea" class="edit btn btn-default btn-primary" type="button"><span class="glyphicon glyphicon-pencil"></span></button> -->
                                       <a href="<?php echo $root; ?>/admin/quiz/<?php echo $quiz->getId();
                                       ?>/question/<?php echo $question->getNum(); ?>/edit/" title="Editează Răspunsuri"
@@ -53,7 +53,7 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                           </tbody>
                       </table>
                       <div class="panel-body">
-                          <button id="addquestion" title="Adaugă o întrebare nouă" type="button" class="btn btn-primary pull-right">Adaugă un exemplu <span class="glyphicon glyphicon-plus-sign"></span></button>
+                          <button id="addquestion" title="Adaugă o întrebare nouă" type="button" class="btn btn-primary ">Adaugă un exemplu <span class="glyphicon glyphicon-plus-sign"></span></button>
                       </div>
                 </div>
             </div>

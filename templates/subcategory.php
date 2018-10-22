@@ -5,9 +5,7 @@
         <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="sidebar-nav">
-              <h2>GRAMATICĂ ȘI VOCABULAR</h2>
-
-                        
+              <h2>GRAMATICĂ ȘI VOCABULAR</h2>                        
                     <?php foreach ($categories as $cat): ?>
                        <ul><li class="client"><a href="<?php echo $root; ?>/categories/<?php echo $cat->id ;?>"><?php echo $cat->name; ?></a></li></ul>
                     <?php endforeach; ?>

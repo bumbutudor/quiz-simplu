@@ -345,9 +345,9 @@ $(function(){
 
 
 
-      $('#image').on('change', function(event) {
-        $('#fullFilePath').val('D:\\@IllustratorWorkspace\\33.jpg');
-      });
+      // $('#image').on('change', function(event) {
+      //   $('#fullFilePath').val('D:\\@IllustratorWorkspace\\33.jpg');
+      // });
 
     $('#image').on('change', function() {
         if (this.files && this.files[0]) {

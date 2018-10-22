@@ -23,7 +23,7 @@ include'header.php';
       
       <div class="row" >
         <div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="sidebar-nav">
+          <div style="padding-left: 15px !important;" class="sidebar-nav">
             <div class="row">
              <div class="col-sm-12" style="padding-top: 10px">
                <h4><strong>Submodule</strong></h4>                   
@@ -41,7 +41,7 @@ include'header.php';
             <div class="row">
               <div class="col-sm-12">
                  <p>
-                  <button id="addsubcategory" data-toggle="tooltip" title="Adaugă un submodul nou" type="button" class="btn btn-primary">Adaugă Un Submodul  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                  <button id="addsubcategory" title="Adaugă un submodul nou" type="button" class="btn btn-primary">Adaugă Un Submodul  <span class="glyphicon glyphicon-plus-sign"></span></button>
                  </p>
                </div>
             </div>
@@ -64,18 +64,19 @@ include'header.php';
                     <?php
                         foreach ($quizzes as $quiz) :
                             $activeSpan = $quiz->active == 1 ? 'glyphicon-ok-circle' : 'glyphicon-remove-circle';
-                            echo '<tr class="quiz"><td><strong><a href="'. $root .'/admin/quiz/'. $quiz->id .'">' . $quiz->name. '</a></strong></td><td>'.$quiz->description.'</td><td>'.$quiz->category.'</td><td>'.$quiz->id_subcategory.'</td><td>'.$quiz->quiz_type.'</td><td><span class="glyphicon '.$activeSpan.'"></span></td><td><a href="'. $root .'/admin/quiz/'. $quiz->id .'" data-quiz-id="'.$quiz->id.'" data-toggle="tooltip" title="Modifică exercițiu" class="edit btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> <button data-quiz-id="'.$quiz->id.'"data-toggle="tooltip" title="Șterge Exercițiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></td></tr>';
+                            echo '<tr class="quiz"><td><strong><a href="'. $root .'/admin/quiz/'. $quiz->id .'">' . $quiz->name. '</a></strong></td><td>'.$quiz->description.'</td><td>'.$quiz->category.'</td><td>'.$quiz->id_subcategory.'</td><td>'.$quiz->quiz_type.'</td><td><span class="glyphicon '.$activeSpan.'"></span></td><td><a href="'. $root .'/admin/quiz/'. $quiz->id .'" data-quiz-id="'.$quiz->id.'" title="Modifică exercițiu" class="edit btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> <button data-quiz-id="'.$quiz->id.'" title="Șterge Exercițiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></td></tr>';
                         endforeach;
                     ?>
                 </tbody>
             </table>
           <?php else: ?>
-          <p>Nu este nici un exercițiu la moment. Doriți să adăugați unul?</p>
-          <p>Doar dați click pe butonul 'Adaugă Un Exercițiu'.</p>
+          <p>Nu este nici un <strong>exercițiu</strong> la moment. Doriți să adăugați unul?</p>
+          <p>Dați click pe butonul <em>"Adaugă Un Exercițiu"</em>, dar nu uitați că în primul rând trebuie să fie creat cel puțin un <strong>submodul.</strong> </p>
+          <p>Pentru a adăuga un submodul click pe butonul <em>"Adaugă Un Submodul"</em>. </p>
           <?php endif; ?>
             
             <p>
-                <button id="addquiz" data-toggle="tooltip" title="Adaugă un exercițiu nou" type="button" class="btn btn-primary pull-right">Adaugă Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button id="addquiz" title="Adaugă un exercițiu nou" type="button" class="btn btn-primary pull-right">Adaugă Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
 
 

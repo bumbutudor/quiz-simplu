@@ -55,7 +55,7 @@ header('Content-Type: text/html; charset=utf-8');
             </ul>
             <ul class="nav navbar-nav navbar-right navClass">
                 <?php if ($user) : ?>
-                <li class="active"><a href="#" data-toggle="tooltip" title="Bine ați venit <?php echo $user->getName(); ?>" data-placement="bottom" class="signed pull-right"><span class="glyphicon glyphicon-user"></span> Logat ca
+                <li class="active"><a href="#" data-toggle="tooltip" title="Bine ați venit, <?php if($user->getName()=='Supervizor') {echo 'doamnă Supervizor';} else {echo $user->getName();} ?>" data-placement="bottom" class="signed pull-right"><span class="glyphicon glyphicon-user"></span> Logat ca
                 <em><?php echo $user->getName(); ?></em></a></li>
             <?php endif; ?>               
             </ul>

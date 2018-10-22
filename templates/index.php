@@ -18,7 +18,7 @@
         <div class="col-xs-12 col-sm-8">
           <div class="main-col">
             <div class="wrapper">
-              <h1>Logodava Quiz Admin</h1>
+              <h1 style="color: #72A0C1;">Logodava Quiz Admin</h1>
               <p>Sistem de administrare a testelor privind utilizarea corectă a limbii române.</p>
             </div>
           </div>

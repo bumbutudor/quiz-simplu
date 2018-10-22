@@ -8,7 +8,7 @@
           <button type="button" id="transpormText" class="btn btn-secondary">Acceptă</button>
           <button type="button" id="editText" data-toogle="tooltip" title="Editează propoziția" class="hidden btn btn-secondary">Editează</button>
                 <div id="responseArea" class="hidden">
-                <h5><strong>Răspunsuri afișate în căsuță:</strong></h5>
+                <p style="margin-top: 20px;">Răspunsuri afișate în căsuță:</p>
                 <table id="newanswers" class="table table-responsive table-hover table-bordered">
                     <thead>
                         <tr><th style="text-align: center;">Răspuns corect?</th><th>Răspuns</th></tr>

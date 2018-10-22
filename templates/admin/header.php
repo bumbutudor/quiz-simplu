@@ -42,9 +42,9 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administrare <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?php echo $root; ?>/admin/">Toate exercițiile</a></li>
+                        <li><a href="<?php echo $root; ?>/admin/">Exerciții și Submodule</a></li>
                         <li><a href="<?php echo $root; ?>/admin/config/">Setări</a></li>
-                        <li><a href="<?php echo $root; ?>/admin/register/">Înregistrează Manager</a></li>
+                        <li><a href="<?php echo $root; ?>/admin/register/">Înregistrare Manager</a></li>
                         <li class="divider"></li>
                         <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
                     </ul>

@@ -13,7 +13,7 @@ include'header.php';
                     <!-- Default panel contents -->
                     <div class="panel-heading"><h3>Detalii Submodul:</h3></div>
                     <div class="panel-body">
-                      <ul style="width:50%;" class="list-group">
+                      <ul style="width:50%; padding-bottom: 15px" class="list-group">
                           <li class="list-group-item"><strong>Nume</strong>: <?php echo $subcat->getNameSubcat(); ?></li>
                           <li class="list-group-item"><strong>Descriere<sup>*</sup></strong>: <?php echo $subcat->getDescriptionSubcat(); ?></li>
                           <li class="list-group-item"><strong>Categorie</strong>: <?php echo $subcat->getCategorySubcat(); ?></li>

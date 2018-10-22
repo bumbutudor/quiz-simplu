@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="<?php echo $root; ?>/res/bootstrap/dist/css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/quiz.css" />
-    <title>Logodava Quiz :: Logare</title>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="<?php echo $root; ?>/res/bootstrap/dist/assets/js/html5shiv.js"></script>
-      <script src="<?php echo $root; ?>/res/bootstrap/dist/assets/js/respond.min.js"></script>
-    <![endif]-->
-    
-</head>
-<body>
-
+<?php
+include'header.php';
+?>
     <div class="container">
 
         <p><?php if (isset($errors['registererror']) ) { echo $errors['registererror']; }?></p>
         <div class="row-fluid">
-            <div style="margin-top: 50px;" class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-3">
+                <div><a class="btn btn-primary" href="<?php echo $root; ?>/admin/"><span class="glyphicon glyphicon-arrow-left"></span> Înapoi</a></div>
+            </div>
+            <div class="col-sm-6">
                 <div>
                    <img style="margin: 0 auto; " class="img-responsive" width="200" src="<?php echo $root; ?>/images/logodava.svg"/> 
                 </div>
@@ -41,17 +30,11 @@
                       </select>
                     </div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Înregistrare Manager</button>
+
                 </form>
             </div>
         </div>
     </div><!--container-->
-    <script src="<?php echo $root; ?>/res/bootstrap/assets/js/jquery.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();   
-        });
-    </script>
-    <script src="<?php echo $root; ?>/res/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="<?php echo $root; ?>/res/js/login.js"></script>
-</body>
-</html>
+<?php 
+include 'footer.php'; 
+?>

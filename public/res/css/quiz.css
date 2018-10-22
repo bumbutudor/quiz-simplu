@@ -25,7 +25,7 @@ body
   margin-right:0px !important;
 }
 body.client-quiz{
-    background-color: rgb(249, 250, 253);
+    background-color: rgb(230, 242, 248);
 }
 
 .quiz {
@@ -194,7 +194,7 @@ img .logo{
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    box-shadow: 0 0 12px #d1f0ec;
+    box-shadow: 0 0 12px #b7dbfd;
     border-radius: 2px;
     border: 1px solid rgba(191, 204, 203, 0.5);
     float: left;
@@ -292,8 +292,9 @@ h1, .h1{
   }
 .sidebar-nav {
     list-style: none;
-    padding-left: 15px;
+    padding-left: 25px;
 }
+
 .client a {
     border-left: 2px solid  #72A0C1;
     color:  #72A0C1;
@@ -304,14 +305,15 @@ h1, .h1{
     text-decoration: none;}
      .client a:hover {
     background-color: #fff;
-    border-left: 2px solid  #002b7f;
+    border-left: 2px solid  #3284BF;
+    color: #3284BF; 
       }
 
 .admin a {
     display: block;
     font-size: 1em;
     line-height: 1.2;
-    padding: .75em .75em .75em 7%;
+    padding: .5em .5em .5em 7%;
     text-decoration: none;}
      .admin a:hover {
     background-color: #f8f8f8;}
@@ -366,4 +368,60 @@ img#preview{
   margin-left: auto; 
   margin-right: auto;
   padding-bottom: 15px;
+}
+.panel-title > a {
+     text-decoration: none !important;
+}
+.exercise__desc {
+    border-radius: 4px;
+    display: table-cell;
+    padding: 10px 15px 10px;
+    width: 66%;
+    background: #e6f2f8;
+    border-bottom: 2px solid #b6d8ec;
+    margin: 1em 0;
+}
+
+.exercise__desc h3 {
+    color: #25475a;
+    font-size: 1.125em;
+    margin-top: 0;
+}
+.exercise__desc p {
+    color: #305c76;
+    margin: 0 0 .5em 0;
+}
+.page--exercise form {
+    clear: both;
+    margin-top: 1em;
+}
+.page--exercise input[type="submit"] {
+    margin-left: 0;
+    margin-right: 0;
+}
+.btn--primary {
+    background-color: #55a5d2;
+}
+.btn--full {
+    width: 100%;
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+    color: white;
+}
+.btn--full:hover {
+    color: white;
+    background-color: #3284BF; 
+}
+.exercise__body .tasks {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.exercise__body .tasks li {
+    list-style: none;
+    position: relative;
+    padding: .75em .5em;
+    margin: 0 0 0 2em;
 }
