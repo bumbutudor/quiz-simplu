@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/quiz.css" />
      <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/fonts.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/tooltip-classic.css" />
+     <link rel="stylesheet" type="text/css" href="<?php echo $root; ?>/res/css/introjs.css" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <title>Logodava :: Admin</title>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -20,9 +21,11 @@
 <body>
  <!-- Navigation Bar Static navbar -->
   <div class="navClass">
-    <nav class="navbar navbar-inverse navbar-static-top color">
+
+    <nav  class="navbar navbar-inverse navbar-static-top color">
+
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+        <div class="navbar-header" >
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -33,7 +36,12 @@
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
+
             <ul class="nav navbar-nav navbar-right navClass">
+                <li>
+                 <a id="startButton" href="javascript:void(0);"><span class="glyphicon glyphicon-comment"></span> Tour de France</a>
+
+                </li>
                 <li>
                   <a href="#" class="signed pull-right "><span class="glyphicon glyphicon-user"></span> Logat ca
                 <em><?php echo $user->getName(); ?></em></a>
@@ -50,7 +58,7 @@
                     </ul>
                 </li>
                 <?php } else { ?>
-                <li><a href="<?php echo $root; ?>/logout/">Ieșire</a></li>
+                <li><a href="<?php echo $root; ?>/logout/"><span class="glyphicon glyphicon-log-out"></span>  Ieșire</a></li>
                 <?php } ?>            
             </ul>
         </div>

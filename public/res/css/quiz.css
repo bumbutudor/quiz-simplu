@@ -222,6 +222,7 @@ img .logo{
     *zoom: 1;
 }
 .page-exercise h1 {
+  color: #72A0C1;
   border-bottom: 5px solid #72A0C1; }
 
 
@@ -311,10 +312,11 @@ h1, .h1{
 
 .admin a {
     display: block;
-    font-size: 1em;
+    font-size: 1.1em;
     line-height: 1.2;
-    padding: .5em .5em .5em 7%;
-    text-decoration: none;}
+    padding: .4em .0em;
+    text-decoration: none;
+}
      .admin a:hover {
     background-color: #f8f8f8;}
 ul {

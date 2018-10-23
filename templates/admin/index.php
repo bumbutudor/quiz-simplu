@@ -3,22 +3,22 @@ include'header.php';
 ?>
 
 <div id="container" class="quiz">
-      
-      <div class="row">
-          <div class="col-sm-12" id="intro2">
-           <?php if (isset($admin)) {?> 
-            <form id="modulese" method="post" action="<?php echo $root . '/admin'; ?>">
-              <input type="hidden" name="_METHOD" value="POST"/>
-                <?php foreach ($categories as $categorie) : ?>
-                       <input name="userModule" type="submit" value="<?php echo $categorie->id.". ".$categorie->name?>" class="btn btn-color btn-lg"
-                       style="<?php if($_SESSION["userModule"] == $categorie->id){ echo "background-color:#002b7f !important; color: white !important;"; }?>"/>
-                  <?php endforeach; ?>
-            </form>
-          
-            <?php } else {?>
-               <h3><strong><?php echo $category->name; ?></strong> </h3>
+           
+      <div class="row" id="intro2">
+          <?php if (isset($admin)) {?> 
+            <div class="col-sm-10 col-sm-offset-1"  >
+              <form id="modulese" method="post" action="<?php echo $root . '/admin'; ?>" data-step="1" data-intro="Module" data-position='right'>
+                <input type="hidden" name="_METHOD" value="POST"/>
+                  <?php foreach ($categories as $categorie) : ?>
+                         <input name="userModule" type="submit" value="<?php echo $categorie->id.". ".$categorie->name?>" class="btn btn-color btn-lg"
+                         style="<?php if($_SESSION["userModule"] == $categorie->id){ echo "background-color:#002b7f !important; color: white !important;"; }?>"/>
+                    <?php endforeach; ?>
+              </form>
+            </div>
+          <?php } else {?>
+               <div class="col-sm-4 col-sm-offset-4" data-step="1" data-intro="Modul" data-position='right'><h3><strong><?php echo $category->name; ?></strong> </h3></div>
              <?php }?>
-             </div>
+             
       </div>
       
       <div class="row" >
@@ -29,19 +29,19 @@ include'header.php';
                <h4><strong>Submodule</strong></h4>                   
              </div>              
             </div>
-            <div class="row">
+            <div class="row" >
               <div class="col-sm-12" >
                 <div class="list-group">
                   <?php foreach ($subcategories as $subcat): ?>
-                    <ul><li class="admin"><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
+                    <ul><li data-step="6" data-intro="Click e denumirea la submodul pentru a merge la editare" class="admin"><a href="<?php echo $root; ?>/admin/subcat/<?php echo $subcat->id ;?>"><?php echo $subcat->name; ?></a></li></ul>
                   <?php endforeach; ?>
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" >
               <div class="col-sm-12">
                  <p>
-                  <button id="addsubcategory" title="Adaugă un submodul nou" type="button" class="btn btn-primary">Adaugă Un Submodul  <span class="glyphicon glyphicon-plus-sign"></span></button>
+                  <button id="addsubcategory" title="Adaugă un submodul nou" type="button" class="btn btn-primary" data-step="2" data-intro="Adaugă un submodul nou" data-position='right'>Adaugă Un Submodul  <span class="glyphicon glyphicon-plus-sign"></span></button>
                  </p>
                </div>
             </div>
@@ -55,7 +55,7 @@ include'header.php';
           
           <h4><strong>Exerciții</strong></h4>
           <?php if (count($quizzes) > 0): ?>
-            <table id="quizzes" class="table table-striped">
+            <table id="quizzes" class="table table-striped" data-step="3" data-intro="Exerciții existente">
                 <thead>
 
                    <tr><th>Nume</th><th>Sarcina</th><th>Modul</th><th>Submodul</th><th>Tip</th><th>Activ</th><th>Acțiuni</th></tr>
@@ -64,19 +64,20 @@ include'header.php';
                     <?php
                         foreach ($quizzes as $quiz) :
                             $activeSpan = $quiz->active == 1 ? 'glyphicon-ok-circle' : 'glyphicon-remove-circle';
-                            echo '<tr class="quiz"><td><strong><a href="'. $root .'/admin/quiz/'. $quiz->id .'">' . $quiz->name. '</a></strong></td><td>'.$quiz->description.'</td><td>'.$quiz->category.'</td><td>'.$quiz->id_subcategory.'</td><td>'.$quiz->quiz_type.'</td><td><span class="glyphicon '.$activeSpan.'"></span></td><td><a href="'. $root .'/admin/quiz/'. $quiz->id .'" data-quiz-id="'.$quiz->id.'" title="Modifică exercițiu" class="edit btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> <button data-quiz-id="'.$quiz->id.'" title="Șterge Exercițiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></td></tr>';
+                            echo '<tr class="quiz"><td><strong><a data-step="5" data-intro="Click Editare" href="'. $root .'/admin/quiz/'. $quiz->id .'">' . $quiz->name. '</a></strong></td><td>'.$quiz->description.'</td><td>'.$quiz->category.'</td><td>'.$quiz->id_subcategory.'</td><td>'.$quiz->quiz_type.'</td><td><span class="glyphicon '.$activeSpan.'"></span></td><td><a href="'. $root .'/admin/quiz/'. $quiz->id .'" data-quiz-id="'.$quiz->id.'" title="Modifică exercițiu" class="edit btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> <button data-quiz-id="'.$quiz->id.'" title="Șterge Exercițiu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></td></tr>';
                         endforeach;
                     ?>
                 </tbody>
             </table>
           <?php else: ?>
+          <span>
           <p>Nu este nici un <strong>exercițiu</strong> la moment. Doriți să adăugați unul?</p>
           <p>Dați click pe butonul <em>"Adaugă Un Exercițiu"</em>, dar nu uitați că în primul rând trebuie să fie creat cel puțin un <strong>submodul.</strong> </p>
-          <p>Pentru a adăuga un submodul click pe butonul <em>"Adaugă Un Submodul"</em>. </p>
+          <p>Pentru a adăuga un submodul click pe butonul <em>"Adaugă Un Submodul"</em>. </p></span>
           <?php endif; ?>
             
             <p>
-                <button id="addquiz" title="Adaugă un exercițiu nou" type="button" class="btn btn-primary pull-right">Adaugă Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
+                <button id="addquiz" title="Adaugă un exercițiu nou" type="button" class="btn btn-primary pull-right" data-step="4" data-intro="Adaugă un Exercițiu">Adaugă Un Exercițiu <span class="glyphicon glyphicon-plus-sign"></span></button>
             </p>
 
 

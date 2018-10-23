@@ -63,6 +63,15 @@
 		});
 	</script>
     <script src="<?php echo $root; ?>/res/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Intro js pentru prezentare -->
+    <script src="<?php echo $root; ?>/res/js/intro.js"></script>
+    <script type="text/javascript">
+        document.getElementById('startButton').onclick = function() {
+        introJs().setOption('doneLabel', 'Gata!').start().oncomplete(function() {
+        });
+      };
+    </script>
+
     <script src="<?php echo $root; ?>/res/js/admin.js"></script>
 </body>
 </html>
