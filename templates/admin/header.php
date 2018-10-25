@@ -39,7 +39,7 @@
 
             <ul class="nav navbar-nav navbar-right navClass">
                 <li>
-                 <a id="startButton" href="javascript:void(0);"><span class="glyphicon glyphicon-comment"></span> Tour de France</a>
+                 <a style="color: #fb5c5cf7;" id="startButton" href="javascript:void(0);"><span class="glyphicon glyphicon-comment"></span> Ghid Interactiv</a>
 
                 </li>
                 <li>

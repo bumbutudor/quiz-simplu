@@ -67,7 +67,7 @@
     <script src="<?php echo $root; ?>/res/js/intro.js"></script>
     <script type="text/javascript">
         document.getElementById('startButton').onclick = function() {
-        introJs().setOption('doneLabel', 'Gata!').start().oncomplete(function() {
+        introJs().setOption('doneLabel', 'Final!').start().oncomplete(function() {
         });
       };
     </script>

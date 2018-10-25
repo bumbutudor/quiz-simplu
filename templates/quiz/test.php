@@ -21,9 +21,10 @@
 
         <div class="main-col">
             <div class="wrapper">
-              <div class="page-exercise">
+                <div class="page-exercise">
                 <h1><?php echo $quiz->getName(); ?></h1>
               </div>
+     
               <div class="exercise__desc">
                 
                 <h3>Sarcina nr:</h3>
@@ -124,7 +125,6 @@
                         <a class="btn btn--primary btn--full" href="<?php echo $root; ?>">La pagina pricipală</a>
                     </div>    
                     <?php endif; ?>
-        
                     </div>
         
                  </div>

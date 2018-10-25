@@ -41,12 +41,10 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                               <tr class="question">
                                   <td class="question"><?php echo $question->getNum(); ?></td>
                                   <td>
-                                      <!-- <button data-question-id="<?php echo $question->getNum(); ?>" title="Editează Întrebarea" class="edit btn btn-default btn-primary" type="button"><span class="glyphicon glyphicon-pencil"></span></button> -->
                                       <a href="<?php echo $root; ?>/admin/quiz/<?php echo $quiz->getId();
                                       ?>/question/<?php echo $question->getNum(); ?>/edit/" title="Editează Răspunsuri"
                                          class="answerlink btn btn-default btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-                                      <button data-question-id="<?php echo $question->getNum(); ?>" data-quiz-id="<?php
-                                      echo $quiz->getId(); ?>" title="Șterge Exemplu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                                      <button data-question-id="<?php echo $question->getId(); ?>" data-question-num="<?php echo $question->getNum(); ?>" data-quiz-id="<?php echo $quiz->getId(); ?>" title="Șterge Exemplu" class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                   </td>
                               </tr>
                               <?php endforeach; ?>  

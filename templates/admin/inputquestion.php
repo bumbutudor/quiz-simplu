@@ -1,8 +1,8 @@
 <form id="questionTypeInput" method="post" action="">
       <div class="modal-body">
-          <p><label for="newquestiontypeinput">Exemplu:</label>
+          <p><label for="newquestiontypeinput">Propoziție:</label>
              <input id="newquestiontypeinput" type="text" placeholder="Scrie propoziția aici" class="form-control" />
-             <span class="helper help-block">Nu este exemlu!</span>
+             <span class="helper help-block">Nu este propoziție!</span>
           </p>
           <button type="button" class="btn btn-secondary" id="transpormText">Acceptă</button>
           <button type="button" class="btn btn-primary hidden" id="createInput">Creează căsuță</button>

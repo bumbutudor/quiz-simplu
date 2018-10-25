@@ -470,14 +470,15 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
         }
         try {
             $quiz->addQuestion($question, 'radio', $answers, $explanation, $image);
-            $app->flashnow('success', 'Exemplul nou a fost adăugat cu succes!');
+            $app->flash('success', 'Exemplul nou a fost adăugat cu succes!');
         } catch (Exception $e ) {
             $app->flashnow('error', 'A aparut o eroare la adăugarea exemplului!');
             $app->flashnow('error', $e->getMessage());
         }
         $quiz->populateUsers();
-   
-        $app->redirect($app->request->getRootUri().'/admin/quiz/'.$quiz->getId(), array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types, 'subcategories' => $subcategories));
+
+        //24.10 Redirect not working with parameters
+        $app->redirect($app->request->getRootUri().'/admin/quiz/'.$quiz->getId());
     } else {
         echo 'oops';
     }
@@ -487,6 +488,7 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
 $app->delete("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($app) {
     
     $questionid = $app->request->post('questionid');
+    $questionnum = $app->request->post('questionnum');
             
     if (! ctype_digit($id)) {
         $app->redirect($app->request->getRootUri().'/admin/');
@@ -497,7 +499,7 @@ $app->delete("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($
     if ($quiz->setId($id)) {
         
         try {
-            $quiz->deleteQuestion($questionid);
+            $quiz->deleteQuestion($questionnum, $questionid);
         } catch (Exception $e ) {
             echo json_encode(array('error' => $e->getMessage()));
         }
@@ -516,7 +518,7 @@ $app->get("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
         $quiz->populateQuestions();
         $question = $quiz->getQuestion($questionid);
         $answers = $quiz->getAnswers($questionid);
-        $app->render('admin/editanswers.php', array('quizid' => $quizid,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
+        $app->render('admin/editanswers.php', array('questionid' => $questionid, 'question' => $question, 'answers' => $answers, 'quiz' => $quiz));
     } else {
         echo 'oops';
     }
@@ -543,7 +545,7 @@ $app->put("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
             if (trim($answer) == '') {
                 $app->flashnow('error', 'Nu sunt răspunsuri adăugate!');
                 $answers = $quiz->getAnswers($questionid);
-                $app->render('admin/editanswers.php', array('quizid' => $quizid,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
+                $app->render('admin/editanswers.php', array('quiz' => $quiz,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
                 $app->stop();
             }
             if ($i == $correct) {
@@ -562,7 +564,7 @@ $app->put("/admin/quiz/:quizid/question/:questionid/edit/", $authenticate($app, 
             $app->flashnow('error', 'A aparut o eroare la modificarea răspunsurilor!');
         }
         $answers = $quiz->getAnswers($questionid);
-        $app->render('admin/editanswers.php', array('quizid' => $quizid,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
+        $app->render('admin/editanswers.php', array('quiz' => $quiz,'questionid' => $questionid, 'question' => $question, 'answers' => $answers));
     } else {
         echo 'Ups';
     }

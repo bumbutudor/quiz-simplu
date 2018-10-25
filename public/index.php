@@ -1,7 +1,7 @@
 <?php
 require '../vendor/autoload.php';
 
-ORM::configure('mysql:host=' . \SimpleQuiz\Utils\Base\Config::$dbhost. ';dbname=' . \SimpleQuiz\Utils\Base\Config::$dbname);
+ORM::configure('mysql:host=' . \SimpleQuiz\Utils\Base\Config::$dbhost. ';dbname=' . \SimpleQuiz\Utils\Base\Config::$dbname.';charset=utf8');
 ORM::configure('username', \SimpleQuiz\Utils\Base\Config::$dbuser);
 ORM::configure('password', \SimpleQuiz\Utils\Base\Config::$dbpassword);
 ORM::configure('return_result_sets', true);

@@ -23,7 +23,7 @@ interface IQuiz {
     
     public function updateQuestion ($questionnum, $text, $image);
     
-    public function deleteQuestion($questionid);
+    public function deleteQuestion($questionnum, $questionid);
     
     public function updateAnswers(Array $answers, $questionid);
     

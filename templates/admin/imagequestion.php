@@ -12,8 +12,8 @@
           <div id="preview"></div>
 
           <input class="correct" name="correct" value="1" type="checkbox" checked="checked" hidden/>
-          <div style="text-align: center; display: block;" class="input-group">
-             <input name="answer[]" placeholder="Scrie denumirea" class="form-control formControlul" />
+          <div class="input-group">
+             <input style="border-radius: 4px !important;" name="answer[]" placeholder="Scrie denumirea" class="form-control formControlul" />
           </div>
 
           

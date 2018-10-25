@@ -49,6 +49,7 @@ $(function(){
     $('table#questions').on('click', '.remove', function() {
         
         var questionid = $(this).attr("data-question-id");
+        var questionnum = $(this).attr("data-question-num");
         var quizid = $(this).attr("data-quiz-id");
         
         if (window.confirm("Ești 100% sigur că vrei să șteri exemplul?") ) {
@@ -61,25 +62,27 @@ $(function(){
                 url: location.pathname,
                 type: "POST",
                 cache: false,
-                data : {'_METHOD' : 'DELETE', quizid : quizid, questionid : questionid},
+                data : {'_METHOD' : 'DELETE', quizid : quizid, questionid : questionid, questionnum : questionnum},
                 dataType: "json",
                 success: function(response) {
                     if (typeof response.success !== 'undefined') {
                 
-                        parenttr.fadeOut('slow').remove();
-                        $.each( $('tr.question:visible'), function(index, value) {
-                            $(this).find('.edit').attr("data-question-id",index);
-                            $(this).find('.remove').attr("data-question-id",index);
-                            var regex = /question\/\d+\/edit/;
-                            index++;
-                            var oldhref = $(this).find('.answerlink').attr("href");
-                            var newhref = oldhref.replace(regex, "question/" + index + "/edit");
-                            $(this).find('.answerlink').attr("href", newhref);
+                        // parenttr.fadeOut('slow').remove();
+                        // $.each( $('tr.question:visible'), function(index, value) {
+                        //     $(this).find('.edit').attr("data-question-id",index);
+                        //     $(this).find('.remove').attr("data-question-id",index);
+                        //     var regex = /question\/\d+\/edit/;
+                        //     index++;
+                        //     var oldhref = $(this).find('.answerlink').attr("href");
+                        //     var newhref = oldhref.replace(regex, "question/" + index + "/edit");
+                        //     $(this).find('.answerlink').attr("href", newhref);
                             
-                        });
+                        // });
                         // flash success message
+                        parenttr.remove();
                         $('#ajaxupdater').addClass("alert-success").html(response.success).show('slow').delay(2000).hide('slow');
                     } else {
+                        console.log(response);
                         $('#ajaxupdater').addClass("alert-danger").html(response.error).show('slow').delay(2000).hide('slow');
                     }
                 }
@@ -105,7 +108,7 @@ $(function(){
         //console.log(location.pathname);
         var quizid = $(this).attr("data-quiz-id");
         
-        if (window.confirm("Ești 100% sigur că vrei să ștergi exemplul?") ) {
+        if (window.confirm("Ești 100% sigur că vrei să ștergi exercitiul?") ) {
             
             var parenttr = $(this).parents('tr.quiz');
            

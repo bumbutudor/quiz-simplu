@@ -1,8 +1,8 @@
 <form id="selectTypeInput" method="post" action="">
       <div class="modal-body">
-          <p ><label for="newquestiontypeinput">Exemplu:</label>
+          <p ><label for="newquestiontypeinput">Propoziție:</label>
              <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Scrie aici propoziția" class="form-control" /></span>
-             <span class="helper help-block">Nu este exemlu!</span>
+             <span class="helper help-block">Nu este propoziție!</span>
           </p>
 
           <button type="button" id="transpormText" class="btn btn-secondary">Acceptă</button>

@@ -1,11 +1,13 @@
 <?php
 include'header.php';
+
+use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
 ?>
 <div id="container" class="quiz">
         <div class="row">
           <div id="intro" class="col-md-8 col-md-offset-2">
               
-              <div><a class="btn btn-primary" href="<?php echo $root; ?>/admin/quiz/<?php echo $quizid; ?>/"><span class="glyphicon glyphicon-arrow-left"></span> Înapoi la detaliile exercițiului</a></div>
+              <div><a class="btn btn-primary" href="<?php echo $root; ?>/admin/quiz/<?php echo $quiz->getId(); ?>/"><span class="glyphicon glyphicon-arrow-left"></span> Înapoi la detaliile exercițiului</a></div>
                 <?php if (isset($flash['success'])) { echo '<div id="updater" class="alert alert-success">'.$flash["success"].'</div>'; } ?>
                 <?php if (isset($flash['error'])) { echo '<div id="updater" class="alert alert-danger">'.$flash["error"].'</div>'; } ?>
                 <h3>Editează Răspunsuri: </h3>
@@ -33,7 +35,11 @@ include'header.php';
                                         </td>
                                         <td>
                                             <div class="input-group">
+                                            <?php if($quiz->getQuizType()->id != EnumTypeQuestions::TextQuestion) {?>
                                                 <input type="text" name="answer[]" value="<?php echo $answer; ?>" class="form-control">
+                                            <?php } else { ?>
+                                                <textarea name="answer[]" class="form-control" rows="7" cols="50"><?php echo $answer; ?></textarea>
+                                            <?php }?>
                                                 <span class="input-group-btn">
                                                     <button class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                                 </span>
@@ -58,14 +64,15 @@ include'header.php';
                                     </tr>
                                 </tbody>
                             </table>
+                                <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă Răspuns <span class="glyphicon glyphicon-plus-sign"></span></button>
                                 <?php if (!empty($question->getExplanation()))  { ?>
-                                <p style="padding-top: 20px;"> Comentariu: </p>
+                                <p style="padding-top: 30px;"> Comentariu: </p>
                                 <div style="padding-bottom: 20px; margin-top: -10px;"><?php echo $question->getExplanation(); ?></div>
                                 <?php } ?>
         
                             
                                 <button type="submit" class="btn btn-success">Salvează <span class="glyphicon glyphicon-ok"></span></button>
-                                <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                
                             </p>
                             <input type="hidden" name="_METHOD" value="PUT" />
                         </form> 

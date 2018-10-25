@@ -90,6 +90,8 @@ class Quiz implements Base\IQuiz {
      * @param $questionid
      * @return bool
      */
+
+    // a fost adaugat questionnum in loc de $questionid
     public function getAnswers($questionid)
     {
         if ($questionid)
@@ -205,15 +207,15 @@ class Quiz implements Base\IQuiz {
      * @param $questionid
      * @return bool
      */
-    public function deleteQuestion($questionid)
+    public function deleteQuestion($questionnum, $questionid)
     {
         //foreign_key constraints take care of deleting related answers
-        $q = \ORM::for_table('questions')->where('quiz_id', $this->_id)->where('num', $questionid)->find_one();
+        $q = \ORM::for_table('questions')->where('quiz_id', $this->_id)->where('id', $questionid)->find_one();
         $q->delete();
         
         //reorder the num column in questions table
         //foreign_key constraints take care of updating related answers
-        $toupdate = \ORM::for_table('questions')->where('quiz_id', $this->_id)->where_gt('num', $questionid)->find_many();
+        $toupdate = \ORM::for_table('questions')->where('quiz_id', $this->_id)->where_gt('num', $questionnum)->find_many();
         foreach ($toupdate as $question) {
             $question->num = $question->num - 1;
         }
