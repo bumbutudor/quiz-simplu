@@ -1,3 +1,6 @@
+//GLOBAL VARIABLES
+var savedFormattedInput;    //Here we save the tag for editting text with different kind of shit
+
 $(function(){
     $('#updater').fadeIn('slow').delay(2000).fadeOut('slow');
     var context = $('#contextual');
@@ -294,11 +297,12 @@ $(function(){
     });
 
     $('#transpormText').on('click', function() {
-       var inputText = $('input#newquestiontypeinput');
-       if(inputText.val().localeCompare("") !== 0) {
-            inputText.replaceWith("<span id='newquestiontypeinput'>" + inputText.val() + "</span>");
-            
-            inputText.hide();
+       var inputText = $('div#newquestiontypeinput');
+       savedFormattedInput = $('div#newquestiontypeinput');
+       if(inputText.text().localeCompare("") !== 0) {
+            inputText.replaceWith("<span id='newquestiontypeinput'>" + $(inputText.children()[1].children[0].children[0]).html() + "</span>");
+
+
             $(this).addClass('hidden');
             $('#editText').removeClass('hidden');
             $('#createInput').removeClass('hidden');
@@ -318,7 +322,9 @@ $(function(){
     $('#editText').on('click', function() {
         var inputText = $('span#newquestiontypeinput');
         var text = inputText.text();
-        inputText.replaceWith("<input id='newquestiontypeinput' type='text' value='"+ text +"' class='form-control'>");
+        //inputText.replaceWith("<input id='newquestiontypeinput' type='text' value='"+ text +"' class='form-control'>");
+        inputText.replaceWith(savedFormattedInput);
+
 
         $(this).addClass('hidden');
         $('#transpormText').removeClass('hidden');

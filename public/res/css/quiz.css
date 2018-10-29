@@ -424,3 +424,10 @@ img#preview{
     padding: .75em .5em;
     margin: 0 0 0 2em;
 }
+
+.borderless td, .borderless th {
+    border: none;
+}
+.nomargin .ql-toolbar.ql-snow {
+    border: 0px solid #ccc !important;
+}

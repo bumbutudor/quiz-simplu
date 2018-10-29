@@ -459,10 +459,14 @@ $app->post("/admin/quiz/:id/", $authenticate($app, true), function($id) use ($ap
                 $app->render('admin/quiz.php', array('quiz' => $quiz, 'categories' => $categories, 'quiz_types' => $quiz_types, 'subcategories' => $subcategories));
                 $app->stop();
             }
-            if ($i == $correct) {
-                $correctAnswer = 1;
+            if ($quiz->getQuizType()->id != \SimpleQuiz\Utils\Base\EnumTypeQuestions::ImageQuestion) {
+                if ($i == $correct) {
+                    $correctAnswer = 1;
+                } else {
+                   $correctAnswer = 0;
+                }
             } else {
-               $correctAnswer = 0;
+                $correctAnswer = 1;
             }
             $answers[] = array($answer, $correctAnswer);
 

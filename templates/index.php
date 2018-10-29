@@ -20,7 +20,14 @@
             <div class="wrapper">
               <h1 style="color: #72A0C1;">Logodava Quiz Admin</h1>
               <p>Sistem de administrare a testelor privind utilizarea corectă a limbii române.</p>
+              <p style="font-size: 16px;">
+                <span style="color: red"> <strong>Actualizare 26.10.2018: </strong></span> <br/><em>a) La adăugarea exemplelelor de tip <strong>„în căsuță”</strong> și <strong>„din căsuță”</strong> a fost făcută o modificare. Când introduceți propoziția nu mai trebuie să scriți manual stilul, îl puteți folosi la fel cum îl folosiți pe cel de la scrierea comentariilor. <span style="color: red"> Actualizare 27.10.2018: </span> Au fost făcute schimbări minore privind designul căsuței unde se introduce propoziția.
+                <br/>
 
+                  b) La adăugarea exemplelor de tip <strong>„imagine”</strong> aveți posibilitatea să adăugați mai multe răspunsuri corecte. <br/>
+                  c) Din pagina de editare a răspunsurilor au fost lichidate butoanele „Adaugă un Răspuns” pentru tipurile de exemple care nu au nevoie.<br/>
+                  d) Au fost salvate copii de rezervă a bazei de date.</em>
+             </p><br/>
                       <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne3">
@@ -29,6 +36,7 @@
                                         Ghid de elaborare a unui exemplu de tip <strong><em>„din căsuță”</em></strong>
                                     </a>
                                 </p>
+                                
                             </div>
                             <div id="collapseOne3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne3">
                                 <div class="panel-body">

@@ -1,7 +1,9 @@
 <form id="selectTypeInput" method="post" action="">
       <div class="modal-body">
-          <p ><label for="newquestiontypeinput">Propoziție:</label>
-             <input name="questiontext" id="newquestiontypeinput" type="text" placeholder="Scrie aici propoziția" class="form-control" /></span>
+          <p><label for="newquestiontypeinput">Propoziție:</label>
+            <div id="newquestiontypeinput" name="questiontext" class="nomargin">
+                  <div id="formattedInputArea" style="border-radius: 4px; border-top: 1px solid #ccc;"></div>
+             </div>
              <span class="helper help-block">Nu este propoziție!</span>
           </p>
 

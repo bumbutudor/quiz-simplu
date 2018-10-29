@@ -13,6 +13,15 @@
               theme: 'snow'
             });
 
+        var quillinput = new Quill('#formattedInputArea', {
+              modules: {
+                toolbar: [
+                  ['bold', 'italic']
+                ]
+              },
+              theme: 'snow'
+            });
+        
         //comentariu test grila
         $("#questionadd").on("submit",function(){
       	$("#explanation").val(quill.root.innerHTML);
@@ -32,6 +41,7 @@
         $("#quessImage").on("submit",function(){
         $("#explanation").val(quill.root.innerHTML);
         })
+
 
     </script>
     <script>  

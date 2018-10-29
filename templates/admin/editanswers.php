@@ -30,19 +30,26 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                                     $i = 1;
                                     foreach ($answers as $answer) : ?>
                                     <tr class="answer-row">
+                                        <?php if($quiz->getQuizType()->id != EnumTypeQuestions::ImageQuestion) {?>
                                         <td style="text-align: center;">
                                            <input class="correct" name="correct" value="<?php echo $i - 1; ?>" type="radio" <?php echo $i == 1 ? 'checked' : ''; ?>> 
                                         </td>
+                                        <?php } else { ?>
+                                        <td style="text-align: center;">
+                                           <input class="correct" name="correct" type="checkbox" value="1" checked/> 
+                                        </td>
+                                        <?php }?>
                                         <td>
                                             <div class="input-group">
                                             <?php if($quiz->getQuizType()->id != EnumTypeQuestions::TextQuestion) {?>
                                                 <input type="text" name="answer[]" value="<?php echo $answer; ?>" class="form-control">
-                                            <?php } else { ?>
-                                                <textarea name="answer[]" class="form-control" rows="7" cols="50"><?php echo $answer; ?></textarea>
-                                            <?php }?>
                                                 <span class="input-group-btn">
                                                     <button class="remove btn btn-default btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                                 </span>
+                                            <?php } else { ?>
+                                                <textarea name="answer[]" class="form-control" rows="7" cols="70"><?php echo $answer; ?></textarea>
+                                            <?php }?>
+                                                
                                             </div>
                                         </td>
                                     </tr>
@@ -64,7 +71,12 @@ use \SimpleQuiz\Utils\Base\EnumTypeQuestions;
                                     </tr>
                                 </tbody>
                             </table>
+                                <?php if($quiz->getQuizType()->id == EnumTypeQuestions::SelectQuestion || $quiz->getQuizType()->id == EnumTypeQuestions::RadioQuestion ) {?>
                                 <button id="addanswer" type="button" class="btn btn-primary pull-right">Adaugă Răspuns <span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <?php } else { ?>
+                                               <p></p>
+                                <?php }?>
+
                                 <?php if (!empty($question->getExplanation()))  { ?>
                                 <p style="padding-top: 30px;"> Comentariu: </p>
                                 <div style="padding-bottom: 20px; margin-top: -10px;"><?php echo $question->getExplanation(); ?></div>
