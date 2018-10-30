@@ -39,6 +39,9 @@ header('Content-Type: text/html; charset=utf-8');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <button type="button" class="pull-left btn btn-default visible-xs" data-toggle="offcanvas" aria-expanded="false" aria-controls="navbar">
+            <i class="fa fa-navicon"></i>
+          </button>
             <a href="<?php echo $root; ?>/" class="navbar-brand"><img height="50" src="<?php echo $root; ?>/images/logodava-white.svg"/>&ensp;Logodava Quiz</a>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->

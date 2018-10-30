@@ -6,7 +6,8 @@
         "slim/slim": "2.*",
         "j4mie/idiorm": "dev-master",
         "ircmaxell/password-compat": "dev-master",
-        "swiftmailer/swiftmailer": "~5.3@dev"
+        "swiftmailer/swiftmailer": "~5.3@dev",
+        "ifsnop/mysqldump-php":"2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.4.*@dev"

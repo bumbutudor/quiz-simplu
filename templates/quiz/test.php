@@ -91,7 +91,7 @@
                                     //wrong AND chosen by user
                                 else :
                                     if ( in_array( $answer, $_SESSION['wrong'][$x])) :
-                                        if (strlen($quiz->getQuestion($x)->getExplanation()) !== 0) :
+                                        if ($quiz->getQuestion($x)->getExplanation() !== "<p><br></p>") :
                                             echo '<li class="wrong">' . $answer . ' (Gresit!) <span class="tooltip-quiz tooltip-effect-1"><span class="tooltip-item-quiz">Comentariu</span><span class="tooltip-content-quiz"><span class="tooltip-text-quiz">'.$quiz->getQuestion($x)->getExplanation().'</span></span></span>' . PHP_EOL;
                                         else : 
                                             echo '<li class="wrong">' . $answer . ' (Gresit!) ';

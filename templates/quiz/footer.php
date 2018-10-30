@@ -3,6 +3,12 @@
 		$(document).ready(function(){
 		    $('[data-toggle="tooltip"]').tooltip();   
 		});
+
+        $(document).ready(function () {
+          $('[data-toggle="offcanvas"]').click(function () {
+            $('.row-offcanvas').toggleClass('active')
+          });
+        });
 	</script>
     <script src="<?php echo $root; ?>/res/bootstrap/dist/js/bootstrap.min.js"></script>
         <?php if ($session->get('num') === 0 ): ?>
