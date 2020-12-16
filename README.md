@@ -1,10 +1,9 @@
-# [Quiz-simlu](https://simplequiz.co.uk)
+# [Quiz-simplu](https://simplequiz.co.uk)
 [![Software License](http://img.shields.io/badge/license-apache2-brightgreen.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/ElanMan/simple-quiz.png?branch=master)](https://travis-ci.org/ElanMan/simple-quiz)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/77dcca19-1dd0-4a47-86b7-1ac6142e1bbd/mini.png)](https://insight.sensiolabs.com/projects/77dcca19-1dd0-4a47-86b7-1ac6142e1bbd)
 
-Quiz-simplu este un Framework simplu pentru crearea de chestionare pentru web, destinat pentru compania Logodava! 
-PHP versiune > 5.4
+Quiz-simplu este o aplicație web destinată creării și gestionării quiz-urilor.
 
 
 
